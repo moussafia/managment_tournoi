@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Match_Picture {
+public class MatchPicture {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String url_image;

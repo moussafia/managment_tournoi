@@ -19,10 +19,10 @@ public class Team {
     private UUID id;
     private String name_team;
     private String logo;
-    @OneToMany(mappedBy = "appUser", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Participant> participants;
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     @JsonBackReference
-    private List<Team_Group> teamGroups;
+    private List<TeamGroup> teamGroups;
 }

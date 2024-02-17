@@ -18,5 +18,5 @@ public class Group {
     private String name;
     @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     @JsonBackReference
-    private List<Team_Group> teamGroups;
+    private List<TeamGroup> teamGroups;
 }

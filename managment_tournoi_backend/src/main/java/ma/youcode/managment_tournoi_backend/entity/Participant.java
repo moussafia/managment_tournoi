@@ -23,7 +23,7 @@ public class Participant {
     @MapsId("userId")
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private AppUser appUser;
+    private AppUser user;
     @OneToMany(mappedBy = "participant", fetch = FetchType.EAGER)
     @JsonBackReference
     private List<Scorer> scorerList;

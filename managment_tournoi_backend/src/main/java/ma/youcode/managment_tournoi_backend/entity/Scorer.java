@@ -18,7 +18,7 @@ public class Scorer {
     private Integer number_yellow_card;
     @ManyToOne
     @MapsId("participantEmbeddedId")
-    @JoinColumn(name = "participant_id", nullable = false)
+   // @JoinColumn(name = "participant_id", nullable = false)
     private Participant participant;
     @ManyToOne
     @MapsId("matchId")

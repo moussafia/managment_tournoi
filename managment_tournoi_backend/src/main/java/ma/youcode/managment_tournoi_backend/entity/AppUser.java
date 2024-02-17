@@ -15,7 +15,7 @@ import java.util.UUID;
 @Builder
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String first_name;
     private String last_name;
@@ -31,7 +31,7 @@ public class AppUser {
     private Boolean isDeleted;
     @ManyToOne(fetch = FetchType.EAGER)
     private AppRole role;
-    @OneToMany(mappedBy = "team",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Participant> participants;
 
