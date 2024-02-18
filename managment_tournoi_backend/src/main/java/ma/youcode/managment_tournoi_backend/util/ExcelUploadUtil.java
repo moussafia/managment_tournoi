@@ -43,8 +43,6 @@ public class ExcelUploadUtil {
                         case 4 -> user.setUrlPicture(cell.getStringCellValue());
                         default -> {}
                     }
-                    //user.setIndexRow(rowIndex);
-                    //user.setIndexRow(cellIndex);
                     cellIndex++;
                 }
                 appUserRequests.add(user);

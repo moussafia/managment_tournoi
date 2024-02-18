@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import ma.youcode.managment_tournoi_backend.util.validation.UniqueEmail;
-import ma.youcode.managment_tournoi_backend.util.validation.UniqueUsername;
 
 @Getter @Setter
 @AllArgsConstructor
@@ -36,6 +35,4 @@ public class AppUserRequest {
     private String UrlPicture;
     @JsonIgnore
     private int indexRow;
-    @JsonIgnore
-    private int indexColumn;
 }
