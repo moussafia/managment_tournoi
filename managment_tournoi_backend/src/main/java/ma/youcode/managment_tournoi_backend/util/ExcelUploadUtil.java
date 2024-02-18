@@ -36,13 +36,15 @@ public class ExcelUploadUtil {
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     switch (cellIndex) {
-                        case 0 -> user.setFirst_name(cell.getStringCellValue());
-                        case 1 -> user.setLast_name(cell.getStringCellValue());
+                        case 0 -> user.setFirstName(cell.getStringCellValue());
+                        case 1 -> user.setLastName(cell.getStringCellValue());
                         case 2 -> user.setEmail(cell.getStringCellValue());
-                        case 3 -> user.setClass_name(cell.getStringCellValue());
-                        case 4 -> user.setUrl_Picture(cell.getStringCellValue());
+                        case 3 -> user.setClassName(cell.getStringCellValue());
+                        case 4 -> user.setUrlPicture(cell.getStringCellValue());
                         default -> {}
                     }
+                    //user.setIndexRow(rowIndex);
+                    //user.setIndexRow(cellIndex);
                     cellIndex++;
                 }
                 appUserRequests.add(user);
