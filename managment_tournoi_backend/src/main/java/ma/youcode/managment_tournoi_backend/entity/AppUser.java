@@ -17,7 +17,7 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String first_name;
+    private String firstName;
     private String last_name;
     @Column(unique = true)
     private String username;
@@ -25,9 +25,9 @@ public class AppUser {
     private String email;
     private String password;
     private String image_profile;
-    private LocalDateTime created_at;
-    private LocalDateTime deleted_at;
-    private LocalDateTime updated_at;
+    private LocalDateTime createdAt;
+    private LocalDateTime deletedAt;
+    private LocalDateTime updatedAt;
     private Boolean isDeleted;
     @ManyToOne(fetch = FetchType.EAGER)
     private AppRole role;

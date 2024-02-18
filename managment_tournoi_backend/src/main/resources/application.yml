@@ -12,3 +12,14 @@ spring:
         globally_quoted_identifiers: true
         hbm2ddl:
           auto: create
+  servlet:
+    multipart:
+      enabled: true
+  # Threshold after which files are written to disk.
+      file-size-threshold: 2KB
+  # Max file size.
+      max-file-size: 20MB
+  # Max Request Size
+    multipart.max-request-size: 20MB
+server:
+  port: 9000

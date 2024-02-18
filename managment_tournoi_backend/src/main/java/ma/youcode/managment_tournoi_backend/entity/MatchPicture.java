@@ -12,7 +12,7 @@ import lombok.*;
 public class MatchPicture {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String url_image;
+    private String urlImage;
     @ManyToOne
     private Match match;
 }

@@ -3,6 +3,7 @@ package ma.youcode.managment_tournoi_backend.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import ma.youcode.managment_tournoi_backend.entity.enums.LevelEnum;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,8 +20,8 @@ public class Match {
     private UUID code_match;
     private LevelEnum level;
     private LocalDate Date;
-    private LocalTime start_date_match;
-    private LocalTime end_date_match;
+    private LocalTime startDateMatch;
+    private LocalTime endDateMatch;
     private String description;
     @OneToMany(mappedBy = "match", fetch = FetchType.EAGER)
     @JsonBackReference
