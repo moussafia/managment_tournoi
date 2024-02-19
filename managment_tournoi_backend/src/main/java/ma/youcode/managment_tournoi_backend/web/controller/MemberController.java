@@ -1,6 +1,7 @@
 package ma.youcode.managment_tournoi_backend.web.controller;
 
 import ma.youcode.managment_tournoi_backend.util.ExcelUploadUtil;
+import ma.youcode.managment_tournoi_backend.util.ExcelValidationUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ public class MemberController {
     @PostMapping("/add/members")
     public ResponseEntity<?> createListMembers(@RequestParam("memberFile") MultipartFile file){
         try {
-            return ResponseEntity.ok(ExcelUploadUtil.getMembersDataFromExcel(file.getInputStream()));
+            return ResponseEntity.ok(ExcelValidationUtil.readExcelFile(file.getInputStream()));
         }catch (IOException e){
             e.getStackTrace();
         }
