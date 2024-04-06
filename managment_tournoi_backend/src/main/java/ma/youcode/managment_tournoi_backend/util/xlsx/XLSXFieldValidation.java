@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 @Component
 public class XLSXFieldValidation {
-    private final AppUserRepository appUserRepository;
+    private static AppUserRepository appUserRepository;
     private final static String firstNamePattern = "[a-zA-Z]+";
     private final static String lastNamePattern = "[a-zA-Z]+";
     private final static String emailPattern = "^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$";
@@ -23,8 +23,8 @@ public class XLSXFieldValidation {
         this.appUserRepository = appUserRepository;
     }
 
-    public void xlsxFieldValidationPattern(List<AppUser> appUserList){
-        int index =  1;
+    public  static void  xlsxFieldValidationPattern(List<AppUser> appUserList){
+        int index =  2;
         HashMap<Integer, List<String>> validationFieldMaps = new HashMap<>();
         for (AppUser appUser: appUserList){
             List<String> fieldsName = new ArrayList<>();
@@ -35,7 +35,7 @@ public class XLSXFieldValidation {
                 fieldsName.add("Last Name");
             }
             if(!appUser.getUrlPicture().matches(urlPattern) || appUser.getUrlPicture().isBlank() || appUser.getUrlPicture().isEmpty() || appUser.getUrlPicture() == null){
-                fieldsName.add("First Name");
+                fieldsName.add("picture url");
             }
             if(!appUser.getEmail().matches(emailPattern) || appUser.getEmail().isBlank() || appUser.getEmail().isEmpty() || appUser.getEmail() == null){
                 fieldsName.add("Email");
@@ -51,8 +51,8 @@ public class XLSXFieldValidation {
         if(!validationFieldMaps.isEmpty())
             throw new XLSXFieldException("This/Those field(s) are not valid. Please correct them.", validationFieldMaps);
     }
-    public void xlsxFieldValidationEmails(List<AppUser> appUserList){
-        int index =  1;
+    public static void xlsxFieldValidationEmails(List<AppUser> appUserList){
+        int index =  2;
         HashMap<Integer, List<String>> validationFieldMaps = new HashMap<>();
         for (AppUser user : appUserList){
             int finalIndex = index;
@@ -62,6 +62,6 @@ public class XLSXFieldValidation {
             index ++;
         }
         if(!validationFieldMaps.isEmpty())
-            throw new XLSXFieldException("This/Those field(s) already Exist", validationFieldMaps);
+            throw new XLSXFieldException("This/Those email(s) already Exist", validationFieldMaps);
     }
 }
