@@ -21,5 +21,19 @@ spring:
       max-file-size: 20MB
   # Max Request Size
     multipart.max-request-size: 20MB
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: youcodesoccer@gmail.com
+    password: wpaz mvzn bnwg ccro
+    port: 587
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 server:
   port: 9000
