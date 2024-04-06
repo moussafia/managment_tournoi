@@ -1,7 +1,6 @@
-package ma.youcode.managment_tournoi_backend.util;
+package ma.youcode.managment_tournoi_backend.util.xlsx;
 
-import ma.youcode.managment_tournoi_backend.dto.appUserDto.AppUserRequest;
-
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.AppUserRequest;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ExcelValidationUtil {
+public class ExcelUploadUtil {
     public static boolean isValidExcelFile(MultipartFile file) {
         return Objects.equals(file.getContentType(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
@@ -20,7 +19,7 @@ public class ExcelValidationUtil {
         List<AppUserRequest> usersList = new ArrayList<>();
         try {
             Workbook workbook = new XSSFWorkbook(inputStream);
-            Sheet sheet = workbook.getSheet("members");
+            Sheet sheet = workbook.getSheetAt(0);
             usersList = readUsersFromSheet(sheet);
 
             workbook.close();
@@ -66,10 +65,12 @@ public class ExcelValidationUtil {
     private static boolean hasNonBlankCell(Row row) {
         for (int i = 0; i < 5; i++) {
             Cell cell = row.getCell(i, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
-            if (cell != null && cell.getCellType()!=CellType.BLANK){
+            if (cell != null && cell.getCellType()!= CellType.BLANK){
                 return true;
             }
         }
-       return false;
+        return false;
     }
+
 }
+

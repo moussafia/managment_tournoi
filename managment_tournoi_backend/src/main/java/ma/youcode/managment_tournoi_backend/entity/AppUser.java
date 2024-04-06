@@ -24,7 +24,8 @@ public class AppUser {
     @Column(unique = true)
     private String email;
     private String password;
-    private String image_profile;
+    private String urlPicture;
+    private String className;
     private LocalDateTime createdAt;
     private LocalDateTime deletedAt;
     private LocalDateTime updatedAt;

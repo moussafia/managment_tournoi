@@ -17,6 +17,7 @@ public class TeamGroup {
     private Integer wins;
     private Integer draws;
     private Integer losses;
+    private Integer rank;
     @ManyToOne
     private Team team;
     @ManyToOne
