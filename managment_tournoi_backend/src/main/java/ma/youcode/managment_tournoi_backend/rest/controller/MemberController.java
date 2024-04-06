@@ -6,6 +6,7 @@ import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.mapper.AppUserMapper;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
 import ma.youcode.managment_tournoi_backend.util.xlsx.ExcelUploadUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class MemberController {
         }catch (IOException e){
             e.getStackTrace();
         }
-        return null;
+        return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
