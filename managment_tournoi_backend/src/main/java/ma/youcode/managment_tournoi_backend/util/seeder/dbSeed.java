@@ -21,7 +21,7 @@ public class dbSeed {
     CommandLineRunner commandLineRunner(){
         return args -> {
             if(seedFakeData){
-                roleSeeder.createRoles()
+                roleSeeder.createRoles();
             }
         };
     }
