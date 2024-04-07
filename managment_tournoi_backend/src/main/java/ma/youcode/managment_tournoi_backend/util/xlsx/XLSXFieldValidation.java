@@ -49,7 +49,7 @@ public class XLSXFieldValidation {
             index++;
         }
         if(!validationFieldMaps.isEmpty())
-            throw new XLSXFieldException("This/Those field(s) are not valid. Please correct them.", validationFieldMaps);
+            throw new XLSXFieldException("These field(s) is/are not valid. Please correct it/them.", validationFieldMaps);
     }
     public static void xlsxFieldValidationEmails(List<AppUser> appUserList){
         int index =  2;
@@ -62,6 +62,6 @@ public class XLSXFieldValidation {
             index ++;
         }
         if(!validationFieldMaps.isEmpty())
-            throw new XLSXFieldException("This/Those email(s) already Exist", validationFieldMaps);
+            throw new XLSXFieldException("These email(s) already exist", validationFieldMaps);
     }
 }

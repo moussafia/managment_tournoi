@@ -6,7 +6,6 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -22,9 +21,9 @@ import java.util.Map;
 @Component
 @AllArgsConstructor
 public class MailUtil {
-    private static JavaMailSender mailSender;
-    private static Configuration configuration;
-    public static MailResponse sendMail(AppUser member, String password) {
+    private JavaMailSender mailSender;
+    private  Configuration configuration;
+    public MailResponse sendMail(AppUser member, String password) {
         MailRequest mailRequest = MailRequest.builder()
                 .to(member.getEmail())
                 .subject("Welcome to YouCode Soccer Tournament")
@@ -34,9 +33,9 @@ public class MailUtil {
         map.put("password", password);
         map.put("username", member.getUsername());
         map.put("lastName", member.getLastName());
-        return MailUtil.sendMailUtil(mailRequest, map);
+        return this.sendMailUtil(mailRequest, map);
     }
-    private static MailResponse sendMailUtil(MailRequest request, Map<String, Object> model) {
+    private MailResponse sendMailUtil(MailRequest request, Map<String, Object> model) {
         MailResponse mailResponse = new MailResponse();
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
