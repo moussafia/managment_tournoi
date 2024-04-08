@@ -39,3 +39,7 @@ server:
   port: 9000
 socceryc:
   seedFakeData: true
+cloudinary:
+  cloud_name: dncljj3e2
+  api_key: 347914715559372
+  api_secret: _rzJHdnfsCuSUG7--vdzLfkAHFo
