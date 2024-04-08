@@ -91,14 +91,14 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public AppUser updatePassword(UUID memberId, String oldPassword, String newPassword) {
-        AppUser appUser = findMemberById(memberId);
-        String oldPasswordEncoded = passwordEncoder.encode(oldPassword);
-        if (appUser.getPassword().equals(oldPasswordEncoded)){
-            throw new RuntimeException("Old password doesn't match");
+        AppUser member = userRepository.findById(memberId).orElseThrow(() -> new EntityNotFoundException("user not found"));
+        if(!passwordEncoder.matches(oldPassword, member.getPassword())) {
+            throw new RuntimeException("Old password does not match");
         }
-        appUser.setPassword(passwordEncoder.encode(newPassword));
-        return appUserRepository.save(appUser);
+        member.setPassword(passwordEncoder.encode(newPassword));
+        return userRepository.save(member);
     }
+
 
     @Override
     public Page<AppUser> getAllMembers(Pageable pageable) {
