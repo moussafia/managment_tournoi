@@ -1,12 +1,14 @@
 package ma.youcode.managment_tournoi_backend.service;
 
 import ma.youcode.managment_tournoi_backend.entity.Team;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface TeamService {
     List<Team> getAllTeams();
-    Team getTeamById(Long id);
-    Team createTeam(Team team);
-    Team updateTeam(Team team);
+    Team getTeamById(UUID id);
+    Team createTeam(Team team, MultipartFile image);
+    public Team updateTeam(Team team, MultipartFile image);
 }

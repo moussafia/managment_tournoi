@@ -19,6 +19,7 @@ public class Team {
     private UUID id;
     private String name_team;
     private String logo;
+    private String logoPublicId;
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Participant> participants;
