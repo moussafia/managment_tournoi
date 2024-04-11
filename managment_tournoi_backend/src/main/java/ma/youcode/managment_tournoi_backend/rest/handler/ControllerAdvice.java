@@ -1,7 +1,7 @@
 package ma.youcode.managment_tournoi_backend.rest.handler;
 
 import ma.youcode.managment_tournoi_backend.exception.MemberFieldValidationException;
-import ma.youcode.managment_tournoi_backend.exception.UserAlreadyExistException;
+import ma.youcode.managment_tournoi_backend.exception.EntityAlreadyExistException;
 import ma.youcode.managment_tournoi_backend.exception.XLSXFieldException;
 import ma.youcode.managment_tournoi_backend.util.response.MemberFieldErrorResponse;
 import ma.youcode.managment_tournoi_backend.util.response.XlsxFieldErrorResponse;
@@ -25,10 +25,10 @@ public class ControllerAdvice {
         final MemberFieldErrorResponse memberFieldErrorResponse = new MemberFieldErrorResponse(exception.getMessage(), exception.getFieldErrors());
         return new ResponseEntity<>(memberFieldErrorResponse, HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(value = UserAlreadyExistException.class)
+    @ExceptionHandler(value = EntityAlreadyExistException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<UserAlreadyExistException> handleMemberFieldError(UserAlreadyExistException exception) {
-        final UserAlreadyExistException userAlreadyExistException = new UserAlreadyExistException(exception.getMessage());
+    public ResponseEntity<EntityAlreadyExistException> handleMemberFieldError(EntityAlreadyExistException exception) {
+        final EntityAlreadyExistException userAlreadyExistException = new EntityAlreadyExistException(exception.getMessage());
         return new ResponseEntity<>(userAlreadyExistException, HttpStatus.BAD_REQUEST);
     }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import ma.youcode.managment_tournoi_backend.entity.embedded.ParticipantEmbeddedId;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,7 @@ import java.util.List;
 public class Participant {
     @EmbeddedId
     private ParticipantEmbeddedId participantEmbeddedId;
+    private LocalDateTime dateOfCreation;
     @MapsId("teamId")
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)

@@ -19,7 +19,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageUtils {
-    public Cloudinary cloudinary;
+    private Cloudinary cloudinary;
     @Data
     public class ImageUploadResult {
         public String url;

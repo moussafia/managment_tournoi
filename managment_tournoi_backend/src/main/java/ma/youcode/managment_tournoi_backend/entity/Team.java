@@ -17,7 +17,8 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name_team;
+    @Column(unique = true)
+    private String nameTeam;
     private String logo;
     private String logoPublicId;
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)

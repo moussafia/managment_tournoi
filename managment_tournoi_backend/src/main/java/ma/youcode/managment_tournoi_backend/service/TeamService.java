@@ -11,4 +11,5 @@ public interface TeamService {
     Team getTeamById(UUID id);
     Team createTeam(Team team, MultipartFile image);
     public Team updateTeam(Team team, MultipartFile image);
+    public void deleteTeam(UUID teamId);
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.exception.MemberFieldValidationException;
-import ma.youcode.managment_tournoi_backend.exception.UserAlreadyExistException;
+import ma.youcode.managment_tournoi_backend.exception.EntityAlreadyExistException;
 import ma.youcode.managment_tournoi_backend.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +23,7 @@ public class MemberUtils {
     private final static String emailPattern = "^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$";
     private final static String urlPattern = "^https://intranet.youcode.ma/storage/users/profile/[^/]+\\.JPG$";
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    public static AppUserRepository appUserRepository;
+    private static AppUserRepository appUserRepository;
 
     public MemberUtils(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
@@ -46,7 +46,7 @@ public class MemberUtils {
     }
     public static void checkUserIfAlreadyExist(String email){
         appUserRepository.findByEmail(email)
-                .orElseThrow(() -> new UserAlreadyExistException("user with email " + email + " already exist"));
+                .orElseThrow(() -> new EntityAlreadyExistException("user with email " + email + " already exist"));
     }
 
     public static List<String> validateMemberFieldNotMatchPattern(AppUser appUser) {
