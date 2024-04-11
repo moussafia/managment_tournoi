@@ -1,6 +1,8 @@
 package ma.youcode.managment_tournoi_backend.mapper;
 
-import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.AppUserRequest;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.AppUserRequest;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.getDto.MemberShowDto;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.UpdateMemberDto;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,4 +15,8 @@ public interface AppUserMapper {
     @Mapping(target =  "isDeleted", ignore = true)
     @Mapping(target =  "id", ignore = true)
     AppUser AppUserFileDtoToAppUser(AppUserRequest appUserRequest);
+    @Mapping(target =  "isDeleted", ignore = true)
+    AppUser AppUserFileDtoToAppUser(UpdateMemberDto appUserRequest);
+    @Mapping(target = "password", ignore = true)
+    MemberShowDto AppUserToAppUserDto(AppUser user);
 }

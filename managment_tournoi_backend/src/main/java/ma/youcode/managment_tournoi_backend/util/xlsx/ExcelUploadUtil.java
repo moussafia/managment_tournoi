@@ -1,6 +1,7 @@
 package ma.youcode.managment_tournoi_backend.util.xlsx;
 
-import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.AppUserRequest;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.AppUserRequest;
+import ma.youcode.managment_tournoi_backend.exception.ExtensionTypeException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,8 +13,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class ExcelUploadUtil {
-    public static boolean isValidExcelFile(MultipartFile file) {
-        return Objects.equals(file.getContentType(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    public static void isValidExcelFile(MultipartFile file) {
+        if(Objects.equals(file.getContentType(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+            throw new ExtensionTypeException("Excel file is not supported, format should xls or xlsx");
+
     }
     public static List<AppUserRequest> readExcelFile(InputStream inputStream) {
         List<AppUserRequest> usersList = new ArrayList<>();

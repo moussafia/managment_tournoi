@@ -1,17 +1,16 @@
-package ma.youcode.managment_tournoi_backend.dto.appUserFileDto;
+package ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.*;
 import ma.youcode.managment_tournoi_backend.util.validation.UniqueEmail;
 
-@Getter @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class AppUserRequest {
+import java.util.UUID;
+
+public class UpdateMemberDto {
+    @NotNull(message = "id shouldn't be null")
+    @NotBlank(message = "id shouldn't be blank")
+    private UUID id;
     @NotNull(message = "first name shouldn't be null")
     @NotBlank(message = "first name shouldn't be blank")
     @Pattern(regexp = "[a-zA-Z]+", message = "first name should contains only character")
@@ -33,6 +32,4 @@ public class AppUserRequest {
     @Pattern(regexp = "^https://intranet.youcode.ma/storage/users/profile/[^/]+\\.JPG$",
             message = "Pattern of URL is not correct")
     private String urlPicture;
-    @JsonIgnore
-    private int indexRow;
 }

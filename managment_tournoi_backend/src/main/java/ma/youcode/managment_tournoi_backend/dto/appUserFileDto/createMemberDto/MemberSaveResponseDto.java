@@ -1,4 +1,4 @@
-package ma.youcode.managment_tournoi_backend.dto.appUserFileDto;
+package ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @AllArgsConstructor @NoArgsConstructor
-public class MembersSaveAllResponseDto {
+public class MemberSaveResponseDto {
     private String message;
     private Boolean isInserted;
 }

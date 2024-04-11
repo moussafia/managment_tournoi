@@ -1,32 +1,40 @@
 package ma.youcode.managment_tournoi_backend.rest.controller;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.AppUserRequest;
-import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.MembersSaveAllResponseDto;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.AppUserRequest;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.MemberSaveResponseDto;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.getDto.MemberShowDto;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.PasswordRequestUpdateDto;
+import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.UpdateMemberDto;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.mapper.AppUserMapper;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
 import ma.youcode.managment_tournoi_backend.util.xlsx.ExcelUploadUtil;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/member")
 @RequiredArgsConstructor
 public class MemberController {
     private final AppUserService userService;
+
     @PostMapping("/add/members")
-    public ResponseEntity<MembersSaveAllResponseDto> createListMembers(@RequestParam("memberFile") MultipartFile file){
+    public ResponseEntity<MemberSaveResponseDto> createListMembers(@RequestParam("memberFile") MultipartFile file){
         try {
+            ExcelUploadUtil.isValidExcelFile(file);
             List<AppUserRequest> appUserRequestList = ExcelUploadUtil.readExcelFile(file.getInputStream());
             List<AppUser> appUserList = new ArrayList<>();
             for(AppUserRequest userDto: appUserRequestList){
@@ -35,13 +43,13 @@ public class MemberController {
             boolean isMembersInserted = userService.createListMembers(appUserList);
             if(isMembersInserted){
                 return ResponseEntity.ok(
-                        new MembersSaveAllResponseDto().builder()
+                        new MemberSaveResponseDto().builder()
                                 .message("members are successfully inserted")
                                 .isInserted(isMembersInserted).build()
                 );
             }else {
                 return ResponseEntity.ok(
-                        new MembersSaveAllResponseDto().builder()
+                        new MemberSaveResponseDto().builder()
                                 .message("Failed to insert members")
                                 .isInserted(isMembersInserted).build()
                 );
@@ -49,12 +57,63 @@ public class MemberController {
         }catch (IOException e){
             e.getStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new MembersSaveAllResponseDto()
+                    .body(new MemberSaveResponseDto()
                             .builder()
                             .message("Failed to read Excel file, make sure it is in xlsx format")
                             .isInserted(false)
                             .build());
         }
     }
+
+    @PostMapping("add/member")
+    public ResponseEntity<MemberSaveResponseDto> createMember(@RequestBody AppUserRequest appUserRequest){
+        AppUser member = AppUserMapper.INSTANCE.AppUserFileDtoToAppUser(appUserRequest);
+        userService.createMember(member);
+        return ResponseEntity.ok(
+                new MemberSaveResponseDto().builder()
+                        .message("members is successfully inserted")
+                        .isInserted(true).build()
+        );
+    }
+
+    @PutMapping("update/profile")
+    public ResponseEntity<MemberSaveResponseDto> updateMemberProfile(@RequestBody UpdateMemberDto memberDto){
+        AppUser member = AppUserMapper.INSTANCE.AppUserFileDtoToAppUser(memberDto);
+        userService.updateMemberProfile(member);
+        return ResponseEntity.ok(
+                new MemberSaveResponseDto().builder()
+                        .message("member is successfully updated")
+                        .isInserted(true).build()
+        );
+    }
+
+    @PutMapping("update/password")
+    public ResponseEntity<MemberSaveResponseDto> updateMemberPassword(@RequestBody PasswordRequestUpdateDto passwordDto){
+        userService.updatePassword(passwordDto.getMemberId(), passwordDto.getOldPassword(), passwordDto.getNewPassword());
+        return ResponseEntity.ok(
+                new MemberSaveResponseDto().builder()
+                        .message("member password is successfully updated")
+                        .isInserted(true).build()
+        );
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<MemberShowDto>> getMembers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "createdAt") String sortBy
+    ){
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<AppUser> allMembers = userService.getAllMembers(pageable);
+        Page<MemberShowDto> membersDtos =  allMembers.map(AppUserMapper.INSTANCE::AppUserToAppUserDto);
+        return ResponseEntity.ok(membersDtos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MemberShowDto> getMemberById(@PathVariable UUID id){
+        AppUser member = userService.findMemberById(id);
+        return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
+    }
+
 
 }

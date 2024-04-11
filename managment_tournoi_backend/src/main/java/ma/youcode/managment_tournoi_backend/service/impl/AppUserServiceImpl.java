@@ -104,4 +104,5 @@ public class AppUserServiceImpl implements AppUserService {
     public Page<AppUser> getAllMembers(Pageable pageable) {
         return appUserRepository.findAll(pageable);
     }
+
 }
