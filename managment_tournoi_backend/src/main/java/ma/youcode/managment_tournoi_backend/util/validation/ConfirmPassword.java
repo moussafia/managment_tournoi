@@ -5,7 +5,7 @@ import jakarta.validation.Constraint;
 
 import java.lang.annotation.*;
 
-@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ConfirmPasswordValidator.class)
 @Documented
@@ -15,4 +15,13 @@ public @interface ConfirmPassword {
     Class<? extends Payload>[] payload() default {};
     String field();
     String confirmationField();
+    @Target({ElementType.TYPE})
+
+    @Retention(RetentionPolicy.RUNTIME)
+
+    @interface List {
+
+        ConfirmPassword[] value();
+
+    }
 }

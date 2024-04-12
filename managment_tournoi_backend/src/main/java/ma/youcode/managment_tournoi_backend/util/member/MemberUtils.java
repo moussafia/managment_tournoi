@@ -46,7 +46,7 @@ public class MemberUtils {
     }
     public static void checkUserIfAlreadyExist(String email){
         appUserRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityAlreadyExistException("user with email " + email + " already exist"));
+                .ifPresent((user) -> new EntityAlreadyExistException("user with email " + email + " already exist"));
     }
 
     public static List<String> validateMemberFieldNotMatchPattern(AppUser appUser) {

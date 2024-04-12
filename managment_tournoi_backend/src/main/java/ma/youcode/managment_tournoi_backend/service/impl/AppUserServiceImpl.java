@@ -41,7 +41,7 @@ public class AppUserServiceImpl implements AppUserService {
             member.setCreatedAt(LocalDateTime.now());
             member.setIsDeleted(Boolean.FALSE);
             member.setRole(roleMember);
-            mailUtil.sendMail(member, password);
+           // mailUtil.sendMail(member, password);
         }
         List<AppUser> appUserList = userRepository.saveAll(members);
         return appUserList.size() == members.size();
@@ -59,7 +59,7 @@ public class AppUserServiceImpl implements AppUserService {
         member.setIsDeleted(Boolean.FALSE);
         AppRole roleMember = appRoleService.getRoleByName(RoleEnum.MEMBER);
         member.setRole(roleMember);
-        mailUtil.sendMail(member, password);
+        //mailUtil.sendMail(member, password);
         return userRepository.save(member);
     }
 
@@ -79,7 +79,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser updateMemberProfile(AppUser member) {
         AppUser appUser = findMemberById(member.getId());
-        AppRole appRole = appRoleService.getRoleByName(member.getRole().getName());
+        AppRole appRole = appRoleService.getRoleByName(RoleEnum.MEMBER);
         appUser.setRole(appRole);
         appUser.setClassName(member.getClassName());
         appUser.setEmail(member.getEmail());

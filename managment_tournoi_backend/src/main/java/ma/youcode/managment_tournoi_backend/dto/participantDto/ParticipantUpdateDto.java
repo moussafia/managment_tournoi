@@ -13,12 +13,9 @@ import java.util.UUID;
 @Builder
 public class ParticipantUpdateDto {
     @NotNull(message = "IDs of participants is required")
-    @NotBlank(message = "IDs of participants should not be blank")
     private List<UUID> usersIds;
     @NotNull(message = "Team is required")
-    @NotBlank(message = "Team should not be blank")
     private TeamUpdateDto team;
     @NotNull(message = "logo is required")
-    @NotBlank(message = "logo should not be blank")
     private MultipartFile logo;
 }

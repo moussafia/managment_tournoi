@@ -29,8 +29,5 @@ public class Match {
     @ManyToOne(fetch = FetchType.EAGER)
     private AppUser arbitrator;
     @OneToMany(mappedBy = "match", fetch = FetchType.EAGER)
-    @JsonBackReference
-    private List<Scorer> scorers;
-    @OneToMany(mappedBy = "match", fetch = FetchType.EAGER)
     private List<Image> images;
 }

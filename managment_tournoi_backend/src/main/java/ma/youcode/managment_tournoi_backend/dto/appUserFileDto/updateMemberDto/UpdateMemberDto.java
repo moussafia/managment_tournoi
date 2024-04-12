@@ -3,14 +3,13 @@ package ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 import ma.youcode.managment_tournoi_backend.util.validation.UniqueEmail;
 
-import java.util.UUID;
-
+@Data
 public class UpdateMemberDto {
     @NotNull(message = "id shouldn't be null")
-    @NotBlank(message = "id shouldn't be blank")
-    private UUID id;
+    private String id;
     @NotNull(message = "first name shouldn't be null")
     @NotBlank(message = "first name shouldn't be blank")
     @Pattern(regexp = "[a-zA-Z]+", message = "first name should contains only character")

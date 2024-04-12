@@ -1,11 +1,13 @@
 package ma.youcode.managment_tournoi_backend.rest.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.AppUserRequest;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.MemberSaveResponseDto;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.getDto.MemberShowDto;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.PasswordRequestUpdateDto;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.UpdateMemberDto;
+import ma.youcode.managment_tournoi_backend.dto.rulesDto.AssignRoleDto;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.mapper.AppUserMapper;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
@@ -16,11 +18,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -66,7 +68,7 @@ public class MemberController {
     }
 
     @PostMapping("add/member")
-    public ResponseEntity<MemberSaveResponseDto> createMember(@RequestBody AppUserRequest appUserRequest){
+    public ResponseEntity<MemberSaveResponseDto> createMember(@Valid @RequestBody AppUserRequest appUserRequest){
         AppUser member = AppUserMapper.INSTANCE.AppUserFileDtoToAppUser(appUserRequest);
         userService.createMember(member);
         return ResponseEntity.ok(
@@ -77,7 +79,7 @@ public class MemberController {
     }
 
     @PutMapping("update/profile")
-    public ResponseEntity<MemberSaveResponseDto> updateMemberProfile(@RequestBody UpdateMemberDto memberDto){
+    public ResponseEntity<MemberSaveResponseDto> updateMemberProfile(@Valid @RequestBody UpdateMemberDto memberDto){
         AppUser member = AppUserMapper.INSTANCE.AppUserFileDtoToAppUser(memberDto);
         userService.updateMemberProfile(member);
         return ResponseEntity.ok(
@@ -87,8 +89,9 @@ public class MemberController {
         );
     }
 
+
     @PutMapping("update/password")
-    public ResponseEntity<MemberSaveResponseDto> updateMemberPassword(@RequestBody PasswordRequestUpdateDto passwordDto){
+    public ResponseEntity<MemberSaveResponseDto> updateMemberPassword(@Valid @RequestBody PasswordRequestUpdateDto passwordDto){
         userService.updatePassword(passwordDto.getMemberId(), passwordDto.getOldPassword(), passwordDto.getNewPassword());
         return ResponseEntity.ok(
                 new MemberSaveResponseDto().builder()
@@ -112,6 +115,11 @@ public class MemberController {
     @GetMapping("/{id}")
     public ResponseEntity<MemberShowDto> getMemberById(@PathVariable UUID id){
         AppUser member = userService.findMemberById(id);
+        return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
+    }
+    @PutMapping("/assign/role")
+    public ResponseEntity<MemberShowDto> assignRole(@Valid @RequestBody AssignRoleDto assignRoleDto){
+        AppUser member = userService.assignRoleToMember(assignRoleDto.getMemberId(), assignRoleDto.getRoleName());
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
     }
 

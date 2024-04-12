@@ -26,7 +26,4 @@ public class Participant {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private AppUser user;
-    @OneToMany(mappedBy = "participant", fetch = FetchType.EAGER)
-    @JsonBackReference
-    private List<Scorer> scorerList;
 }

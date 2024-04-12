@@ -16,7 +16,7 @@ public interface AppUserMapper {
     @Mapping(target =  "id", ignore = true)
     AppUser AppUserFileDtoToAppUser(AppUserRequest appUserRequest);
     @Mapping(target =  "isDeleted", ignore = true)
+    @Mapping(target = "id", expression = "java(java.util.UUID.fromString(appUserRequest.getId()))")
     AppUser AppUserFileDtoToAppUser(UpdateMemberDto appUserRequest);
-    @Mapping(target = "password", ignore = true)
     MemberShowDto AppUserToAppUserDto(AppUser user);
 }

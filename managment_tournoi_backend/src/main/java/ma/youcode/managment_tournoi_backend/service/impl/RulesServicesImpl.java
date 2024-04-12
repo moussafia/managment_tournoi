@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @AllArgsConstructor
 public class RulesServicesImpl implements RulesServices {
     private RulesRepository rulesRepository;
