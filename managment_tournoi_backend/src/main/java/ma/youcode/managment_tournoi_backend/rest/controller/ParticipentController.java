@@ -32,15 +32,14 @@ public class ParticipentController {
         return ResponseEntity.ok(TeamShowDto.toTeamShowDto(participant, participantShowDtos));
     }
     @PutMapping
-    public ResponseEntity<TeamShowDto> updateTeam(@RequestBody ParticipantUpdateDto participantUpdateDto) {
+    public ResponseEntity<TeamShowDto> updateTeam(@ModelAttribute ParticipantUpdateDto participantUpdateDto) {
         Team team = TeamMapper.INSTANCE.TeamUpdateDtoToTeam(participantUpdateDto.getTeam());
         List<Participant> participant = participentService.updateParticipant(participantUpdateDto.getUsersIds(), team, participantUpdateDto.getLogo(), participantUpdateDto.getNumberOfParticipants());
         List<ParticipantShowDto> participantShowDtos = participant.stream().map(ParticipantMapper.INSTANCE::toParticipantShowDto).toList();
         return ResponseEntity.ok(TeamShowDto.toTeamShowDto(participant, participantShowDtos));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTeam(@PathVariable UUID id, @Valid @RequestBody
-                    @NotNull @NotBlank String publicIdLogo) {
+    @DeleteMapping
+    public ResponseEntity<String> deleteTeam(@RequestParam("id") UUID id, @RequestParam("publicIdLogo") String publicIdLogo) {
         participentService.deleteParticipant(id, publicIdLogo);
         return ResponseEntity.ok("team deleted successfully");
     }

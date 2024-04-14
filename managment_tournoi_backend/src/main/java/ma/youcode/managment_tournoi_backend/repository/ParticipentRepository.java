@@ -13,6 +13,4 @@ import java.util.UUID;
 @Repository
 public interface ParticipentRepository extends JpaRepository<Participant, ParticipantEmbeddedId> {
     Optional<Participant> findByTeamAndUser(Team team, AppUser user);
-    Optional<List<Participant>> findAllByUserId(UUID userId);
-    Void deleteAllByTeamId(UUID idTeam);
 }
