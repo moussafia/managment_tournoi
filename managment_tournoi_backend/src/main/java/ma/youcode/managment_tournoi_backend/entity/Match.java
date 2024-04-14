@@ -28,6 +28,4 @@ public class Match {
     private List<MatchPicture> pictures;
     @ManyToOne(fetch = FetchType.EAGER)
     private AppUser arbitrator;
-    @OneToMany(mappedBy = "match", fetch = FetchType.EAGER)
-    private List<Image> images;
 }

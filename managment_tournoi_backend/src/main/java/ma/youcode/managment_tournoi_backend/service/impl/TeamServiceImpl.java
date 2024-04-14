@@ -18,6 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
+    private final ImageUtils imageUtil;
     @Override
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
@@ -31,7 +32,6 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team createTeam(Team team, MultipartFile image) {
         TeamUtils.validateIfNameOfTeamAlreadyExistsForCreate(team);
-        ImageUtils imageUtil = new ImageUtils();
         imageUtil.validateImage(image);
         ImageUtils.ImageUploadResult imageUploadResult = imageUtil.saveImageToCloudinary(image, "logo_team");
         team.setLogo(imageUploadResult.getUrl());
@@ -41,13 +41,15 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team updateTeam(Team team, MultipartFile image) {
-        TeamUtils.validateIfNameOfTeamAlreadyExistsForUpdate(team);
-        getTeamById(team.getId());
-        ImageUtils imageUtil = new ImageUtils();
+        Team teamById = getTeamById(team.getId());
         imageUtil.validateImage(image);
-        ImageUtils.ImageUploadResult imageUploadResult = imageUtil.saveImageToCloudinary(image, "logo_team");
-        team.setLogo(imageUploadResult.getUrl());
-        team.setLogoPublicId(imageUploadResult.getPublic_id());
+        if(image != null){
+            imageUtil.deleteImage(team.getLogoPublicId());
+            ImageUtils.ImageUploadResult imageUploadResult = imageUtil.saveImageToCloudinary(image, "logo_team");
+            team.setLogo(imageUploadResult.getUrl());
+            team.setLogoPublicId(imageUploadResult.getPublic_id());
+        }
+        team.setTeamGroups(teamById.getTeamGroups());
         return teamRepository.save(team);
     }
 

@@ -5,6 +5,7 @@ import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class CloudinaryConfiguration {
@@ -17,6 +18,7 @@ public class CloudinaryConfiguration {
     @Value("${cloudinary.api_secret}")
     private String apiSecret;
     @Bean
+    @Primary
     public Cloudinary cloudinary(){
         return new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", cloudName,

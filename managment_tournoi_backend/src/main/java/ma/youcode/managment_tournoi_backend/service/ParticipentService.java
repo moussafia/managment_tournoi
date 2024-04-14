@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ParticipentService  {
-    public List<Participant> createParticipant(List<UUID> usersIds, Team team, MultipartFile logo);
-    public List<Participant> updateParticipant(List<UUID> usersIds, Team team, MultipartFile logo);
-    public void deleteParticipant(UUID teamId);
+    List<Participant> createParticipant(List<UUID> usersIds, Team team, MultipartFile logo, Integer numberOfParticipants);
+    List<Participant> updateParticipant(List<UUID> usersIds, Team team, MultipartFile logo, Integer numberOfParticipants);
+    void deleteParticipant(UUID teamId, String publicIdLogo);
 }

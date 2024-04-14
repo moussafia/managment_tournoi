@@ -14,7 +14,7 @@ public interface AppUserService {
     AppUser createMember(AppUser member);
     AppUser findMemberById(UUID id);
     AppUser assignRoleToMember(UUID memberId, String roleName);
-    public AppUser updateMemberProfile(AppUser member);
+    AppUser updateMemberProfile(AppUser member);
     AppUser updatePassword(UUID memberId, String oldPassword, String newPassword);
-    public Page<AppUser> getAllMembers(Pageable pageable);
+    Page<AppUser> getAllMembers(Pageable pageable);
 }

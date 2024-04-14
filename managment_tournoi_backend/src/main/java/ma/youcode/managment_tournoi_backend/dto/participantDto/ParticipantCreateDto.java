@@ -1,6 +1,5 @@
 package ma.youcode.managment_tournoi_backend.dto.participantDto;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +17,6 @@ public class ParticipantCreateDto {
     private TeamCreateDto team;
     @NotNull(message = "logo is required")
     private MultipartFile logo;
+    @NotNull(message = "number of participant is required")
+    private Integer numberOfParticipants;
 }

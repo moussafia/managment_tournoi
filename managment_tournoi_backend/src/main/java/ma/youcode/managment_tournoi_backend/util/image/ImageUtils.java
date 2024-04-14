@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.managment_tournoi_backend.exception.EntityNotFoundException;
 import ma.youcode.managment_tournoi_backend.exception.ExtensionTypeException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,9 +17,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@AllArgsConstructor
-@NoArgsConstructor
 public class ImageUtils {
+    @Autowired
     private Cloudinary cloudinary;
     @Data
     public class ImageUploadResult {
@@ -45,8 +45,8 @@ public class ImageUtils {
     public void validateImage(MultipartFile image) {
         if(image.isEmpty()) throw new EntityNotFoundException("Image is empty");
         String contentType = image.getContentType();
-        if (contentType != null && (contentType.startsWith("image/jpeg") ||
-                contentType.startsWith("image/png"))){
+        if (contentType == null || (!contentType.startsWith("image/jpeg") &&
+                !contentType.startsWith("image/png"))){
             throw new ExtensionTypeException("Extension type not supported, it should be JPEG or PNG");
         }
 

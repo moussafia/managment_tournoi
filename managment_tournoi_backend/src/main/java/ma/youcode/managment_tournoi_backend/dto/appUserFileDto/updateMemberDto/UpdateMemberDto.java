@@ -5,8 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import ma.youcode.managment_tournoi_backend.util.validation.UniqueEmail;
+import ma.youcode.managment_tournoi_backend.util.validation.UniqueEmailUpdate;
+import ma.youcode.managment_tournoi_backend.util.validation.UniqueUsernameUpdate;
 
 @Data
+@UniqueEmailUpdate(email = "email", userId = "id")
 public class UpdateMemberDto {
     @NotNull(message = "id shouldn't be null")
     private String id;
@@ -18,7 +21,6 @@ public class UpdateMemberDto {
     @NotBlank(message = "last name shouldn't be blank")
     @Pattern(regexp = "[a-zA-Z]+", message = "last name should contains only character")
     private String lastName;
-    @UniqueEmail
     @NotNull(message = "email shouldn't be null")
     @NotBlank(message = "email shouldn't be blank")
     @Pattern(regexp="^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$",message = "email should be like email@email.xx")

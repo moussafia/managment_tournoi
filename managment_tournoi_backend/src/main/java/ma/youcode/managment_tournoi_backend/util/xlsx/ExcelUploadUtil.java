@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class ExcelUploadUtil {
     public static void isValidExcelFile(MultipartFile file) {
-        if(Objects.equals(file.getContentType(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+        if(!Objects.equals(file.getContentType(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
             throw new ExtensionTypeException("Excel file is not supported, format should xls or xlsx");
 
     }

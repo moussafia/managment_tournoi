@@ -13,6 +13,7 @@ public class MatchPicture {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String urlImage;
+    private String publicIdUrlImage;
     @ManyToOne
     private Match match;
 }

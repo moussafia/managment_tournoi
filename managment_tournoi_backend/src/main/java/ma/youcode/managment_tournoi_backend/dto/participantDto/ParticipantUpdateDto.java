@@ -16,6 +16,8 @@ public class ParticipantUpdateDto {
     private List<UUID> usersIds;
     @NotNull(message = "Team is required")
     private TeamUpdateDto team;
-    @NotNull(message = "logo is required")
     private MultipartFile logo;
+    @NotNull(message = "number of participant is required")
+    private Integer numberOfParticipants;
+
 }

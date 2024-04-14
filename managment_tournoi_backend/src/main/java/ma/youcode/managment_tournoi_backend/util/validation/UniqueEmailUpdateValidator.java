@@ -2,34 +2,38 @@ package ma.youcode.managment_tournoi_backend.util.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.repository.AppUserRepository;
 import org.springframework.beans.BeanWrapperImpl;
 
-import java.util.Optional;
-
-@AllArgsConstructor
-public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsernameUpdate, Object> {
-    private AppUserRepository userRepository;
-    private String username;
+@RequiredArgsConstructor
+public class UniqueEmailUpdateValidator implements ConstraintValidator<UniqueEmailUpdate, Object> {
+    private final AppUserRepository userRepository;
+    private String email;
     private String userId;
     private String message;
+
     @Override
-    public void initialize(UniqueUsernameUpdate constraintAnnotation) {
+    public void initialize(UniqueEmailUpdate constraintAnnotation) {
         userId = constraintAnnotation.userId();
-        username = constraintAnnotation.username();
+        email = constraintAnnotation.email();
         this.message = constraintAnnotation.message();
     }
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        Object usernameO = new BeanWrapperImpl(value).getPropertyValue(username);
+        Object emailO = new BeanWrapperImpl(value).getPropertyValue(email);
 
         Object userIdO = new BeanWrapperImpl(value).getPropertyValue(userId);
-        AppUser appUser = userRepository.findByUsername(userIdO.toString()).orElse(null);
-
-        boolean isValid = appUser != null && usernameO != null && userIdO.equals(appUser.getId());
+        AppUser appUser;
+        boolean isValid = true;
+        if(emailO !=null && userIdO!=null){
+            appUser = userRepository.findByEmail(emailO.toString()).orElse(null);
+            if(appUser != null){
+                isValid = userIdO.equals(appUser.getId());
+            }
+        }
 
         if (!isValid) {
 
@@ -39,7 +43,7 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 
                     .buildConstraintViolationWithTemplate(message)
 
-                    .addPropertyNode(username)
+                    .addPropertyNode(email)
 
                     .addConstraintViolation();
 

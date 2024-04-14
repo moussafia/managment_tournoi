@@ -10,6 +10,6 @@ public interface TeamService {
     List<Team> getAllTeams();
     Team getTeamById(UUID id);
     Team createTeam(Team team, MultipartFile image);
-    public Team updateTeam(Team team, MultipartFile image);
-    public void deleteTeam(UUID teamId);
+    Team updateTeam(Team team, MultipartFile image);
+    void deleteTeam(UUID teamId);
 }

@@ -65,7 +65,7 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public AppUser findMemberById(UUID id) {
-        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
+        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user with id : " + id + " not found "));
     }
 
     @Override

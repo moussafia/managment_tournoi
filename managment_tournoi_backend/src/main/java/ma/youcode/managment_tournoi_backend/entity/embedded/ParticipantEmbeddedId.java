@@ -8,16 +8,15 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.UUID;
 
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
 public class ParticipantEmbeddedId implements Serializable {
-    @Column(name = "user_id")
-    private UUID userId;
     @Column(name = "team_id")
     private UUID teamId;
+    @Column(name = "user_id")
+    private UUID userId;
+
 }

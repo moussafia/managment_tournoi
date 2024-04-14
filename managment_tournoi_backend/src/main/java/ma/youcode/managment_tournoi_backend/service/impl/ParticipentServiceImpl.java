@@ -8,6 +8,7 @@ import ma.youcode.managment_tournoi_backend.repository.ParticipentRepository;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
 import ma.youcode.managment_tournoi_backend.service.ParticipentService;
 import ma.youcode.managment_tournoi_backend.service.TeamService;
+import ma.youcode.managment_tournoi_backend.util.image.ImageUtils;
 import ma.youcode.managment_tournoi_backend.util.participant.ParticipantUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,34 +22,30 @@ public class ParticipentServiceImpl implements ParticipentService {
     private final ParticipentRepository participentRepository;
     private final TeamService teamService;
     private final AppUserService appUserService;
+    private final ImageUtils imageUtils;
+
     @Override
-    public List<Participant> createParticipant(List<UUID> usersIds, Team team, MultipartFile logo) {
+    public List<Participant> createParticipant(List<UUID> usersIds, Team team, MultipartFile logo, Integer numberOfParticipants) {
+        ParticipantUtils.validateNumberOfParticipent(usersIds, numberOfParticipants);
+        ParticipantUtils.validateUsersIdsAlreadyExist(usersIds);
         Team teamToCreate = teamService.createTeam(team, logo);
-        List<Participant> participants = new ArrayList<>();
-        for (UUID id : usersIds) {
-            AppUser member = appUserService.findMemberById(id);
-            ParticipantUtils.validateDateMemberShip(member, teamToCreate);
-            Participant participant = new Participant().builder().team(teamToCreate).user(member).build();
-            participants.add(participant);
-        }
+        List<Participant> participants = ParticipantUtils.createListOfParticipent(usersIds, teamToCreate);;
         return participentRepository.saveAll(participants);
     }
 
     @Override
-    public List<Participant> updateParticipant(List<UUID> usersIds, Team team, MultipartFile logo) {
+    public List<Participant> updateParticipant(List<UUID> usersIds, Team team, MultipartFile logo, Integer numberOfParticipants) {
+        ParticipantUtils.validateNumberOfParticipent(usersIds, numberOfParticipants);
+        ParticipantUtils.validateUsersIdsAlreadyExist(usersIds);
         Team teamToUpdate = teamService.updateTeam(team, logo);
-        List<Participant> participants = new ArrayList<>();
-        for (UUID id : usersIds) {
-            AppUser member = appUserService.findMemberById(id);
-            ParticipantUtils.validateDateMemberShip(member, teamToUpdate);
-            Participant participant = new Participant().builder().team(teamToUpdate).user(member).build();
-            participants.add(participant);
-        }
+        List<Participant> participants = ParticipantUtils.createListOfParticipent(usersIds, teamToUpdate);;
         return participentRepository.saveAll(participants);
     }
 
     @Override
-    public void deleteParticipant(UUID teamId) {
+    public void deleteParticipant(UUID teamId, String publicIdLogo) {
+        imageUtils.deleteImage(publicIdLogo);
         teamService.deleteTeam(teamId);
     }
+
 }
