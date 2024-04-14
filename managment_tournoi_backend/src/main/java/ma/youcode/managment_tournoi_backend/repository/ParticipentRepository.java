@@ -7,9 +7,12 @@ import ma.youcode.managment_tournoi_backend.entity.embedded.ParticipantEmbeddedI
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 @Repository
 public interface ParticipentRepository extends JpaRepository<Participant, ParticipantEmbeddedId> {
     Optional<Participant> findByTeamAndUser(Team team, AppUser user);
+    Optional<List<Participant>> findAllByUserId(UUID userId);
+    Void deleteAllByTeamId(UUID idTeam);
 }

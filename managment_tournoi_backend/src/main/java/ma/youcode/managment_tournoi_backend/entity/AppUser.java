@@ -32,7 +32,7 @@ public class AppUser {
     private Boolean isDeleted;
     @ManyToOne(fetch = FetchType.EAGER)
     private AppRole role;
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JsonBackReference
     private List<Participant> participants;
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -42,8 +43,8 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team updateTeam(Team team, MultipartFile image) {
         Team teamById = getTeamById(team.getId());
-        imageUtil.validateImage(image);
-        if(image != null){
+        if(image != null && !Objects.requireNonNull(image.getOriginalFilename()).isEmpty()){
+            imageUtil.validateImage(image);
             imageUtil.deleteImage(team.getLogoPublicId());
             ImageUtils.ImageUploadResult imageUploadResult = imageUtil.saveImageToCloudinary(image, "logo_team");
             team.setLogo(imageUploadResult.getUrl());

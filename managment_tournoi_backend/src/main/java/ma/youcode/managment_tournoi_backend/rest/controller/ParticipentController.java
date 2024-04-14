@@ -13,7 +13,6 @@ import ma.youcode.managment_tournoi_backend.entity.Team;
 import ma.youcode.managment_tournoi_backend.mapper.ParticipantMapper;
 import ma.youcode.managment_tournoi_backend.mapper.TeamMapper;
 import ma.youcode.managment_tournoi_backend.service.ParticipentService;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,39 +20,23 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
- @RequestMapping("api/v1/team")
+ @RequestMapping("api/v1/team/participent")
 @RequiredArgsConstructor
-public class TeamController {
+public class ParticipentController {
     private final ParticipentService participentService;
     @PostMapping
     public ResponseEntity<TeamShowDto> createTeam(@ModelAttribute ParticipantCreateDto participantCreateDto) {
         Team team = TeamMapper.INSTANCE.TeamCreateDtoToTeam(participantCreateDto.getTeam());
         List<Participant> participant = participentService.createParticipant(participantCreateDto.getUsersIds(), team, participantCreateDto.getLogo(), participantCreateDto.getNumberOfParticipants());
         List<ParticipantShowDto> participantShowDtos = participant.stream().map(ParticipantMapper.INSTANCE::toParticipantShowDto).toList();
-        return ResponseEntity.ok(
-                new TeamShowDto().builder()
-                        .nameTeam(participant.get(0).getTeam().getNameTeam())
-                        .id(participant.get(0).getTeam().getId())
-                        .logo(participant.get(0).getTeam().getLogo())
-                        .logoPublicId(participant.get(0).getTeam().getLogoPublicId())
-                        .participants(participantShowDtos)
-                        .build()
-        );
+        return ResponseEntity.ok(TeamShowDto.toTeamShowDto(participant, participantShowDtos));
     }
     @PutMapping
     public ResponseEntity<TeamShowDto> updateTeam(@RequestBody ParticipantUpdateDto participantUpdateDto) {
         Team team = TeamMapper.INSTANCE.TeamUpdateDtoToTeam(participantUpdateDto.getTeam());
         List<Participant> participant = participentService.updateParticipant(participantUpdateDto.getUsersIds(), team, participantUpdateDto.getLogo(), participantUpdateDto.getNumberOfParticipants());
         List<ParticipantShowDto> participantShowDtos = participant.stream().map(ParticipantMapper.INSTANCE::toParticipantShowDto).toList();
-        return ResponseEntity.ok(
-                new TeamShowDto().builder()
-                        .nameTeam(participant.get(0).getTeam().getNameTeam())
-                        .id(participant.get(0).getTeam().getId())
-                        .logo(participant.get(0).getTeam().getLogo())
-                        .logoPublicId(participant.get(0).getTeam().getLogoPublicId())
-                        .participants(participantShowDtos)
-                        .build()
-        );
+        return ResponseEntity.ok(TeamShowDto.toTeamShowDto(participant, participantShowDtos));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTeam(@PathVariable UUID id, @Valid @RequestBody

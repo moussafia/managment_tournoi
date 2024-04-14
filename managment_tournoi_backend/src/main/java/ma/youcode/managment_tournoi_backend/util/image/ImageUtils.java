@@ -43,12 +43,12 @@ public class ImageUtils {
 
     }
     public void validateImage(MultipartFile image) {
-        if(image.isEmpty()) throw new EntityNotFoundException("Image is empty");
-        String contentType = image.getContentType();
-        if (contentType == null || (!contentType.startsWith("image/jpeg") &&
-                !contentType.startsWith("image/png"))){
-            throw new ExtensionTypeException("Extension type not supported, it should be JPEG or PNG");
-        }
+            if(image.isEmpty()) throw new EntityNotFoundException("Image is empty");
+            String contentType = image.getContentType();
+            if (contentType == null || (!contentType.startsWith("image/jpeg") &&
+                    !contentType.startsWith("image/png"))){
+                throw new ExtensionTypeException("Extension type not supported, it should be JPEG or PNG");
+            }
 
     }
     public void deleteImage(String public_id){

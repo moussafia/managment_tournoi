@@ -21,10 +21,10 @@ public class Team {
     private String nameTeam;
     private String logo;
     private String logoPublicId;
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JsonBackReference
     private List<Participant> participants;
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JsonBackReference
     private List<TeamGroup> teamGroups;
 }

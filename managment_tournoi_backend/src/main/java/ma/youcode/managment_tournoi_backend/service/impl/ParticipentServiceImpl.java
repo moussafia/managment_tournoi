@@ -38,6 +38,7 @@ public class ParticipentServiceImpl implements ParticipentService {
         ParticipantUtils.validateNumberOfParticipent(usersIds, numberOfParticipants);
         ParticipantUtils.validateUsersIdsAlreadyExist(usersIds);
         Team teamToUpdate = teamService.updateTeam(team, logo);
+        participentRepository.deleteAllByTeamId(teamToUpdate.getId());
         List<Participant> participants = ParticipantUtils.createListOfParticipent(usersIds, teamToUpdate);;
         return participentRepository.saveAll(participants);
     }
