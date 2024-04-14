@@ -9,4 +9,5 @@ public interface RulesServices {
     Rules addRule(Rules rules);
     Rules updateRule(Rules rules);
     void deleteRule(Long id);
+    Rules getRuleById(Long id);
 }

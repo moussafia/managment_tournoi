@@ -11,6 +11,7 @@ import ma.youcode.managment_tournoi_backend.dto.rulesDto.AssignRoleDto;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.mapper.AppUserMapper;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
+import ma.youcode.managment_tournoi_backend.service.impl.AppUserServiceImpl;
 import ma.youcode.managment_tournoi_backend.util.xlsx.ExcelUploadUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -121,6 +122,12 @@ public class MemberController {
     public ResponseEntity<MemberShowDto> assignRole(@Valid @RequestBody AssignRoleDto assignRoleDto){
         AppUser member = userService.assignRoleToMember(assignRoleDto.getMemberId(), assignRoleDto.getRoleName());
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<MemberShowDto>> searchUsers(@RequestParam("keyword") String keyword) {
+        List<AppUser> appUserList = userService.searchUser(keyword, PageRequest.of(0,4));
+        List<MemberShowDto> membersDtos =  appUserList.stream().map(AppUserMapper.INSTANCE::AppUserToAppUserDto).toList();
+        return ResponseEntity.ok(membersDtos);
     }
 
 

@@ -21,14 +21,7 @@ public class ParticipantUtils {
         this.participentRepository = participentRepository;
         this.appUserService = appUserService;
     }
-    public static void validateDateMemberShip(AppUser appUser, Team team){
-        Participant participant = participentRepository.findByTeamAndUser(team, appUser).orElse(null);
-        if (participant != null && participant.getDateOfCreation().plusMonths(3).isBefore(LocalDateTime.now())){
-            throw new RuntimeException("A participant named " + appUser.getLastName() +
-                    " should enroll in a team named "
-                    +  team.getNameTeam() + " after a period of three months from the current date.");
-        }
-    }
+
     public static void validateNumberOfParticipent(List<UUID> usersIds, Integer numberOfParticipants) {
         if (usersIds.size() > numberOfParticipants) {
             throw new IllegalArgumentException("Number of participants is greater than the number of participants");
@@ -45,7 +38,6 @@ public class ParticipantUtils {
         List<Participant> participants = new ArrayList<>();
         for (UUID id : usersIds) {
             AppUser member = appUserService.findMemberById(id);
-            ParticipantUtils.validateDateMemberShip(member, team);
             ParticipantEmbeddedId participantEmbeddedId = new ParticipantEmbeddedId(team.getId(), id);
             Participant participant = new Participant().builder().user(member).team(team).build();
             participant.setParticipantEmbeddedId(participantEmbeddedId);
@@ -53,5 +45,19 @@ public class ParticipantUtils {
             participants.add(participant);
         }
         return participants;
+    }
+    public static void validateDateMemberShipList(List<UUID> usersIds){
+        for (UUID id : usersIds) {
+            validateDateMemberShip(id);
+        }
+
+    }
+    private static void validateDateMemberShip(UUID userId){
+        Participant participant = participentRepository.findByUserIdOrderByDateOfCreationDesc(userId).orElse(null);
+        if (participant != null && !participant.getDateOfCreation().plusMonths(3).isBefore(LocalDateTime.now())){
+            throw new RuntimeException("A participant with Id " + userId +
+                    " should enroll in a team named "
+                    +  participant.getTeam().getNameTeam() + " after a period of three months from the current date.");
+        }
     }
 }

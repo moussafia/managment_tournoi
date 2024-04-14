@@ -35,4 +35,9 @@ public class RulesServicesImpl implements RulesServices {
     public void deleteRule(Long id) {
         rulesRepository.deleteById(id);
     }
+
+    @Override
+    public Rules getRuleById(Long id) {
+        return rulesRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Rule with id " + id + " does not exist"));
+    }
 }

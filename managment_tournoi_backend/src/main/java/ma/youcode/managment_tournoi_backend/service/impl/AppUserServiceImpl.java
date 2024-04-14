@@ -79,8 +79,6 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser updateMemberProfile(AppUser member) {
         AppUser appUser = findMemberById(member.getId());
-        AppRole appRole = appRoleService.getRoleByName(RoleEnum.MEMBER);
-        appUser.setRole(appRole);
         appUser.setClassName(member.getClassName());
         appUser.setEmail(member.getEmail());
         appUser.setFirstName(member.getFirstName());
@@ -103,6 +101,12 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public Page<AppUser> getAllMembers(Pageable pageable) {
         return appUserRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<AppUser> searchUser(String keyword, Pageable pageable){
+        return appUserRepository.findFirstUserByFirstNameOrLastNameOrderByDateOfCreation(keyword, pageable)
+                .orElseThrow(() -> new EntityNotFoundException("user not found"));
     }
 
 }

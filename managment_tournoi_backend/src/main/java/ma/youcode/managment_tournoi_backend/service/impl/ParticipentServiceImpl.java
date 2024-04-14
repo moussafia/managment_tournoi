@@ -30,6 +30,7 @@ public class ParticipentServiceImpl implements ParticipentService {
     public List<Participant> createParticipant(List<UUID> usersIds, Team team, MultipartFile logo, Integer numberOfParticipants) {
         ParticipantUtils.validateNumberOfParticipent(usersIds, numberOfParticipants);
         ParticipantUtils.validateUsersIdsAlreadyExist(usersIds);
+        ParticipantUtils.validateDateMemberShipList(usersIds);
         Team teamToCreate = teamService.createTeam(team, logo);
         List<Participant> participants = ParticipantUtils.createListOfParticipent(usersIds, teamToCreate);;
         return participentRepository.saveAll(participants);

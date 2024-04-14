@@ -20,6 +20,10 @@ public class RuleController {
     public ResponseEntity<List<Rules>> getAllRules(){
         return ResponseEntity.ok(rulesServices.getRules());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Rules> getRuleById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(rulesServices.getRuleById(id));
+    }
     @PostMapping
     public ResponseEntity<Rules> createRule(@RequestBody RulesCreateDto rulesCreateDto){
         return ResponseEntity.ok(rulesServices.addRule(RuleMapper.INSTANCE.CreateRulesDtotoRules(rulesCreateDto)));
