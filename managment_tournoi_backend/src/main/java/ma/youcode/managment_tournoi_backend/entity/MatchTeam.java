@@ -2,14 +2,16 @@ package ma.youcode.managment_tournoi_backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import ma.youcode.managment_tournoi_backend.entity.embedded.MatchTeamEmbeddedId;
 import ma.youcode.managment_tournoi_backend.entity.enums.LevelEnum;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MatchTeam {
     @EmbeddedId
     private MatchTeamEmbeddedId id;
