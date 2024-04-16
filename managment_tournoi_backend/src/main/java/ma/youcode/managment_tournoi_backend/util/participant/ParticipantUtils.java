@@ -54,10 +54,11 @@ public class ParticipantUtils {
     }
     private static void validateDateMemberShip(UUID userId){
         Participant participant = participentRepository.findByUserIdOrderByDateOfCreationDesc(userId).orElse(null);
-        if (participant != null && !participant.getDateOfCreation().plusMonths(3).isBefore(LocalDateTime.now())){
+        if (participant != null && !participant.getDateOfCreation().plusYears(1).isBefore(LocalDateTime.now())){
             throw new RuntimeException("A participant with Id " + userId +
-                    " should enroll in a team named "
-                    +  participant.getTeam().getNameTeam() + " after a period of three months from the current date.");
+                    " should enroll in a team named " +
+                    participant.getTeam().getNameTeam() +
+                    " after a period of one year from the current date.");
         }
     }
 }

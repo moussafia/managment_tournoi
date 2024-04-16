@@ -2,6 +2,7 @@ package ma.youcode.managment_tournoi_backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ma.youcode.managment_tournoi_backend.entity.enums.LevelEnum;
 
 @Entity
 @Getter

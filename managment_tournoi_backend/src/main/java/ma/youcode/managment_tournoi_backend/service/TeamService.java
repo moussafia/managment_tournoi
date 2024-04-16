@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,4 +15,5 @@ public interface TeamService {
     Team createTeam(Team team, MultipartFile image);
     Team updateTeam(Team team, MultipartFile image);
     void deleteTeam(UUID teamId);
+    List<Team> getLatestCreatedTeam();
 }

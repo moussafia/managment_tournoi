@@ -27,6 +27,9 @@ public class Team {
     private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
+    private List<MatchTeam> matchTeams;
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Participant> participants;
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference

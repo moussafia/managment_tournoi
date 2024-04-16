@@ -55,7 +55,7 @@ public class TeamServiceImpl implements TeamService {
         }
         team.setCreatedAt(teamById.getCreatedAt());
         team.setUpdatedAt(LocalDateTime.now());
-        team.setTeamGroups(teamById.getTeamGroups());
+        team.setTeamGroup(teamById.getTeamGroup());
         return teamRepository.save(team);
     }
 
@@ -63,5 +63,16 @@ public class TeamServiceImpl implements TeamService {
     public void deleteTeam(UUID teamId) {
         Team team = getTeamById(teamId);
          teamRepository.delete(team);
+    }
+
+    @Override
+    public List<Team> getLatestCreatedTeam() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime startOfYear = LocalDateTime.of(localDateTime.getYear(), 1, 1, 0, 0);
+        LocalDateTime endOfYear = LocalDateTime.of(localDateTime.getYear(), 12, 31, 23, 59);
+        return teamRepository.findByCreatedAtBetween(startOfYear, endOfYear)
+                .orElseThrow(() -> new RuntimeException("Team could not be found for "  + localDateTime.getYear()));
+
+
     }
 }

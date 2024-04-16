@@ -20,11 +20,4 @@ public class TeamUtils {
             throw new EntityAlreadyExistException("Team with name " + existingTeam.getNameTeam() + " already exists");
         });
     }
-    public static void validateIfNameOfTeamAlreadyExistsForUpdate(Team team) {
-//            teamRepository.findByNameTeam(team.getNameTeam()).ifPresent(existingTeam -> {
-//            if(!existingTeam.getId().equals(team.getId())) {
-//                throw new EntityAlreadyExistException("Team with name " + existingTeam.getNameTeam() + " already exists");
-//            }
-//        });
-    }
 }

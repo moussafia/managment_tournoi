@@ -18,14 +18,12 @@ import java.util.UUID;
 public class Match {
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private UUID code_match;
-    private LevelEnum level;
     private LocalDate Date;
     private LocalTime startDateMatch;
     private LocalTime endDateMatch;
-    private String description;
-    @OneToMany(mappedBy = "match", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
     @JsonBackReference
-    private List<MatchPicture> pictures;
+    private List<MatchTeam> matchTeams;
     @ManyToOne(fetch = FetchType.EAGER)
     private AppUser arbitrator;
 }

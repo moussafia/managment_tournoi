@@ -14,6 +14,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,5 +40,11 @@ public class TeamController {
         Team team = teamService.getTeamById(id);
         List<ParticipantShowDto> participantShowDtos = team.getParticipants().stream().map(ParticipantMapper.INSTANCE::toParticipantShowDto).toList();
         return ResponseEntity.ok(TeamShowDto.toTeamShowDto(team.getParticipants(), participantShowDtos));
+    }
+    @GetMapping("/latest")
+    public ResponseEntity<List<TeamShowDto>> getAllTeamsOfYearNow() {
+        List<Team> teams = teamService.getLatestCreatedTeam();
+        List<TeamShowDto> membersDtos =  teams.stream().map(TeamMapper.INSTANCE::TeamToTeamShowDto).toList();
+        return ResponseEntity.ok(membersDtos);
     }
 }
