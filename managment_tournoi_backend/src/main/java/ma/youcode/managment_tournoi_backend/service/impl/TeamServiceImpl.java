@@ -55,7 +55,7 @@ public class TeamServiceImpl implements TeamService {
         }
         team.setCreatedAt(teamById.getCreatedAt());
         team.setUpdatedAt(LocalDateTime.now());
-        team.setTeamGroup(teamById.getTeamGroup());
+        team.setTeamGroups(teamById.getTeamGroups());
         return teamRepository.save(team);
     }
 
