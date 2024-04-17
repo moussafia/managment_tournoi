@@ -35,7 +35,7 @@ public class MatchTeamUtils {
     public static List<MatchTeam> createMatchTeamList(List<Team> teamList, Match matchSaved, LevelEnum levelEnum) {
         List<MatchTeam> matchTeam = new ArrayList<>();
         for (Team team : teamList) {
-            MatchTeamEmbeddedId matchTeamEmbeddedId = new MatchTeamEmbeddedId(matchSaved.getCode_match(), team.getId());
+            MatchTeamEmbeddedId matchTeamEmbeddedId = new MatchTeamEmbeddedId(matchSaved.getCodeMatch(), team.getId());
             matchTeam.add(new MatchTeam().builder()
                     .id(matchTeamEmbeddedId)
                     .isDraw(false)

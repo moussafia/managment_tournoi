@@ -17,11 +17,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Match {
     @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID code_match;
-    private LocalDate Date;
+    private UUID codeMatch;
+    private LocalDate date;
     private LocalTime startDateMatch;
     private LocalTime endDateMatch;
-    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
     private List<MatchTeam> matchTeams;
     @ManyToOne(fetch = FetchType.EAGER)

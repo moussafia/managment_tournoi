@@ -10,6 +10,7 @@ import ma.youcode.managment_tournoi_backend.util.team.TeamUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TeamServiceImpl implements TeamService {
     private final TeamRepository teamRepository;
     private final ImageUtils imageUtil;

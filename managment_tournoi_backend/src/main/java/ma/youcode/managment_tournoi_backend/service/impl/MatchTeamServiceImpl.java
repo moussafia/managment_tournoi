@@ -22,7 +22,6 @@ import java.util.UUID;
 @Transactional
 public class MatchTeamServiceImpl implements MatchTeamService {
     private final MatchTeamRepository matchTeamRepository;
-    private final TeamService teamService;
     private final MatchService matchService;
     @Override
     public List<MatchTeam> createMatchTeam(Match match, List<UUID> teamId, UUID arbitraire, LevelEnum levelEnum) {
@@ -30,7 +29,9 @@ public class MatchTeamServiceImpl implements MatchTeamService {
         List<Team> teamList = MatchTeamUtils.getTeamList(teamId);
         Match matchSaved = matchService.createMatch(match, arbitraire);
         List<MatchTeam> matchTeamList = MatchTeamUtils.createMatchTeamList(teamList, matchSaved, levelEnum);
-        return matchTeamRepository.saveAll(matchTeamList);
+        List<MatchTeam> matchTeams = matchTeamRepository.saveAll(matchTeamList);
+        matchSaved.setMatchTeams(matchTeams);
+        return matchTeamList;
     }
 
 
@@ -40,19 +41,19 @@ public class MatchTeamServiceImpl implements MatchTeamService {
     }
     @Override
     public List<MatchTeam> updateMatchTeam(Match match, List<UUID> teamId, UUID arbitraire, LevelEnum levelEnum) {
-        matchService.getMatchById(match.getCode_match());
+        matchService.getMatchById(match.getCodeMatch());
         MatchTeamUtils.validateSizeTeamPlayingInMatch(teamId.size());
         List<Team> teamList = MatchTeamUtils.getTeamList(teamId);
-        matchTeamRepository.deleteAllByMatch_matchId(match.getCode_match());
+        matchTeamRepository.deleteAllByMatch_CodeMatch(match.getCodeMatch());
         Match matchUpdated= matchService.updateMatch(match, arbitraire);
         List<MatchTeam> matchTeamList = MatchTeamUtils.createMatchTeamList(teamList, matchUpdated, levelEnum);
         return matchTeamRepository.saveAll(matchTeamList);
     }
     @Override
     public List<MatchTeam> getMatchTeamByTeamId(UUID teamId) {
-        return matchTeamRepository.findByMatch_teamId(teamId);
+        return matchTeamRepository.findAllByTeam_Id(teamId);
     }
     public List<MatchTeam> getMatchTeamByMatchId(UUID matchId) {
-        return matchTeamRepository.findByMatch_matchId(matchId);
+        return matchTeamRepository.findAllByMatch_CodeMatch(matchId);
     }
 }

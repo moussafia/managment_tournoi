@@ -19,7 +19,7 @@ public class TeamGroup {
     private Integer draws;
     private Integer losses;
     private Integer rank;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Team team;
     @ManyToOne
     private Group group;

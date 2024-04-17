@@ -30,7 +30,7 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public Match updateMatch(Match match, UUID userId) {
-        Match matchExisted = getMatchById(match.getCode_match());
+        Match matchExisted = getMatchById(match.getCodeMatch());
         validateDateMatch(match);
         validateIfDateAlreadyExist(match);
         AppUser arbitraire = appUserService.findMemberById(userId);

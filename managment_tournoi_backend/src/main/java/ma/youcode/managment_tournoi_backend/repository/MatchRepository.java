@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface MatchRepository extends JpaRepository<Match, UUID> {
-    @Query("SELECT m FROM Match m WHERE m.Date = :dateMatch AND (:startTime BETWEEN m.startDateMatch  AND m.endDateMatch)")
+    @Query("SELECT m FROM Match m WHERE m.date = :dateMatch AND (:startTime BETWEEN m.startDateMatch  AND m.endDateMatch)")
     Optional<Match> getMatchByDateAndStartTimeOrEndTime(@Param("dateMatch") LocalDate dateMatch, @Param("startTime") LocalTime startTime);
 
 }

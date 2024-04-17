@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TeamGroupService {
-    List<TeamGroup> createGroupTeam();
+    void createGroupTeam();
     void deleteALLGroupTeam();
     TeamGroup getGroupTeamById(Long groupId);
     List<TeamGroup> getAllGroupTeam();
