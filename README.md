@@ -13,55 +13,55 @@ sera numérisée. Ce site web me permettra également, d'une autre part, d'amél
 Ce projet utilise plusieurs technologies pour sa mise en œuvre. Voici une liste des principales technologies utilisées :
 
 ## Spring Boot
-<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTeams/team2.jpeg" alt="Illustration pour Lombok" width="50" height="50">
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/Sans%20titre.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Spring Boot est un framework Java qui facilite la création de nouvelles applications Spring. Il offre une configuration par défaut pour démarrer rapidement les projets et simplifie le développement d'applications Java.
 
 ## Spring Data
 
-![Spring Data](https://www.yourwebsite.com/images/spring-data.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/jpa.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Spring Data simplifie l'accès aux bases de données en fournissant une abstraction au-dessus de la couche de persistance. Il facilite l'interaction avec les bases de données relationnelles et NoSQL dans les applications Spring.
 
 ## Lombok
 
-![Lombok](https://www.yourwebsite.com/images/lombok.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/lombook.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Lombok est une bibliothèque Java qui permet de réduire le code boilerplate en générant automatiquement du code pour les getters, les setters, les constructeurs, etc.
 
 ## Mail Starter
 
-![Mail Starter](https://www.yourwebsite.com/images/mail-starter.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/mail.jpg" alt="Illustration pour Lombok" width="50" height="50">
 
 Mail Starter est un module de Spring Boot qui simplifie l'envoi d'e-mails dans les applications. Il fournit des fonctionnalités pour envoyer des e-mails de manière simple et efficace.
 
 ## Spring Security
 
-![Spring Security](https://www.yourwebsite.com/images/spring-security.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/cloudinary.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Spring Security est un module de sécurité pour les applications Spring qui gère l'authentification, l'autorisation et d'autres aspects de la sécurité des applications.
 
 ## Freemarker
 
-![Freemarker](https://www.yourwebsite.com/images/freemarker.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/cloudinary.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Freemarker est un moteur de template Java utilisé pour générer des pages web dynamiques. Il permet de séparer la logique de présentation du code Java dans les applications web.
 
 ## OpenAPI (Swagger)
 
-![OpenAPI](https://www.yourwebsite.com/images/openapi.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/cloudinary.png" alt="Illustration pour Lombok" width="50" height="50">
 
 OpenAPI, anciennement connu sous le nom de Swagger, est un outil de documentation pour les API RESTful. Il permet de décrire, de documenter et de tester les API de manière cohérente.
 
 ## Cloudinary
 
-![Cloudinary](https://www.yourwebsite.com/images/cloudinary.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/cloudinary.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Cloudinary est un service de gestion des médias basé sur le cloud. Il offre des fonctionnalités telles que le stockage, la gestion et la livraison d'images et de vidéos dans les applications web.
 
 ## Angular
 
-![Angular](https://www.yourwebsite.com/images/angular.png)
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/angular.png" alt="Illustration pour Lombok" width="50" height="50">
 
 Angular est un framework JavaScript open-source développé par Google pour la construction d'applications web monopage (SPA). Il offre une structure pour le développement côté client en utilisant TypeScript et une architecture basée sur des composants.
 
