@@ -1,0 +1,823 @@
+{
+	"info": {
+		"_postman_id": "1fbf04b9-3b7d-432d-9030-46d2e8242641",
+		"name": "managmentTournoiYC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23768163"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getMemberById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/794612f7-581d-4c94-b7de-15da81532b5c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"794612f7-581d-4c94-b7de-15da81532b5c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addusers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "memberFile",
+									"type": "file",
+									"src": "/home/mugiwara/Documents/test.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/add/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"add",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addMember",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"moussafia.mohammed1999@gmail.com\",\n  \"className\": \"CS101\",\n  \"urlPicture\": \"https://intranet.youcode.ma/storage/users/profile/johndoe.JPG\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/add/member",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"add",
+								"member"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMember",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"ed72892a-f000-425d-9cb7-6334928156cd\",\n  \"firstName\": \"bilal\",\n  \"lastName\": \"moussafia\",\n  \"email\": \"m.moussafia99@gmail.com\",\n  \"className\": \"CS101\",\n  \"urlPicture\": \"https://intranet.youcode.ma/storage/users/profile/johndoe.JPG\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/update/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"update",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMembers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member?page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"memberId\": \"9abd6f55-f2e9-4db4-a489-f403d8637753\",\n  \"oldPassword\": \"4sZqs8\",\n  \"newPassword\": \"newPassword456\",\n  \"confirmNewPassword\": \"newPassword456\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/update/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"update",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignRole",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"memberId\": \"dc47add5-ecb9-400e-9cd8-d9267f2219a9\",\n  \"roleName\": \"admin\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/assign/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"assign",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchMember",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/member/search?keyword=b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"member",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dowloadFIles",
+			"item": [
+				{
+					"name": "dowloadMembersModal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/download/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"download",
+								"members"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rules",
+			"item": [
+				{
+					"name": "createRule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"hello world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/rule",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"rule"
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRule",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"description\": \"hello world updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/rule",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"rule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRule",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/rule/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"rule",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRoleById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/rule/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"rule",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllRules",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/rule",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"rule"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "team",
+			"item": [
+				{
+					"name": "createTeam",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usersIds[]",
+									"value": "4412ea9d-7fc9-4a17-abb8-cc39301c8592",
+									"type": "text"
+								},
+								{
+									"key": "team",
+									"value": "testk",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/mugiwara/Documents/website.jpg"
+								},
+								{
+									"key": "usersIds[]",
+									"value": "010a7475-1c9b-407b-9f7c-0db76325dcd7",
+									"type": "text"
+								},
+								{
+									"key": "numberOfParticipants",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/team/participent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"team",
+								"participent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTeam",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usersIds[]",
+									"value": "5b499c11-fab5-4a02-833e-a7b2d0de0a55",
+									"type": "text"
+								},
+								{
+									"key": "team.id",
+									"value": "5b499c11-fab5-4a02-833e-a7b2d0de0a55",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "numberOfParticipants",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "usersIds[]",
+									"value": "e71c1893-f7c7-4b4d-9035-0fe9508bcc0f",
+									"type": "text"
+								},
+								{
+									"key": "team.nameTeam",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "team.logo",
+									"value": "http://res.cloudinary.com/dncljj3e2/image/upload/v1713101627/logo_team/ucbdbmtuzxogmmn693jj.jpg",
+									"type": "text"
+								},
+								{
+									"key": "team.logoPublicId",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/team/participent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"team",
+								"participent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTeam",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"publicIdLogo\" : \"logo_team/llkcgem8r1vnagu23yfs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/team/participent?id=09bf603e-a663-40a2-9387-5c37d00597d5&publicIdLogo=logo_team/asrxbvjm0yhx7aisiqq9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"team",
+								"participent"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "09bf603e-a663-40a2-9387-5c37d00597d5"
+								},
+								{
+									"key": "publicIdLogo",
+									"value": "logo_team/asrxbvjm0yhx7aisiqq9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTeamById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/team/edit/02655491-a2db-4a61-bb47-e69f1df5a14b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"team",
+								"edit",
+								"02655491-a2db-4a61-bb47-e69f1df5a14b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTeam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/team/edit?page=0&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"team",
+								"edit"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "latestTeam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/team/edit/latest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"team",
+								"edit",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "createTeamGroup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/teamGroup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"teamGroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllGrp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/teamGroup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"teamGroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAllGrps",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/teamGroup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"teamGroup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "match",
+			"item": [
+				{
+					"name": "createMatch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"match\": {\n    \"date\": \"2025-04-18\",\n    \"startDateMatch\": \"09:00:00\",\n    \"endDateMatch\": \"10:00:00\"\n  },\n  \"teamId\": [\n    \"7e316472-2f80-43f3-a3e7-e52d38f0b17b\",\n    \"056a6d75-0912-4304-8ea5-4654a595a649\"\n  ],\n  \"arbitraire\": \"81523e1a-17d5-4b41-a3b9-5f3cfb9479f5\",\n  \"levelEnum\": \"Knockout_Stage\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/matchTeam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"matchTeam"
+							],
+							"query": [
+								{
+									"key": "teamId[]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "teamId[]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "arbitraire",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "levelEnum",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "match.date",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "match.startDateMatch",
+									"value": "12:30:00",
+									"disabled": true
+								},
+								{
+									"key": "match.endDateMatch",
+									"value": "13:30:00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
