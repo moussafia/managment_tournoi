@@ -67,5 +67,52 @@ Angular est un framework JavaScript open-source développé par Google pour la c
 
 Angular est souvent utilisé pour créer des applications web interactives et dynamiques. Il fournit des fonctionnalités puissantes telles que la liaison de données bidirectionnelle, la manipulation du DOM, le routage, la gestion des formulaires et bien plus encore.
 
+# Configuration et Exécution des Applications dans Docker
+
+Ce guide vous explique comment configurer et exécuter des applications Spring Boot et Angular dans Docker à l'aide de Docker Compose.
+
+## Étapes
+
+1. **Cloner le Référentiel GitHub :**
+   - Utilisez la commande suivante pour cloner le référentiel GitHub contenant les applications Spring Boot et Angular :
+     ```
+     git clone git@github.com:moussafia/managment_tournoi_football_youcode.git
+     ```
+
+2. **Configuration de Docker Compose :**
+   - Assurez-vous d'avoir un fichier `docker-compose.yml` à la racine de votre projet. Voici un exemple de configuration :
+
+     ```yaml
+     version: '3.8'
+
+     services:
+       backend:
+         image: votre-utilisateur/nom-image-spring-boot
+         ports:
+           - "8080:8080"
+         restart: always
+
+       frontend:
+         image: votre-utilisateur/nom-image-angular
+         ports:
+           - "4200:4200"
+         restart: always
+     ```
+
+   - Remplacez `votre-utilisateur/nom-image-spring-boot` et `votre-utilisateur/nom-image-angular` par les noms appropriés de vos images Docker.
+
+3. **Exécution de Docker Compose :**
+   - Exécutez Docker Compose avec la commande suivante :
+     ```
+     docker-compose up
+     ```
+
+4. **Accès aux Applications :**
+   - L'application Spring Boot sera accessible à l'adresse : `http://localhost:9000`
+   - L'application Angular sera accessible à l'adresse : `http://localhost:6000`
+
+C'est tout ! Vous avez maintenant vos applications Spring Boot et Angular en cours d'exécution dans des conteneurs Docker, prêtes à être utilisées.
+
+---
 
 
