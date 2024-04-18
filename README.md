@@ -59,4 +59,13 @@ OpenAPI, anciennement connu sous le nom de Swagger, est un outil de documentatio
 
 Cloudinary est un service de gestion des médias basé sur le cloud. Il offre des fonctionnalités telles que le stockage, la gestion et la livraison d'images et de vidéos dans les applications web.
 
+## Angular
+
+![Angular](https://www.yourwebsite.com/images/angular.png)
+
+Angular est un framework JavaScript open-source développé par Google pour la construction d'applications web monopage (SPA). Il offre une structure pour le développement côté client en utilisant TypeScript et une architecture basée sur des composants.
+
+Angular est souvent utilisé pour créer des applications web interactives et dynamiques. Il fournit des fonctionnalités puissantes telles que la liaison de données bidirectionnelle, la manipulation du DOM, le routage, la gestion des formulaires et bien plus encore.
+
+
 
