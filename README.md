@@ -49,7 +49,7 @@ Freemarker est un moteur de template Java utilisé pour générer des pages web 
 
 ## OpenAPI (Swagger)
 
-<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/cloudinary.png" alt="Illustration pour Lombok" width="50" height="50">
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/swagger.png" alt="Illustration pour Lombok" width="50" height="50">
 
 OpenAPI, anciennement connu sous le nom de Swagger, est un outil de documentation pour les API RESTful. Il permet de décrire, de documenter et de tester les API de manière cohérente.
 
