@@ -13,7 +13,7 @@ sera numérisée. Ce site web me permettra également, d'une autre part, d'amél
 Ce projet utilise plusieurs technologies pour sa mise en œuvre. Voici une liste des principales technologies utilisées :
 
 ## Spring Boot
-<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTeams/team2.jpeg" alt="Illustration pour Lombok" width="150" height="150">
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTeams/team2.jpeg" alt="Illustration pour Lombok" width="50" height="50">
 
 Spring Boot est un framework Java qui facilite la création de nouvelles applications Spring. Il offre une configuration par défaut pour démarrer rapidement les projets et simplifie le développement d'applications Java.
 
