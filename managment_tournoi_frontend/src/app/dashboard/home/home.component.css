@@ -1,0 +1,12 @@
+
+.calander-container{
+    width: 35%;
+}
+.arbitre-container{
+    height: 340px;
+}
+.arbitre-container img{
+    width: 50%;
+    background-size: cover;
+    background-position: top center !important;
+}

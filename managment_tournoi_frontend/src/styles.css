@@ -7,3 +7,15 @@
 .active-nav-link { background: #1947ee; }
 .nav-item:hover { background: #1947ee; }
 .account-link:hover { background: #3d68ff; }
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+.cal-cell-row {
+	height: 100% !important;
+}
+.ng-star-inserted { 
+	height: 51px  !important;
+}
+.cal-month-view .cal-day-cell {
+	 height: 51px !important;
+	 min-height: 0px !important;
+}

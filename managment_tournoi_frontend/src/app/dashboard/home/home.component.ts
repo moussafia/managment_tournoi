@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+viewDate: Date = new Date();
+constructor(){
+  this.viewDate.setDate(1);
+}
+
+dayClicked(day: any): void {
+  console.log('Clicked on: ', day);
+}
 }
