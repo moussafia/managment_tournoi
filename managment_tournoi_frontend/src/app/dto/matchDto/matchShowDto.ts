@@ -9,3 +9,4 @@ export interface MatchShowDto {
     matchTeams: MatchTeamShowDto[];
     arbitrator: MemberShowDto;
 }
+

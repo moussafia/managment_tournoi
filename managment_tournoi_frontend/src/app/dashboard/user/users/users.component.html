@@ -32,64 +32,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let member of memberShowDto">
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
                                         <img class="w-full h-full rounded-full"
-                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                            src="{{member.urlPicture}}"
                                             alt="" />
                                     </div>
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            Vera Carpenter
+                                            {{member.firstName}} {{member.lastName}}
                                         </p>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+                                <p class="text-gray-900 whitespace-no-wrap">{{member.role.name}}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">
-                                    Jan 21, 2020
+                                    {{member.createdAt}}
                                 </p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                moha@gmail.com
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <div class="flex gap-4 ">
-                                    <button class=" bg-green-500 rounded-md p-2 text-white hover:bg-green-200"><i class="fas fa-pen "></i></button>
-                                    <button class=" bg-red-500 rounded-md p-2 text-white  hover:bg-red-200"><i class="fas fa-trash "></i></button>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-5 py-5 bg-white text-sm">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 w-10 h-10">
-                                        <img class="w-full h-full rounded-full"
-                                            src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
-                                            alt="" />
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">
-                                            Alonzo Cox
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                            </td>
-                            <td class="px-5 py-5 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
-                            </td>
-                            <td class="px-5 py-5 bg-white text-sm">
-                                moha@gmail.com
-
+                                m{{member.email}}
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex gap-4 ">
@@ -101,6 +68,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <mat-paginator [length]="totalItems"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="[5, 10, 15]"
+               (page)="onPageChange($event)"></mat-paginator>
             </div>
         </div>
     </main>
