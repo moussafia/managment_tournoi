@@ -19,3 +19,6 @@
 	 height: 51px !important;
 	 min-height: 0px !important;
 }
+.ck-editor__editable {
+    min-height: 500px;
+}
