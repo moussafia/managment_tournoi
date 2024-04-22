@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UsersComponent implements OnInit {
   memberShowDto?:MemberShowDto[];
-  pageSize: number = 10;
+  pageSize: number = 5;
   pageIndex: number = 0;
   totalItems: number = 0;
 
@@ -32,7 +32,8 @@ export class UsersComponent implements OnInit {
         next: data => {
           this.memberShowDto = data.content
           this.totalItems = data.totalElements
-        }
+        },
+        error: error => console.log(error)
       })
   }
 }

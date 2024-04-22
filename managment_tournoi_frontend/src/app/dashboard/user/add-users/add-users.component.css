@@ -42,8 +42,9 @@ button:hover .download-arrow {
 }
 
 button.download-button {
-  min-width: 340px;
-  min-height: 68px;
+  min-width: 150 !important;
+  min-height: 6px !important;
+  margin-bottom: 20px;
 }
 .download-loader {
   width: 16px;
@@ -80,8 +81,73 @@ button.download-button {
 .button-copy {
   padding-top: 2px;
 }
-@media (max-width: 375px) {
-  button.copy-button {
-    min-width: 300px;
+.important{
+  font-size: 18px !important;
+  margin-left: 20px !important;
+}
+
+
+main-loader {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.main-fader {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+.main-fader .loader {
+  position: fixed;
+  top: 50%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+}
+.main-fader .loader svg {
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+}
+.main-fader .loader svg path {
+  animation-duration: 1s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  color: #26a380;
+}
+.main-fader .loader svg path.path-7 {
+  animation-delay: -1s;
+}
+.main-fader .loader svg path.path-6 {
+  animation-delay: -0.875s;
+}
+.main-fader .loader svg path.path-5 {
+  animation-delay: -0.75s;
+}
+.main-fader .loader svg path.path-4 {
+  animation-delay: -0.625s;
+}
+.main-fader .loader svg path.path-3 {
+  animation-delay: -0.5s;
+}
+.main-fader .loader svg path.path-2 {
+  animation-delay: -0.375s;
+}
+.main-fader .loader svg path.path-1 {
+  animation-delay: -0.25s;
+}
+.main-fader .loader svg path.path-0 {
+  animation-delay: -0.125s;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.1;
   }
 }
