@@ -17,7 +17,7 @@ import { RuleComponent } from './rule/rule.component';
 import { AddRuleComponent } from './rule/add-rule/add-rule.component';
 import { GetRulesComponent } from './rule/get-rules/get-rules.component';
 import { RulesComponent } from './rule/rules/rules.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -60,7 +60,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     HttpClientModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    ReactiveFormsModule
 
   ],
   providers:[

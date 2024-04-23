@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { MemberSaveResponseDto } from 'src/app/dto/appUserFileDto/createMemberDto/MemberSaveResponseDto';
+import { AppUserRequest } from 'src/app/dto/appUserFileDto/createMemberDto/appUserRequest';
 import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
 import { DataResponse } from 'src/app/dto/data.state.';
 
@@ -38,5 +39,10 @@ export class UserService {
     formData.append('memberFile', memberFile);
 
   return this.http.post<any>(`${this.url}/add/members`, formData);
+  }
+
+  createSingleUser(appUserRequest: AppUserRequest):Observable<DataResponse<MemberSaveResponseDto, any>>{
+    
+    return this.http.post<any>(`${this.url}/add/member`, appUserRequest);
   }
 }

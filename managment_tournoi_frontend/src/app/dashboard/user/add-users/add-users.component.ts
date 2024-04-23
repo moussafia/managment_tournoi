@@ -50,31 +50,17 @@ addUsers() {
             this.formAddUsersXlsx?.reset();
             const fileInput = document.querySelector('input[type="file"]');
         } else if( data.dataState === this.dataState.ERROR ){
-          let messageError = this.memberFileSaveResponse?.error?.['message'];
-          let fields  = this.memberFileSaveResponse?.error?.['field'];
-          let textError = `<h1 class='text-lg text-red-700 text-center my-4'>${messageError}</h1>`;
-          for(const key in fields){           
-                let fieldsArray = fields[parseInt(key)];
-                textError += `<div class="p-2 mb-2 rounded">`;
-                textError += `<div class="font-bold mb-1 text-md">row number ${key} in excel :</div>`;
-                textError += `<ul class="list-disc flex flex-col justify-start items-start">`;
-                for(let g = 0; g < fieldsArray.length; g++){
-                  textError += `<li class='py-2'> - ${fieldsArray[g]}</li>`;
-                }
-                textError += `</ul>`;
-                textError += `</div>`;
-          }
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                html: textError,
-              });
+          
+          let textError = this.generateTextError(this.memberFileSaveResponse);
+          this.swalError(textError);
+          
         }
       }
         
   })
   }
 
+ 
   swalSucces(message: string | undefined){
       Swal.fire({
         position : "center",
@@ -83,5 +69,30 @@ addUsers() {
         showConfirmButton : false,
         timer : 3500 
       })
+  }
+  swalError(textError: string | undefined){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        html: textError,
+      });
+  }
+
+   generateTextError(memberFileSaveResponse : DataResponse<MemberSaveResponseDto, any>): string{
+    let messageError = memberFileSaveResponse?.error?.['message'];
+    let fields  = memberFileSaveResponse?.error?.['field'];
+    let textError = `<h1 class='text-lg text-red-700 text-center my-4'>${messageError}</h1>`;
+    for(const key in fields){           
+          let fieldsArray = fields[parseInt(key)];
+          textError += `<div class="p-2 mb-2 rounded">`;
+          textError += `<div class="font-bold mb-1 text-md">row number ${key} in excel :</div>`;
+          textError += `<ul class="list-disc flex flex-col justify-start items-start">`;
+          for(let g = 0; g < fieldsArray.length; g++){
+            textError += `<li class='py-2'> - ${fieldsArray[g]}</li>`;
+          }
+          textError += `</ul>`;
+          textError += `</div>`;
+    }
+    return textError;
   }
 }
