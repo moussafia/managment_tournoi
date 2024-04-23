@@ -1,6 +1,6 @@
 <div class="relative">
 
-<form class="my-24 flex flex-col bg-opacity-60" (ngSubmit)="addUsers()">
+<form class="my-24 flex flex-col bg-opacity-60" (ngSubmit)="addUsers()" #formAddUsersXlsx="ngForm">
   <p class="ml-12 text-center text-green-700 font-bold text-lg">{{memberFile}}</p>
     <div class="extraOutline p-4 bg-white w-max bg-whtie m-auto rounded-lg">
         <div class="file_upload p-5 relative border-4 border-dotted border-gray-300 rounded-lg" style="width: 650px;height: 350px;">
@@ -68,18 +68,6 @@
           </div>
         </div>
   </ng-container>
-    <ng-container *ngSwitchCase="dataState.LOADED">
-        <swal  #succesInsertSwal
-        position = "top-end"
-        icon ="success"
-        title = "{{memberFileSaveResponse!.data!.message}}"
-        [showConfirmButton] = false
-        [timer] = 5500 >
-      </swal>
-    </ng-container>
-  <ng-container *ngSwitchCase="dataState.ERROR">
-
-  </ng-container>
 </ng-container>
 </div>
-
+{{this.memberFileSaveResponse?.error?.['field'] | json }}
