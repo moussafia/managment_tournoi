@@ -7,11 +7,10 @@ import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.createMemberDto.M
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.getDto.MemberShowDto;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.PasswordRequestUpdateDto;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.UpdateMemberDto;
-import ma.youcode.managment_tournoi_backend.dto.rulesDto.AssignRoleDto;
+import ma.youcode.managment_tournoi_backend.dto.roleDto.AssignRoleDto;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.mapper.AppUserMapper;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
-import ma.youcode.managment_tournoi_backend.service.impl.AppUserServiceImpl;
 import ma.youcode.managment_tournoi_backend.util.xlsx.ExcelUploadUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -102,7 +100,7 @@ public class MemberController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<MemberShowDto>> getMembers(
+        public ResponseEntity<Page<MemberShowDto>> getMembers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "createdAt") String sortBy
@@ -114,8 +112,9 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MemberShowDto> getMemberById(@PathVariable UUID id){
-        AppUser member = userService.findMemberById(id);
+    public ResponseEntity<MemberShowDto> getMemberById(@PathVariable String id){
+        UUID idMember = UUID.fromString(id);
+        AppUser member = userService.findMemberById(idMember);
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
     }
     @PutMapping("/assign/role")

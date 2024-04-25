@@ -47,6 +47,11 @@ public class MatchServiceImpl implements MatchService {
                 .orElseThrow(() -> new EntityNotFoundException("Match not found"));
     }
 
+    @Override
+    public Match getMatchToday() {
+        return matchRepository.findByDate(LocalDate.now()).orElseThrow(() -> new EntityNotFoundException("No match for Today"));
+    }
+
 
     private void validateDateMatch(Match match) {
         if (match.getDate().isBefore(LocalDate.now())) {

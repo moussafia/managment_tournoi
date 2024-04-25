@@ -59,7 +59,7 @@ public class AppUserServiceImpl implements AppUserService {
         member.setIsDeleted(Boolean.FALSE);
         AppRole roleMember = appRoleService.getRoleByName(RoleEnum.MEMBER);
         member.setRole(roleMember);
-        //mailUtil.sendMail(member, password);
+        mailUtil.sendMail(member, password);
         return userRepository.save(member);
     }
 

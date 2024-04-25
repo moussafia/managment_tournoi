@@ -15,5 +15,4 @@ public interface MatchTeamService {
     List<MatchTeam> getMatchTeamByTeamId(UUID teamId);
     List<MatchTeam> updateMatchTeam(Match match, List<UUID> teamId, UUID arbitraire, LevelEnum levelEnum);
     List<MatchTeam> getMatchTeamByMatchId(UUID matchId);
-
 }

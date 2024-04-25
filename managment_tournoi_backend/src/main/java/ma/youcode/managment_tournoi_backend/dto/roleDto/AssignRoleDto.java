@@ -1,4 +1,4 @@
-package ma.youcode.managment_tournoi_backend.dto.rulesDto;
+package ma.youcode.managment_tournoi_backend.dto.roleDto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,0 +1,148 @@
+
+body {
+    background: url('../images/s-l1600.jpg') fixed center/cover;
+    /*color: #ffffff; /* Set text color to white for better visibility on the background */
+}
+
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+h1, h5 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card-title {
+    color: #007bff; /* Bootstrap primary color for team names */
+}
+
+.list-group-item {
+    background-color: #58a86a; /* Bootstrap success color for team members */
+    color: #ffffff;
+}
+
+.referee-name {
+    background-color: #3fa458; /* Bootstrap success color for team members */
+    color: #ffffff;
+}
+
+.captain-name {
+    background-color: #30753f; /* Bootstrap success color for team members */
+    color: #ffffff;
+}
+
+.badge {
+    background-color: #dc3545; /* Bootstrap danger color for team numbers */
+}
+
+#teamSearch {
+    margin: 0 0 20px 0;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.navs-button button {
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #454d54;
+    color: white;
+}
+
+.navs-button button:hover {
+    background-color: #626a70;
+    color: white;
+}
+
+button.activeNav {
+    background-color: #b9c9d3!important;
+    color: #625e5e !important;
+}
+
+.standings {
+    background-color: white;
+    opacity: 70%;
+}
+
+/* Add this CSS to your existing styles */
+.table.matches {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.table.matches th,
+.table.matches td {
+    text-align: center;
+}
+
+.table.matches th {
+    background-color: #343a40; /* Header background color */
+    color: white;
+}
+
+.table.matches tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.table.matches tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Add this to your CSS file or within a <style> tag in the HTML file */
+.rules-container {
+    background-color: rgba(255, 255, 255, 0.8)!important;
+    padding: 24px!important;
+    color: #333!important;
+    font-family: 'Times New Roman', Times, serif!important;
+    font-size: 16px!important;
+    line-height: 1.6!important;
+    border-radius: 10px!important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)!important;
+}
+
+.rules-container h2, .rules-container h3 {
+    color: #007bff!important;
+}
+
+.rules-container ol {
+    margin-bottom: 15px!important;
+}
+
+.rules-container p {
+    font-weight: bold!important;
+    margin-bottom: 5px!important;
+    color: rebeccapurple!important;
+}
+
+.matches tbody tr.result-row:hover {
+    background-color: rgba(52, 58, 64, 0.39);
+    cursor: pointer;
+}
+
+.bg-dark-site {
+    background-color: #343a40!important;
+}
+
+.null-row {
+    background-color: rgba(52, 58, 64)!important;
+}
+
+.winner-team {
+    background-color: #6ed787 !important;
+    color: #ffffff!important;
+}

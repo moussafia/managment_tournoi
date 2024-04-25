@@ -52,19 +52,19 @@ public class MemberUtils {
     public static List<String> validateMemberFieldNotMatchPattern(AppUser appUser) {
         List<String> fieldsName = new ArrayList<>();
         if(!appUser.getFirstName().matches(firstNamePattern) || appUser.getFirstName().isBlank() || appUser.getFirstName().isEmpty() || appUser.getFirstName() == null){
-            fieldsName.add("First Name " + appUser.getFirstName());
+            fieldsName.add("First Name ");
         }
         if(!appUser.getLastName().matches(lastNamePattern) || appUser.getLastName().isBlank() || appUser.getLastName().isEmpty() || appUser.getLastName() == null){
-            fieldsName.add("Last Name " + appUser.getLastName());
+            fieldsName.add("Last Name ");
         }
         if(!appUser.getUrlPicture().matches(urlPattern) || appUser.getUrlPicture().isBlank() || appUser.getUrlPicture().isEmpty() || appUser.getUrlPicture() == null){
-            fieldsName.add("picture url " + appUser.getUrlPicture());
+            fieldsName.add("picture url ");
         }
         if(!appUser.getEmail().matches(emailPattern) || appUser.getEmail().isBlank() || appUser.getEmail().isEmpty() || appUser.getEmail() == null){
             fieldsName.add("Email");
         }
         if(appUser.getClassName().isBlank() || appUser.getClassName().isEmpty() || appUser.getClassName() == null){
-            fieldsName.add("Class name " + appUser.getClassName());
+            fieldsName.add("Class name " );
         }
         return fieldsName;
     }

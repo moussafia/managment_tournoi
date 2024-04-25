@@ -30,4 +30,5 @@ public class MatchTeamController {
         MatchShowDto matchMapped = MatchMapper.INSTANCE.MatchToMatchShowDto(matchTeam.get(0).getMatch());
         return ResponseEntity.ok(matchMapped);
     }
+
 }

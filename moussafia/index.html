@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouCode Football Tournament</title>
+    <meta name="description"
+        content="Welcome to the YouCode Football Tournament! Stay updated with the latest matches, results, and news.">
+    <meta name="keywords" content="YouCode, Football, Tournament, Matches, Results, News">
+    <meta name="author" content="Your Name">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+
+<body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid align-item-center">
+            <a class="navbar-brand" href="#">YouCode Football Tournament</a>
+
+            <div class="navs-button">
+                <button id="home" class="activeNav">Home</button>
+                <button id="groups" class="">Groups</button>
+                <button id="matches" class="">Matches</button>
+                <button id="standings" class="">Standings</button>
+                <button id="rules" class="">Rules</button>
+                <!--<button id="results">Results</button> -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5" id="container">
+        <h1>Teams in the Tournament</h1>
+
+        <label for="teamSearch" class="d-flex justify-content-center align-item-center">
+            <input id="teamSearch" onkeyup="filter(event)" type="text" placeholder="Search...">
+        </label>
+        <h5>Total teams: (<span id="total-teams" style="color: #0bda3b">8</span>)</h5>
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="teamsContainer">
+            <!-- Teams will be dynamically added here using JavaScript -->
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4"><i class="bi bi-trophy-fill text-warning"></i> 2B || !
+                            2B <i class="bi bi-trophy-fill text-warning"></i></h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> ZAKARIA ELKOH </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> ANAS ELMAKHLOUFI </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> ALI FIHAR</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ACHAROUAOU MOHAMED</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> RACHID CHAFEI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ABDELTIF TAWIL</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> OMAR ENNEDI</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: NAMEK</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> AYMANE BENHIMA </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> BILAL CHBANAT </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> OSSAMA BEL-KAZE</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ISMAIL LAFHIEL</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ABDELGHANI AIT TAMGHART</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> MOHAMMED MIESSAL</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> KHALID OUKHA</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: DÉVELOPPEUR DATA</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> YONLI FIEDEL </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> YASSINE HARRATI </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> YASSER AITHNINI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> SAAD BENTALEB</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> SEFDINE NASSUF</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> FAICAL MOUFLA</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> OMAR DBAA</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: GENEI RYODAN</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> ERRAY ABDELLAH </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> AYOUB OUABI </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> AHMED YASSINE EL HAMZAOUI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ABDELKRIM JOUIDRI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> MOUAD FIFEL</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> YASSIR ESRAIDI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> MOHAMED CHKIR</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: LA CASA DEL JS</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> RACHID DAOUDI </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> MOHAMED ABRACH </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> HAMZA HARRASS</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> TOUFIK SHIMA</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> YOUSSEF TADLAOUI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> FAISSAL AOUKACHA</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ISSAM MEZGUELDI</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: VAN DER LINDE</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> KHALID FIFEL </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> MOHAMED NACHIT </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> MOHAMED JAMH</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> TAREK OUACHANI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> YOUSSEF ELMATI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ABDELMAJID ELOUSSE</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> FOUAD HOUDDA</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: CODERS STRIKE</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> YOUNESS ERBAI </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> ANASS AIT OUAGUERED </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> KHALID EL MÂTI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> NABIL EL HAKIMI</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ZERZKHANE ZOUHAIR</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> AMIN BAIH</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> KHALID ZENNOUHI</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 position-relative">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary mb-4">Team: PIXEL WARRIORS</h5>
+                        <!-- Captain -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Captain :</span> <span
+                                    class="captain-name list-group-item"> TAYEB SOUINI </span></p>
+                        </div>
+
+                        <!-- Referee -->
+                        <div class="mb-3">
+                            <p class="card-text"><i class="bi bi-person"></i> <span
+                                    class="card-subtitle text-muted">Referee :</span><span
+                                    class="referee-name list-group-item"> ZAKARIA KACIMI </span></p>
+                        </div>
+
+                        <!-- Team Members -->
+                        <div class="mb-3">
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-person-check"></i> Team Members:
+                            </h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="bi bi-person"></i> YASSIR AGINANE</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ZAKARIA KHARROUB</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> MOHAMED AMINE HAOUAT</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> YASSIR RACHAD</li>
+                                <li class="list-group-item"><i class="bi bi-person"></i> ABDELLATIF IBNESSAYEH</li>
+                            </ul>
+                        </div>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #454d54">
+                    <h5 class="modal-title">2B || ! 2B vs Pixel Warriors</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Result:</strong> 0 - 0(3 - 2)</p>
+                            <p><strong>Date/Time:</strong> 2024/03/08 16:10</p>
+                            <p><strong>Referee:</strong> </p>
+                        </div>
+                        <div class="col-6">
+                            <!-- Add any additional match details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #454d54">
+                    <h5 class="modal-title">2B || ! 2B vs Pixel Warriors</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Result:</strong> 0 - 0(3 - 2)</p>
+                            <p><strong>Date/Time:</strong> 2024/03/08 16:10</p>
+                            <p><strong>Referee:</strong> </p>
+                        </div>
+                        <div class="col-6">
+                            <!-- Add any additional match details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #454d54">
+                    <h5 class="modal-title">2B || ! 2B vs Pixel Warriors</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Result:</strong> 0 - 0(3 - 2)</p>
+                            <p><strong>Date/Time:</strong> 2024/03/08 16:10</p>
+                            <p><strong>Referee:</strong> </p>
+                        </div>
+                        <div class="col-6">
+                            <!-- Add any additional match details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #454d54">
+                    <h5 class="modal-title">2B || ! 2B vs Namek</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Result:</strong> 2 - 1</p>
+                            <p><strong>Date/Time:</strong> 2024/02/29 17:40</p>
+                            <p><strong>Referee:</strong> </p>
+                        </div>
+                        <div class="col-6">
+                            <!-- Add any additional match details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #454d54">
+                    <h5 class="modal-title">Pixel Warriors vs La Casa del Js</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Result:</strong> 1 - 0</p>
+                            <p><strong>Date/Time:</strong> 2024-03-03 17:40</p>
+                            <p><strong>Referee:</strong> </p>
+                        </div>
+                        <div class="col-6">
+                            <!-- Add any additional match details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #454d54">
+                    <h5 class="modal-title">Van Der Linde vs 2B || ! 2B</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><strong>Result:</strong> 2 - 3</p>
+                            <p><strong>Date/Time:</strong> 2024-02-02 17:40</p>
+                            <p><strong>Referee:</strong> Yasser Aithnini - Hamza herrass</p>
+                        </div>
+                        <div class="col-6">
+                            <!-- Add any additional match details here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

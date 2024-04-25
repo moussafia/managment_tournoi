@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouCode Football Tournament</title>
+    <meta name="description"
+        content="Welcome to the YouCode Football Tournament! Stay updated with the latest matches, results, and news.">
+    <meta name="keywords" content="YouCode, Football, Tournament, Matches, Results, News">
+    <meta name="author" content="Your Name">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid align-item-center">
+            <a class="navbar-brand" href="#">YouCode Football Tournament</a>
+
+            <div class="navs-button">
+                <button id="home" class="">Home</button>
+                <button id="groups" class="">Groups</button>
+                <button id="matches" class="">Matches</button>
+                <button id="standings" class="activeNav">Standings</button>
+                <button id="rules">Rules</button>
+                <!--<button id="results">Results</button> -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5" id="container"><h2 class="text-white">Group groupA</h2><table class="table standings">
+            <thead>
+                 <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Points</th>
+                    <th scope="col">Wins</th>
+                    <th scope="col">Draws</th>
+                    <th scope="col">Losses</th>
+                    <th scope="col">Goals</th>
+                    <th scope="col">Goals entered</th>
+                    <th scope="col">AVG goals</th>
+                    <th scope="col">Yellow Cards</th>
+                    <th scope="col">Red Cards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Populate rows dynamically based on standingsData[group] -->
+            <tr style="background-color: rgba(0, 255, 0, 0.5);">
+        <th scope="row">1</th>
+        <td>2B || ! 2B</td>
+        <td>6</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1</td>
+        <td>8</td>
+        <td>7</td>
+        <td>1</td>
+        <td>3</td>
+        <td>0</td>
+    </tr><tr style="background-color: rgba(0, 255, 0, 0.5);">
+        <th scope="row">2</th>
+        <td>Pixel Warriors</td>
+        <td>5</td>
+        <td>1</td>
+        <td>2</td>
+        <td>0</td>
+        <td>6</td>
+        <td>4</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+    </tr><tr style="background-color: rgba(255, 0, 0, 0.5);">
+        <th scope="row">3</th>
+        <td>Van Der Linde</td>
+        <td>4</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>7</td>
+        <td>7</td>
+        <td>0</td>
+        <td>2</td>
+        <td>0</td>
+    </tr><tr style="background-color: rgba(255, 0, 0, 0.5);">
+        <th scope="row">4</th>
+        <td>Coders Strike</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>7</td>
+        <td>10</td>
+        <td>-3</td>
+        <td>3</td>
+        <td>0</td>
+    </tr></tbody>
+        </table><h2 class="text-white">Group groupB</h2><table class="table standings">
+            <thead>
+                 <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Points</th>
+                    <th scope="col">Wins</th>
+                    <th scope="col">Draws</th>
+                    <th scope="col">Losses</th>
+                    <th scope="col">Goals</th>
+                    <th scope="col">Goals entered</th>
+                    <th scope="col">AVG goals</th>
+                    <th scope="col">Yellow Cards</th>
+                    <th scope="col">Red Cards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Populate rows dynamically based on standingsData[group] -->
+            <tr style="background-color: rgba(0, 255, 0, 0.5);">
+        <th scope="row">1</th>
+        <td>La Casa del Js</td>
+        <td>6</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1</td>
+        <td>9</td>
+        <td>5</td>
+        <td>4</td>
+        <td>5</td>
+        <td>0</td>
+    </tr><tr style="background-color: rgba(0, 255, 0, 0.5);">
+        <th scope="row">2</th>
+        <td>Namek</td>
+        <td>6</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1</td>
+        <td>8</td>
+        <td>7</td>
+        <td>1</td>
+        <td>2</td>
+        <td>0</td>
+    </tr><tr style="background-color: rgba(255, 0, 0, 0.5);">
+        <th scope="row">3</th>
+        <td>Développeur Data</td>
+        <td>3</td>
+        <td>1</td>
+        <td>0</td>
+        <td>2</td>
+        <td>10</td>
+        <td>11</td>
+        <td>-1</td>
+        <td>2</td>
+        <td>0</td>
+    </tr><tr style="background-color: rgba(255, 0, 0, 0.5);">
+        <th scope="row">4</th>
+        <td>Genei Ryodan</td>
+        <td>3</td>
+        <td>1</td>
+        <td>0</td>
+        <td>2</td>
+        <td>8</td>
+        <td>11</td>
+        <td>-3</td>
+        <td>1</td>
+        <td>0</td>
+    </tr></tbody>
+        </table></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

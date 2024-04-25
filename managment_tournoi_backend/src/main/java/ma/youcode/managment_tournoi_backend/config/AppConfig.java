@@ -21,4 +21,5 @@ public class AppConfig {
         freeMarkerConfigurationFactory.setTemplateLoaderPath("classpath:/templates");
         return freeMarkerConfigurationFactory;
     }
+
 }

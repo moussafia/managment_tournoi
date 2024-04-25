@@ -7,6 +7,8 @@ import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.repository.AppUserRepository;
 import org.springframework.beans.BeanWrapperImpl;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 public class UniqueEmailUpdateValidator implements ConstraintValidator<UniqueEmailUpdate, Object> {
     private final AppUserRepository userRepository;
@@ -31,7 +33,7 @@ public class UniqueEmailUpdateValidator implements ConstraintValidator<UniqueEma
         if(emailO !=null && userIdO!=null){
             appUser = userRepository.findByEmail(emailO.toString()).orElse(null);
             if(appUser != null){
-                isValid = userIdO.equals(appUser.getId());
+                isValid = UUID.fromString((String) userIdO).equals(appUser.getId());
             }
         }
 
