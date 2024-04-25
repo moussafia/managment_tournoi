@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { data } from 'autoprefixer';
 import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -39,6 +40,12 @@ export class UsersComponent implements OnInit {
   updateUser(idMember : string) {
     this.router.navigateByUrl(`/user/update-member/${idMember}/update-profile/${idMember}`);
    }
-
+   searchMember(event: any){
+    const searchText = event.target.value;
+    console.log(searchText)
+    this.userService.searchMember(searchText).subscribe({
+      next: data => this.memberShowDto = data
+    })
+   }
 }
 

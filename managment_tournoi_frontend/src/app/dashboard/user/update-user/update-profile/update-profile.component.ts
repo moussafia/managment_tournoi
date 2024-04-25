@@ -21,6 +21,8 @@ export class UpdateProfileComponent {
   formUpdateUser?: FormGroup;
   readonly dataState = DataState;
   memberUpdateDto?: UpdateMemberDto;
+  fullNameUserUPdate?:string;
+
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private userService: UserService) { }
 
@@ -39,6 +41,8 @@ export class UpdateProfileComponent {
           lastName: [data.lastName, Validators.required],
           firstName: [data.firstName, Validators.required],
         });
+        this.fullNameUserUPdate = data.firstName + ' ' + data.lastName;
+
       }
     })
 
@@ -58,7 +62,6 @@ export class UpdateProfileComponent {
           this.memberSaveResponse = data as DataResponse<MemberSaveResponseDto, any>
           if(data.dataState === this.dataState.LOADED){
             this.swalSucces(this.memberSaveResponse?.data?.message);
-            this.formUpdateUser?.reset();
           }else if(data.dataState === this.dataState.ERROR){
             let textError = this.generateTextError(this.memberSaveResponse);
             this.swalError(textError);
