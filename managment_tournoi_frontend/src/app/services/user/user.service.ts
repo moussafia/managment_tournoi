@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { MemberSaveResponseDto } from 'src/app/dto/appUserFileDto/createMemberDto/MemberSaveResponseDto';
 import { AppUserRequest } from 'src/app/dto/appUserFileDto/createMemberDto/appUserRequest';
-import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
+import { UpdateMemberDto } from 'src/app/dto/appUserFileDto/updateMemberDto/updateMemberDto';
 import { DataResponse } from 'src/app/dto/data.state.';
 
 @Injectable({
@@ -44,5 +44,14 @@ export class UserService {
   createSingleUser(appUserRequest: AppUserRequest):Observable<DataResponse<MemberSaveResponseDto, any>>{
     
     return this.http.post<any>(`${this.url}/add/member`, appUserRequest);
+  }
+
+  getUserById(idMember: string): Observable<UpdateMemberDto>{
+    return this.http.get<UpdateMemberDto>(`${this.url}/${idMember}`);
+  }
+
+  updateMemberProfile(appUserRequest: UpdateMemberDto):Observable<DataResponse<MemberSaveResponseDto, any>>{
+    
+    return this.http.put<any>(`${this.url}/update/profile`, appUserRequest);
   }
 }

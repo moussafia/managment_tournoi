@@ -13,6 +13,10 @@ import { RuleComponent } from './rule/rule.component';
 import { RulesComponent } from './rule/rules/rules.component';
 import { AddRuleComponent } from './rule/add-rule/add-rule.component';
 import { GetRulesComponent } from './rule/get-rules/get-rules.component';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { UpdateProfileComponent } from './user/update-user/update-profile/update-profile.component';
+import { UpdatePasswordComponent } from './user/update-user/update-password/update-password.component';
+import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
 
 
 const routes: Routes = [
@@ -27,8 +31,15 @@ const routes: Routes = [
       {path:'users', component: UsersComponent},
       {path:'add-users', component: AddUsersComponent},
       {path:'add-user', component: AddUserComponent},
+      {path:'update-member/:id', component: UpdateUserComponent, 
+          children:[
+            {path:'update-profile/:id', component: UpdateProfileComponent},
+            {path:'update-password/:id', component: UpdatePasswordComponent},
+            {path:'assign-role/:id', component: AssignRoleComponent},
+            {path:'', redirectTo: 'update-profile/default-id', pathMatch: 'full'}
+          ]
+      },
       {path:'', redirectTo: 'users' , pathMatch: 'full'},
-
     ]
     },   
     { path:'team', 
@@ -47,7 +58,6 @@ const routes: Routes = [
       {path:'add-rule', component: AddRuleComponent},
       {path:'get-rules', component: GetRulesComponent},
       {path:'', redirectTo: 'rules' , pathMatch: 'full'},
-
     ]
     },   
     { path: '', redirectTo: 'home', pathMatch: 'full'}

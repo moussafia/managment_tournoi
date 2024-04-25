@@ -25,6 +25,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsersComponent } from './user/users/users.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { UpdateUserComponent } from './user/update-user/update-user.component';
+import { UpdateProfileComponent } from './user/update-user/update-profile/update-profile.component';
+import { UpdatePasswordComponent } from './user/update-user/update-password/update-password.component';
+import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
 
 
 
@@ -43,7 +47,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     GetRulesComponent,
     RulesComponent,
     AddRuleComponent,
-    UsersComponent
+    UsersComponent,
+    UpdateUserComponent,
+    UpdateProfileComponent,
+    UpdatePasswordComponent,
+    AssignRoleComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +70,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BrowserAnimationsModule,
     SweetAlert2Module,
     ReactiveFormsModule
-
   ],
   providers:[
 ]

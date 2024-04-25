@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
   memberShowDto?:MemberShowDto[];
@@ -14,7 +15,7 @@ export class UsersComponent implements OnInit {
   pageIndex: number = 0;
   totalItems: number = 0;
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute){}
   ngOnInit(): void {
    this.loadMembers()
   }
@@ -32,8 +33,12 @@ export class UsersComponent implements OnInit {
         next: data => {
           this.memberShowDto = data.content
           this.totalItems = data.totalElements
-        },
-        error: error => console.log(error)
+        }
       })
   }
+  updateUser(idMember : string) {
+    this.router.navigateByUrl(`/user/update-member/${idMember}/update-profile/${idMember}`);
+   }
+
 }
+

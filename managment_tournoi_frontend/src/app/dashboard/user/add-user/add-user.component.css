@@ -59,3 +59,6 @@ main-loader {
     opacity: 0.1;
   }
 }
+.ng-star-inserted{
+  height: auto !important;
+}
