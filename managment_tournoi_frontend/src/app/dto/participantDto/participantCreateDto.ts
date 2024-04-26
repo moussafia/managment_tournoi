@@ -2,7 +2,7 @@ import { TeamCreateDto } from "../teamDto/teamCreateDto";
 
 export interface ParticipantCreateDto {
     usersIds: string[];
-    team: TeamCreateDto;
-    logo: File;
+    team: string;
+    logo: any;
     numberOfParticipants: number;
 }
