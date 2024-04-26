@@ -17,5 +17,5 @@ public interface AppUserService {
     AppUser updateMemberProfile(AppUser member);
     AppUser updatePassword(UUID memberId, String oldPassword, String newPassword);
     Page<AppUser> getAllMembers(Pageable pageable);
-    List<AppUser> searchUser(String keyword, Pageable pageable);
+    Page<AppUser> searchUser(String keyword, Pageable pageable);
 }

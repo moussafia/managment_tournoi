@@ -123,9 +123,13 @@ public class MemberController {
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
     }
     @GetMapping("/search")
-    public ResponseEntity<List<MemberShowDto>> searchUsers(@RequestParam("keyword") String keyword) {
-        List<AppUser> appUserList = userService.searchUser(keyword, PageRequest.of(0,4));
-        List<MemberShowDto> membersDtos =  appUserList.stream().map(AppUserMapper.INSTANCE::AppUserToAppUserDto).toList();
+    public ResponseEntity<Page<MemberShowDto>> searchUsers(@RequestParam("keyword") String keyword,
+                                                           @RequestParam(defaultValue = "0") int page,
+                                                           @RequestParam(defaultValue = "10") int size,
+                                                           @RequestParam(defaultValue = "createdAt") String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<AppUser> appUserList = userService.searchUser(keyword, pageable);
+        Page<MemberShowDto> membersDtos =  appUserList.map(AppUserMapper.INSTANCE::AppUserToAppUserDto);
         return ResponseEntity.ok(membersDtos);
     }
 

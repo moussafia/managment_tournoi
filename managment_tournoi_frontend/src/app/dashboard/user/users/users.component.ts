@@ -24,7 +24,6 @@ export class UsersComponent implements OnInit {
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    console.log('page index '+ this.pageIndex +' page size ' + this.pageSize)
     this.loadMembers();
   }
   loadMembers(): void {
@@ -36,15 +35,19 @@ export class UsersComponent implements OnInit {
         }
       })
   }
-  updateUser(idMember : string) {
-    this.router.navigateByUrl(`/user/update-member/${idMember}/update-profile/${idMember}`);
-   }
+
    searchMember(event: any){
     const searchText = event.target.value;
-    console.log(searchText)
-    this.userService.searchMember(searchText).subscribe({
-      next: data => this.memberShowDto = data
+    this.userService.searchMember(searchText, this.pageIndex, this.pageSize).subscribe({
+      next: data => {
+        this.memberShowDto = data.content
+        this.totalItems = data.totalElements
+      }
     })
+   }
+
+   updateUser(idMember : string) {
+    this.router.navigateByUrl(`/user/update-member/${idMember}/update-profile/${idMember}`);
    }
 }
 

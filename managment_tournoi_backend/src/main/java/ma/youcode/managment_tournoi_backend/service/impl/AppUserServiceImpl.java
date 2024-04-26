@@ -104,7 +104,7 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public List<AppUser> searchUser(String keyword, Pageable pageable){
+    public Page<AppUser> searchUser(String keyword, Pageable pageable){
         return appUserRepository.findFirstUserByFirstNameOrLastNameOrderByDateOfCreation(keyword, pageable)
                 .orElseThrow(() -> new EntityNotFoundException("user not found"));
     }

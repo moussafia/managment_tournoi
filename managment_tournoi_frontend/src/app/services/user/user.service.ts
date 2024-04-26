@@ -66,8 +66,8 @@ export class UserService {
   assignRole(roleDto: AssignRoleDto): Observable<DataResponse<MemberShowDto, any>>{
     return this.http.put<any>(`${this.url}/assign/role`, roleDto);
   }
-  searchMember(searchText: string): Observable<any>{
-    return this.http.get<any>( `${this.url}/search?keyword=${searchText}`);
+  searchMember(searchText: string, page: number, size: number): Observable<any>{
+    return this.http.get<any>( `${this.url}/search?keyword=${searchText}&page=${page}&size=${size}`);
 
   }
 }
