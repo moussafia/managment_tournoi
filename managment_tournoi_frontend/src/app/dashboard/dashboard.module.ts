@@ -29,6 +29,7 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { UpdateProfileComponent } from './user/update-user/update-profile/update-profile.component';
 import { UpdatePasswordComponent } from './user/update-user/update-password/update-password.component';
 import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
+import { ClickOutsideDirectiveDirective } from '../directive/click-outside-directive.directive';
 
 
 
@@ -51,7 +52,8 @@ import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.
     UpdateUserComponent,
     UpdateProfileComponent,
     UpdatePasswordComponent,
-    AssignRoleComponent
+    AssignRoleComponent,
+    ClickOutsideDirectiveDirective
   ],
   imports: [
     CommonModule,

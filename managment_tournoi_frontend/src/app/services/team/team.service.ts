@@ -15,5 +15,9 @@ export class TeamService {
     return this.http.get<any>( `${this.url}/edit?page=${page}&size=${size}`);
   }
 
+  getLatestTeam(): Observable<any>{
+
+    return this.http.get<any>( `${this.url}/edit/latest`);
+  }
 
 }

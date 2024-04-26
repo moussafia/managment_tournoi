@@ -14,6 +14,7 @@ export class TeamsComponent implements OnInit {
   pageSize: number = 3;
   pageIndex: number = 0;
   totalItems: number = 0;
+  selectedOption?: string;
 
   constructor(private teamService: TeamService){}
  
@@ -40,5 +41,17 @@ loadTeams(): void {
       }
     })
 }
-
+filterTeams():void{
+  if(this.selectedOption == "latest"){
+    this.teamService.getLatestTeam()
+     .subscribe({
+      next: data => {
+        console.log(data)
+        this.teamShowDto = data
+      }
+    })
+  } else {
+    this.loadTeams();
+  }
+}
 }
