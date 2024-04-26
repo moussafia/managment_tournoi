@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
-import { data } from 'autoprefixer';
 import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
 import { UserService } from 'src/app/services/user/user.service';
 
