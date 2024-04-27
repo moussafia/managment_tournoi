@@ -16,8 +16,11 @@ export class TeamService {
   }
 
   getLatestTeam(): Observable<any>{
-
     return this.http.get<any>( `${this.url}/edit/latest`);
+  }
+  
+  getTeamById(id: any): Observable<any>{
+    return this.http.get<any>( `${this.url}/edit/${id}`);
   }
 
 }

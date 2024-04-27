@@ -17,6 +17,7 @@ import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { UpdateProfileComponent } from './user/update-user/update-profile/update-profile.component';
 import { UpdatePasswordComponent } from './user/update-user/update-password/update-password.component';
 import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
+import { UpdateTeamComponent } from './team/update-team/update-team.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
     children:[
       {path:'teams', component: TeamsComponent},
       {path:'add-team', component: AddTeamComponent},
+      {path:'update-team/:id', component: UpdateTeamComponent},
       {path:'', redirectTo: 'teams' , pathMatch: 'full'},
 
     ]

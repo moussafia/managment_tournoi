@@ -30,6 +30,7 @@ import { UpdateProfileComponent } from './user/update-user/update-profile/update
 import { UpdatePasswordComponent } from './user/update-user/update-password/update-password.component';
 import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
 import { ClickOutsideDirectiveDirective } from '../directive/click-outside-directive.directive';
+import { UpdateTeamComponent } from './team/update-team/update-team.component';
 
 
 
@@ -53,7 +54,8 @@ import { ClickOutsideDirectiveDirective } from '../directive/click-outside-direc
     UpdateProfileComponent,
     UpdatePasswordComponent,
     AssignRoleComponent,
-    ClickOutsideDirectiveDirective
+    ClickOutsideDirectiveDirective,
+    UpdateTeamComponent
   ],
   imports: [
     CommonModule,
