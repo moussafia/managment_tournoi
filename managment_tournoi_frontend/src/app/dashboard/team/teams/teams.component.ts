@@ -14,7 +14,7 @@ export class TeamsComponent implements OnInit {
   pageSize: number = 3;
   pageIndex: number = 0;
   totalItems: number = 0;
-  selectedOption?: string;
+  selectedOption: string = 'all';
 
   constructor(private teamService: TeamService){}
  
@@ -46,7 +46,6 @@ filterTeams():void{
     this.teamService.getLatestTeam()
      .subscribe({
       next: data => {
-        console.log(data)
         this.teamShowDto = data
       }
     })

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ParticipantCreateDto } from 'src/app/dto/participantDto/participantCreateDto';
@@ -12,7 +12,16 @@ export class ParticipantService {
   constructor(private http: HttpClient) { }
 
   createTeam(createTeamDto: ParticipantCreateDto) : Observable<any>{
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
     
-    return this.http.post<any>(this.url, createTeamDto);
+    const formData = new FormData();
+
+    formData.append('usersIds', createTeamDto.usersIds.toString());
+    formData.append('logo', createTeamDto.logo);
+    formData.append('numberOfParticipants', createTeamDto.numberOfParticipants.toString());
+    formData.append('team', createTeamDto.team);
+
+    return this.http.post<any>(this.url, formData, {headers});
   }
 }
