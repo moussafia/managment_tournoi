@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { catchError, of, throwError } from 'rxjs';
+import { catchError, map, of, startWith, throwError } from 'rxjs';
+import { DataResponse, DataState } from 'src/app/dto/data.state.';
+import { DeleteTeamResponseDto } from 'src/app/dto/teamDto/deleteTeamResponseDto';
 import { TeamShowDto } from 'src/app/dto/teamDto/teamShowDto';
 import { ParticipantService } from 'src/app/services/participant/participant.service';
 import { TeamService } from 'src/app/services/team/team.service';
@@ -20,6 +22,9 @@ export class TeamsComponent implements OnInit {
   pageIndex: number = 0;
   totalItems: number = 0;
   selectedOption: string = 'all';
+
+  readonly dataState = DataState;
+  teamDeleteResponseDto?: DataResponse<DeleteTeamResponseDto, any>;
 
   constructor(private teamService: TeamService, private router: Router, private partticipantService: ParticipantService){}
  
@@ -75,20 +80,26 @@ deleteTeam(idTeam: any, idPubLog: string, nameTeam: string) {
     if (result.isConfirmed) {
         this.partticipantService.deleteTeam(idTeam, idPubLog)
         .pipe(
-          catchError(error => of(error.error.message))
+          map(data => {
+            return ({dataState: this.dataState.LOADED, data: data}); 
+          }),
+          startWith({dataState: this.dataState.LOADING})
         )
         .subscribe({
           next: data => {
+            this.teamDeleteResponseDto = data as DataResponse<DeleteTeamResponseDto, any>;
             console.log(data)
-              this.swalSuucess(data.error.text)
-              this.loadTeams();
+            if(data.dataState == this.dataState.LOADED){
+                this.swalSuccess(this.teamDeleteResponseDto.data?.message)
+                this.loadTeams();
+            } 
           }
         })
     }
   });
 }
 
-swalSuucess(message: string){
+swalSuccess(message: any){
     Swal.fire({
       position : "center",
       icon :"success",

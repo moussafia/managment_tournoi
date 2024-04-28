@@ -1,0 +1,84 @@
+<div class="relative">
+    <div class="w-full  overflow-x-hidden border-t flex flex-col items-center justify-center" >
+        <main class="w-full flex p-6 justify-center">
+            <div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
+                <p class="text-xl pb-6 flex items-center ml-12" >
+                    <i class="fas fa-futbol mr-3"></i> Add match
+                </p>
+                <div class="leading-loose" >
+                    <form class="p-10 bg-white rounded shadow-xl" (ngSubmit)="onSubmit()" #formAddMatch="ngForm">
+                        <p class="text-lg text-gray-800 font-medium pb-4">Match information</p>
+                        <div class="mt-2 relative">
+                            <label class="block text-sm text-gray-600" for="cus_email">Arbite</label>
+                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" name="participant" title="participant" type="text" 
+                            (keyup)="searchMemberByName($event)" placeholder="Search participant by name" #inputSearch>
+                            <ul class="bg-white z-10  border max-h-36 fixed show-result" (clickOutside)="handleClickOutside()" *ngIf="showResults">
+                                <li class=" cursor-pointer py-3 px-4 rounded-md text-md border-b-2 gap-4 flex items-center justify-start list-search"
+                                *ngFor="let member of memberShowDto"
+                                (click)="selectParticipant(member.id, member.firstName + ' ' + member.lastName, member.urlPicture)">
+                                    <img src="{{member?.urlPicture}}" class="w-12 h-12 rounded-full" title="{{member?.firstName}} {{member?.lastName}}">
+                                    <p>{{member?.firstName}} {{member?.lastName}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-start items-center flex-wrap gap-6 px-6" *ngIf="selectedUser">
+                            <button class="flex items-center bg-blue-500 text-white mt-6 px-3 rounded-md cursor-pointer hover:bg-blue-400 gap-2"
+                             (click)="deleteSelectedUser(selectedUser.id)">
+                                <p class="pt-2">{{selectedUser.name}}</p>
+                                <div class="border-l-2 border-slate-200  flex-grow ">
+                                    <i class="fas fa-times ml-2"></i>
+                                </div>
+                            </button>
+                        </div>
+
+                        <label for="team" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Select Team</label>
+                        <select class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                       (change)="selectTeam1($event)"> 
+                                <option selected>Choose a team 1</option>
+                                <option *ngFor="let team of teamShowDto" [value]="team.id">
+                                    {{team.nameTeam}}
+                                </option>
+                        </select>
+                        
+                        <label for="team" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Select Team</label>
+                        <select class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        (change)="selectTeam2($event)">
+                                <option selected>Choose a team 2</option>
+                                <option *ngFor="let team of teamShowDto" [value]="team.id">
+                                    {{team.nameTeam}}
+                                </option>
+                        </select>
+                        <label for="level" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Select an level</label>
+                        <select id="selectedLevel" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        [(ngModel)]="selectedLevel" name="selectedLevel">
+                          <option *ngFor="let level of levelEnum" [value]="level">{{level}}</option>
+                        </select>
+                        <div class="mt-4">
+                            <label class="block text-sm text-gray-600" for="cus_name">Team Name</label>
+                            <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" name="dateMatch" [(ngModel)]="dateMatch" 
+                            type="date" required="" placeholder="Team Name">
+                        </div>     
+                        <div class="mt-4 flex justify-center items-center gap-8">
+                            <div class="w-full">
+                                <label class="block text-sm text-gray-600 py-2" for="cus_name">Start  time</label>
+                                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" name="stratTimeMatch" [(ngModel)]="stratTimeMatch"  type="time" required="" placeholder="Start  time">
+                            </div>
+                            <div class="w-full">
+                                <label class="block text-sm text-gray-600 py-2" for="cus_name">End  time</label>
+                                <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" name="endTimeMatch" [(ngModel)]="endTimeMatch"  type="time" required="" placeholder="End  time">
+                            </div>
+                        </div>  
+                        <div class="mt-6">
+                            <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    
+    </div>
+
+         
+</div>
+
+   

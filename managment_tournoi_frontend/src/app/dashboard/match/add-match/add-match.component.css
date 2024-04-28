@@ -77,3 +77,11 @@
   .ng-star-inserted{
     height: auto !important;
   }
+
+.datepicker-container{
+    width: 100% !important;
+}
+.datepicker-container .ng-untouched{
+    width: 100% !important;
+
+}

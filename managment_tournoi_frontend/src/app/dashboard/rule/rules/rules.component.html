@@ -1,1 +1,7 @@
-<p>rules works!</p>
+<div *ngIf="rule" class="p-16">
+    <div *ngFor="let r of rule" class="p-12 text-lg rule">
+        <div [innerHTML]="r.description">
+        </div>
+    </div>
+        
+</div>

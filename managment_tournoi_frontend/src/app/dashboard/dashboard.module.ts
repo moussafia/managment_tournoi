@@ -31,8 +31,9 @@ import { UpdatePasswordComponent } from './user/update-user/update-password/upda
 import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
 import { ClickOutsideDirectiveDirective } from '../directive/click-outside-directive.directive';
 import { UpdateTeamComponent } from './team/update-team/update-team.component';
-
-
+import { GroupComponent } from './group/group.component';
+import { MatchComponent } from './match/match.component';
+import { AddMatchComponent } from './match/add-match/add-match.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import { UpdateTeamComponent } from './team/update-team/update-team.component';
     UpdatePasswordComponent,
     AssignRoleComponent,
     ClickOutsideDirectiveDirective,
-    UpdateTeamComponent
+    UpdateTeamComponent,
+    GroupComponent,
+    MatchComponent,
+    AddMatchComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +77,7 @@ import { UpdateTeamComponent } from './team/update-team/update-team.component';
     MatPaginatorModule,
     BrowserAnimationsModule,
     SweetAlert2Module,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers:[
 ]

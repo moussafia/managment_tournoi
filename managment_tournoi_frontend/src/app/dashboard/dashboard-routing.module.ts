@@ -18,6 +18,9 @@ import { UpdateProfileComponent } from './user/update-user/update-profile/update
 import { UpdatePasswordComponent } from './user/update-user/update-password/update-password.component';
 import { AssignRoleComponent } from './user/update-user/assign-role/assign-role.component';
 import { UpdateTeamComponent } from './team/update-team/update-team.component';
+import { GroupComponent } from './group/group.component';
+import { MatchComponent } from './match/match.component';
+import { AddMatchComponent } from './match/add-match/add-match.component';
 
 
 const routes: Routes = [
@@ -51,6 +54,16 @@ const routes: Routes = [
       {path:'update-team/:id', component: UpdateTeamComponent},
       {path:'', redirectTo: 'teams' , pathMatch: 'full'},
 
+    ]
+    },   
+    { path:'group', 
+    component: GroupComponent,
+    },   
+    { path:'match', 
+    component: MatchComponent,
+    children:[
+      {path:'add-match', component: AddMatchComponent},
+      {path:'', redirectTo: 'add-match' , pathMatch: 'full'},
     ]
     },   
     { path:'rule', 

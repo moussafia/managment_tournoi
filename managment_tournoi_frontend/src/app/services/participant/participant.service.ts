@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DataResponse } from 'src/app/dto/data.state.';
 import { ParticipantCreateDto } from 'src/app/dto/participantDto/participantCreateDto';
 import { ParticipantUpdateDto } from 'src/app/dto/participantDto/participantUpdateDto';
+import { DeleteTeamResponseDto } from 'src/app/dto/teamDto/deleteTeamResponseDto';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +48,7 @@ export class ParticipantService {
     return this.http.put<any>(this.url, formData, {headers});
   }
 
-  deleteTeam(id:any,publicIdLogo: string) {
-    
+  deleteTeam(id:any,publicIdLogo: string): Observable<DataResponse<DeleteTeamResponseDto, any>> {   
     return this.http.delete<any>(`${this.url}?id=${id}&publicIdLogo=${publicIdLogo}`);
   }
 

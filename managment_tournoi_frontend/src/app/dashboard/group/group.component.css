@@ -77,3 +77,27 @@
   .ng-star-inserted{
     height: auto !important;
   }
+
+
+  .container {
+    margin-top: 20px;
+}
+
+h1, h5 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.card-title {
+    color: #007bff;
+}
+
+.list-group-item {
+    background-color: #58a86a; 
+    color: #ffffff;
+}

@@ -6,11 +6,10 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { ClickOutsideDirectiveDirective } from './directive/click-outside-directive.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
     ],
   imports: [
     BrowserModule,
