@@ -15,7 +15,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
-    BrowserAnimationsModule,
     SweetAlert2Module.forRoot()
   ],
   providers: [],

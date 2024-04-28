@@ -75,7 +75,6 @@ import { AddMatchComponent } from './match/add-match/add-match.component';
     CKEditorModule,
     HttpClientModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,
     SweetAlert2Module,
     ReactiveFormsModule,
   ],

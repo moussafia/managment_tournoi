@@ -3,5 +3,9 @@
         <div [innerHTML]="r.description">
         </div>
     </div>
-        
+    <div *ngIf="!rule.length" >
+        <p class="text-center text-4xl text-red-500 font-bold" style="margin-top: 130px;">
+            This moment does not have a rules created
+        </p>
+    </div>   
 </div>
