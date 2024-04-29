@@ -217,7 +217,7 @@ INSERT INTO `participant` (`date_of_creation`, `team_id`, `user_id`) VALUES
 
 CREATE TABLE `rules` (
   `id` bigint(20) NOT NULL,
-  `description` varchar(255) DEFAULT NULL
+  `description` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

@@ -14,7 +14,9 @@ import ma.youcode.managment_tournoi_backend.service.TeamService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -38,8 +40,10 @@ public class TeamGroupController {
         return ResponseEntity.ok(listGroupMapped);
     }
     @DeleteMapping
-    public ResponseEntity<String> deleteAllGrp(){
+    public ResponseEntity<Map<String, String>> deleteAllGrp(){
         teamGroupService.deleteALLGroupTeam();
-        return ResponseEntity.ok("Deleted all groups with success");
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Deleted all groups with success");
+        return ResponseEntity.ok(response);
     }
 }

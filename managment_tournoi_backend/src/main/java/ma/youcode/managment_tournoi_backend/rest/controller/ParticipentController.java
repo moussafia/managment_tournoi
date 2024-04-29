@@ -16,7 +16,9 @@ import ma.youcode.managment_tournoi_backend.service.ParticipentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -39,8 +41,10 @@ public class ParticipentController {
         return ResponseEntity.ok(TeamShowDto.toTeamShowDto(participant, participantShowDtos));
     }
     @DeleteMapping
-    public ResponseEntity<String> deleteTeam(@RequestParam("id") UUID id, @RequestParam("publicIdLogo") String publicIdLogo) {
+    public ResponseEntity<Map<String, String>> deleteTeam(@RequestParam("id") UUID id, @RequestParam("publicIdLogo") String publicIdLogo) {
         participentService.deleteParticipant(id, publicIdLogo);
-        return ResponseEntity.ok("team deleted successfully");
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "team deleted successfully");
+        return ResponseEntity.ok(response);
     }
 }
