@@ -1,17 +1,13 @@
 package ma.youcode.managment_tournoi_backend.rest.controller;
 
 import lombok.RequiredArgsConstructor;
-import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.getDto.MemberShowDto;
 import ma.youcode.managment_tournoi_backend.dto.matchDto.MatchShowDto;
 import ma.youcode.managment_tournoi_backend.dto.matchTeamDto.MatchTeamCreateDto;
-import ma.youcode.managment_tournoi_backend.dto.matchTeamDto.MatchTeamShowDto;
 import ma.youcode.managment_tournoi_backend.entity.Match;
 import ma.youcode.managment_tournoi_backend.entity.MatchTeam;
 import ma.youcode.managment_tournoi_backend.entity.enums.LevelEnum;
 import ma.youcode.managment_tournoi_backend.mapper.MatchMapper;
-import ma.youcode.managment_tournoi_backend.mapper.MatchTeamMapper;
 import ma.youcode.managment_tournoi_backend.service.MatchTeamService;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

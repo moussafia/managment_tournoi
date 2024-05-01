@@ -19,4 +19,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, UUID> {
     Page<AppUser> findAll(Pageable pageable);
     @Query("SELECT u FROM AppUser u WHERE u.firstName LIKE %:keyword% OR u.lastName LIKE %:keyword% ORDER BY u.createdAt DESC")
     Optional<Page<AppUser>> findFirstUserByFirstNameOrLastNameOrderByDateOfCreation(@Param("keyword") String keyWord, Pageable pageable);
+
+    Optional<AppUser> findByEmailIgnoreCaseOrUsernameIgnoreCase(String email, String username);
 }

@@ -37,9 +37,25 @@ spring:
 
 server:
   port: 9000
+
 socceryc:
   seedFakeData: true
 cloudinary:
   cloud_name: dncljj3e2
   api_key: 347914715559372
   api_secret: _rzJHdnfsCuSUG7--vdzLfkAHFo
+
+rsa:
+  public-key: classPath:keys/public.pem
+  private-key: classPath:keys/private.pem
+
+token:
+  access:
+    date-expiration-minute: 50000
+  refresh:
+    date-expiration-minute: 50000
+
+logging:
+  level:
+    org.springframework:
+      security: DEBUG
