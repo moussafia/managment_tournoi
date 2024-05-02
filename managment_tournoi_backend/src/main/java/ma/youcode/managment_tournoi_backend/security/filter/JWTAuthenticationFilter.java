@@ -15,6 +15,7 @@ import ma.youcode.managment_tournoi_backend.security.service.impl.UserDetailsSer
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,6 +30,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -53,12 +55,14 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                 if (jwtService.isTokenValid(jwt, userDetails)) {
                     //update the spring security context by adding a new UsernamePasswordAuthenticationToken
                     SecurityContext context = SecurityContextHolder.createEmptyContext();
+                    System.out.println("authoritiesgg " + userDetails.getAuthorities().stream().map(r->r.getAuthority()).collect(Collectors.joining(",")));
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     context.setAuthentication(authToken);
                     SecurityContextHolder.setContext(context);
-                    //Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+                    Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+                    System.out.println(authorities);
         //  AOP
                 }
             }

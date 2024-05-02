@@ -8,6 +8,7 @@ import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.getDto.MemberShow
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.PasswordRequestUpdateDto;
 import ma.youcode.managment_tournoi_backend.dto.appUserFileDto.updateMemberDto.UpdateMemberDto;
 import ma.youcode.managment_tournoi_backend.dto.roleDto.AssignRoleDto;
+import ma.youcode.managment_tournoi_backend.entity.AppRole;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.mapper.AppUserMapper;
 import ma.youcode.managment_tournoi_backend.service.AppUserService;
@@ -18,13 +19,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/member")
@@ -100,11 +107,15 @@ public class MemberController {
     }
 
     @GetMapping
-        public ResponseEntity<Page<MemberShowDto>> getMembers(
+   // @PreAuthorize("hasRole('ROLE_BDE')")
+    public ResponseEntity<Page<MemberShowDto>> getMembers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "createdAt") String sortBy
     ){
+        Collection<? extends GrantedAuthority> s = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        System.out.println("yassine " + s.size());
+
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         Page<AppUser> allMembers = userService.getAllMembers(pageable);
         Page<MemberShowDto> membersDtos =  allMembers.map(AppUserMapper.INSTANCE::AppUserToAppUserDto);

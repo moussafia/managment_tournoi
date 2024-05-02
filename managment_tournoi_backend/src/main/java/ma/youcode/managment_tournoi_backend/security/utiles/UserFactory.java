@@ -26,10 +26,10 @@ public class UserFactory {
         AppRole admin = roles.stream().filter(r -> r.getName().equals(RoleEnum.ADMIN)).findFirst().orElse(null);
         AppRole delegate = roles.stream().filter(r -> r.getName().equals(RoleEnum.DELEGATE)).findFirst().orElse(null);
         List<AppUser> users = List.of(
-                new AppUser().builder().className("NAMEK").firstName("bilal").lastName("moussafia").role(delegate).username("b.moussafia").email("bilal@gmail.com").password(passwordEncoder.encode("1234")).build(),
-                new AppUser().builder().className("SHARP CODERS").firstName("badar").lastName("moussafia").role(bde).username("bd.moussafia").email("badar@gmail.com").password(passwordEncoder.encode("1234")).build(),
-                new AppUser().builder().className("LA CASA DEL JS").firstName("mehdi").lastName("moussafia").role(member).username("m.moussafia").email("mehdi@gmail.com").password(passwordEncoder.encode("1234")).build(),
-                new AppUser().builder().className("VAN DER LINDE").firstName("maria").lastName("moussafia").role(admin).username("mr.moussafia").email("maria@gmail.com").password(passwordEncoder.encode("1234")).build()
+                new AppUser().builder().className("NAMEK").firstName("bilal").lastName("moussafia").role(delegate).username("b.moussafia").email("bilal@gmail.com").password(passwordEncoder.encode("1234")).urlPicture("https://intranet.youcode.ma/storage/users/profile/412-1662715631.JPG").build(),
+                new AppUser().builder().className("SHARP CODERS").firstName("badar").lastName("moussafia").role(bde).username("bd.moussafia").email("badar@gmail.com").password(passwordEncoder.encode("1234")).urlPicture("https://intranet.youcode.ma/storage/users/profile/393-1662633624.JPG").build(),
+                new AppUser().builder().className("LA CASA DEL JS").firstName("mehdi").lastName("moussafia").role(member).username("m.moussafia").email("mehdi@gmail.com").password(passwordEncoder.encode("1234")).urlPicture("https://intranet.youcode.ma/storage/users/profile/399-1662643673.JPG").build(),
+                new AppUser().builder().className("VAN DER LINDE").firstName("ahmed").lastName("moussafia").role(admin).username("mr.moussafia").email("maria@gmail.com").password(passwordEncoder.encode("1234")).urlPicture("https://intranet.youcode.ma/storage/users/profile/341-1662714609.jpg").build()
         );
         appUserRepository.saveAll(users);
     }
