@@ -1,6 +1,6 @@
 package ma.youcode.managment_tournoi_backend.security.utiles;
 
-import ma.youcode.managment_tournoi_backend.security.service.impl.UserDetailsServiceImpl;
+import ma.youcode.managment_tournoi_backend.security.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,10 +13,10 @@ import java.util.Arrays;
 @Component
 public class SecurityUtil {
 
-    private static UserDetailsServiceImpl userDetailsService;
+    private static UserService userService;
 
-    private SecurityUtil(UserDetailsServiceImpl userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    private SecurityUtil(UserService userService) {
+        this.userService = userService;
     }
 
     /**
@@ -45,7 +45,7 @@ public class SecurityUtil {
             return null;
         } else {
             Jwt jwt = (Jwt) authentication.getPrincipal();
-            return userDetailsService.loadUserByUsername(jwt.getClaim("sub"));
+            return userService.userDetailsService().loadUserByUsername(jwt.getClaim("sub"));
         }
     }
 

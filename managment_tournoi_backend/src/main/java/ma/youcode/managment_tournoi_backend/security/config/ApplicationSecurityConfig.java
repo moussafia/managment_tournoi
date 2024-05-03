@@ -6,6 +6,8 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import lombok.RequiredArgsConstructor;
+import ma.youcode.managment_tournoi_backend.security.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,22 +24,23 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class ApplicationSecurityConfig {
 
-    private RsaKeyConfig rsaKeyConfig;
-    private PasswordEncoder passwordEncoder;
-
-    public ApplicationSecurityConfig(RsaKeyConfig rsaKeyConfig, PasswordEncoder passwordEncoder) {
-        this.rsaKeyConfig = rsaKeyConfig;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private final RsaKeyConfig rsaKeyConfig;
+    private final PasswordEncoder passwordEncoder;
+    private  final UserService userService;
 
     @Bean
-    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService){
+    public AuthenticationProvider authenticationProvider(){
         var authProvider = new DaoAuthenticationProvider();
         authProvider.setPasswordEncoder(passwordEncoder);
-        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setUserDetailsService(getUserDetailsService());
         return authProvider;
+    }
+
+    public UserDetailsService getUserDetailsService() {
+        return userService.userDetailsService();
     }
 
     @Bean

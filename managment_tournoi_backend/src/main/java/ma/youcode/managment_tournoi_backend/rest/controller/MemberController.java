@@ -20,6 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -107,15 +108,19 @@ public class MemberController {
     }
 
     @GetMapping
-   // @PreAuthorize("hasRole('ROLE_BDE')")
+  //  @PreAuthorize("hasAuthority('ROLE_BDE')")
     public ResponseEntity<Page<MemberShowDto>> getMembers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "createdAt") String sortBy
     ){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> s = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        System.out.println("yassine " + s.size());
-
+        System.out.println("yassine authority" + s.size());
+        String sf = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println("yassine name" + sf);
+        Collection<? extends GrantedAuthority> auth = authentication.getAuthorities();
+        System.out.println("Authentication: 2 " + auth.size());
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         Page<AppUser> allMembers = userService.getAllMembers(pageable);
         Page<MemberShowDto> membersDtos =  allMembers.map(AppUserMapper.INSTANCE::AppUserToAppUserDto);
