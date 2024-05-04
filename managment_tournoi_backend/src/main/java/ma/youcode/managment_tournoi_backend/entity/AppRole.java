@@ -20,6 +20,8 @@ public class AppRole implements GrantedAuthority {
     private Long id;
     @Enumerated(EnumType.STRING)
     private RoleEnum name;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<AppUser> users;
 
 
     @Override

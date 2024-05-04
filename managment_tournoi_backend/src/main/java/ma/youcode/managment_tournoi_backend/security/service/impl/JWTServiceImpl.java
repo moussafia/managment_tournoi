@@ -46,6 +46,8 @@ public class JWTServiceImpl implements IJWTService {
     @Override
     public boolean isTokenValid(String jwt, UserDetails userDetails) {
         final String username = extractUserName(jwt);
+        boolean h = (username.equals(userDetails.getUsername()))
+                && !isTokenExpired(jwt);
         return (username.equals(userDetails.getUsername()))
                 && !isTokenExpired(jwt);
     }
@@ -66,7 +68,7 @@ public class JWTServiceImpl implements IJWTService {
                 .issuedAt(instant)
                 .expiresAt(instant.plus(this.dateExpirationAccessToken, ChronoUnit.MINUTES))
                 .issuer("Y.soccer-service")
-                .claim("role",role)
+                .claim("authorities",role)
                 .claim("type_token","ACCESS_TOKEN")
                 .build();
     }

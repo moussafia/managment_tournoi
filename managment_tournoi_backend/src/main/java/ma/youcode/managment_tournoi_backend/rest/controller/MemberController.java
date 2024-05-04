@@ -108,7 +108,7 @@ public class MemberController {
     }
 
     @GetMapping
-  //  @PreAuthorize("hasAuthority('ROLE_BDE')")
+   @PreAuthorize("hasAnyAuthority('BDE', 'MEMBER')")
     public ResponseEntity<Page<MemberShowDto>> getMembers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -116,7 +116,7 @@ public class MemberController {
     ){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> s = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        System.out.println("yassine authority" + s.size());
+        System.out.println("yassine authority" + s.stream().map(a-> a.getAuthority()).collect(Collectors.joining(" ")));
         String sf = SecurityContextHolder.getContext().getAuthentication().getName();
         System.out.println("yassine name" + sf);
         Collection<? extends GrantedAuthority> auth = authentication.getAuthorities();

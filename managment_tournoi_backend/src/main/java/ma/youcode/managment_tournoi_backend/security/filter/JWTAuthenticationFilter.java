@@ -14,6 +14,7 @@ import ma.youcode.managment_tournoi_backend.security.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -60,8 +61,9 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     context.setAuthentication(authToken);
                     SecurityContextHolder.setContext(context);
-                    Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-                    System.out.println("Size of authorities  moussafia " + authorities.size());
+                    Authentication authorities = SecurityContextHolder.getContext().getAuthentication();
+                    System.out.println("Size of authorities moussafia " + authorities.getAuthorities().size());
+                    System.out.println("name of  authentication -----> " + authorities.getName());
         //  AOP
                 }
             }

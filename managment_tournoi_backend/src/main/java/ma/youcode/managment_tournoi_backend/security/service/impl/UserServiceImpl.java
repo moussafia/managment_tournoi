@@ -3,10 +3,15 @@ package ma.youcode.managment_tournoi_backend.security.service.impl;
 import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.repository.AppUserRepository;
 import ma.youcode.managment_tournoi_backend.security.service.UserService;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Component
 public class UserServiceImpl implements UserService {
@@ -24,8 +29,10 @@ public class UserServiceImpl implements UserService {
           @Override
           public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-              return userRepository.findByEmailIgnoreCaseOrUsernameIgnoreCase(username, username)
+              AppUser user =  userRepository.findByEmailIgnoreCaseOrUsernameIgnoreCase(username, username)
                       .orElseThrow(() -> new UsernameNotFoundException("USER NOT FOUND"));
+
+              return new User(user.getEmail(), user.getPassword(), user.getAuthorities());
 
           }
       };

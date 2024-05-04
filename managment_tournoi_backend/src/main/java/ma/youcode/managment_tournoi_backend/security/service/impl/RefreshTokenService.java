@@ -72,8 +72,8 @@ public class RefreshTokenService implements IRefreshTokenService {
                 .map(this::verifyIsRevoked)
                 .orElseThrow(()-> new RuntimeException("refresh token not found"))
                 .getUser();
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-        String accessToken = jwtService.jwtAccessTokenEncoded(user.getUsername(), Instant.now(),
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+        String accessToken = jwtService.jwtAccessTokenEncoded(user.getEmail(), Instant.now(),
                 authentication.getAuthorities(),user.getRole());
         Map<String, String> token = new HashMap<>();
         token.put("access_Token", accessToken);
