@@ -7,6 +7,6 @@ export interface AuthenticationResponseDto {
     username: string;
     email: string;
     role: AppRole;
-    accessToken: string;
-    refreshToken: string;
+    access_token: string;
+    refresh_token: string;
 }

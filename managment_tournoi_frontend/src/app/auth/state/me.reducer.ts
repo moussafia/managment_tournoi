@@ -14,7 +14,7 @@ const InitialMeState : MeState = {
     error: {} as ErrorAuthDto
 }
 
-export const meReducer = createReducer<MeState>(
+export const MeReducer = createReducer<MeState>(
     InitialMeState,
     on(MeApiAction.meUserSuccess,(state, action)=>{
         return {

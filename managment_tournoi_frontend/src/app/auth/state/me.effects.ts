@@ -6,12 +6,12 @@ import { MeApiAction, MePageAction } from './action';
 import { AuthService } from '../auth.service';
 
 @Injectable()
-export class AuthEffects {
+export class MeEffects {
     constructor(private action$: Actions, private authService: AuthService) {}
 
     authUser$ = createEffect(() =>
         this.action$.pipe(
-            ofType(MePageAction.meActionPage),
+            ofType(MePageAction.me),
             concatMap((action) =>
                 this.authService.me().pipe(
                     map((user) => {
