@@ -6,6 +6,7 @@ import ma.youcode.managment_tournoi_backend.entity.AppUser;
 import ma.youcode.managment_tournoi_backend.entity.RefreshToken;
 import ma.youcode.managment_tournoi_backend.exception.EntityNotFoundException;
 import ma.youcode.managment_tournoi_backend.repository.AppUserRepository;
+import ma.youcode.managment_tournoi_backend.security.authDto.AccessTokenRequestDto;
 import ma.youcode.managment_tournoi_backend.security.exception.TokenException;
 import ma.youcode.managment_tournoi_backend.security.repository.RefreshTokenRepository;
 import ma.youcode.managment_tournoi_backend.security.service.IJWTService;
@@ -97,5 +98,14 @@ public class RefreshTokenService implements IRefreshTokenService {
             throw new TokenException(refreshToken.getRefreshToken(), "Refresh token was expired. Please make a new authentication request");
         }
         return refreshToken;
+    }
+
+
+    @Override
+    public void revokeRefreshToken(AccessTokenRequestDto refreshTokenDto){
+        RefreshToken refreshToken = refreshTokenRepository.findByRefreshToken(refreshTokenDto.refreshToken())
+                .orElseThrow(()-> new RuntimeException("refresh token not found"));
+        refreshToken.setRevoked(true);
+        refreshTokenRepository.save(refreshToken);
     }
 }

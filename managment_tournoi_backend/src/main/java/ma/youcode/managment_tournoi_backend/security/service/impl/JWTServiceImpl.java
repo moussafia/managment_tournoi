@@ -68,7 +68,7 @@ public class JWTServiceImpl implements IJWTService {
                 .issuedAt(instant)
                 .expiresAt(instant.plus(this.dateExpirationAccessToken, ChronoUnit.MINUTES))
                 .issuer("Y.soccer-service")
-                .claim("authorities",role)
+                .claim("scope",role)
                 .claim("type_token","ACCESS_TOKEN")
                 .build();
     }

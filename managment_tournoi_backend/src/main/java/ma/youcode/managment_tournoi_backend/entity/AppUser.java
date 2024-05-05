@@ -3,8 +3,8 @@ package ma.youcode.managment_tournoi_backend.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
@@ -36,6 +36,7 @@ public class AppUser implements UserDetails {
     private LocalDateTime deletedAt;
     private LocalDateTime updatedAt;
     private Boolean isDeleted;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private AppRole role;
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -46,6 +47,9 @@ public class AppUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(role);
     }
+
+
+
 
     @Override
     public boolean isAccountNonExpired() {

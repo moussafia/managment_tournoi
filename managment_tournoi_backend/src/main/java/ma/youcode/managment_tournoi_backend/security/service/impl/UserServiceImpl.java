@@ -29,11 +29,8 @@ public class UserServiceImpl implements UserService {
           @Override
           public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-              AppUser user =  userRepository.findByEmailIgnoreCaseOrUsernameIgnoreCase(username, username)
+              return userRepository.findByEmailIgnoreCaseOrUsernameIgnoreCase(username, username)
                       .orElseThrow(() -> new UsernameNotFoundException("USER NOT FOUND"));
-
-              return new User(user.getEmail(), user.getPassword(), user.getAuthorities());
-
           }
       };
     }

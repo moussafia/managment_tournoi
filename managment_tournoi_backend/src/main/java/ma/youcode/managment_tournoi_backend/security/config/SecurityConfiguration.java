@@ -1,5 +1,6 @@
 package ma.youcode.managment_tournoi_backend.security.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import ma.youcode.managment_tournoi_backend.security.filter.JWTAuthenticationFilter;
 import ma.youcode.managment_tournoi_backend.security.handler.CustomAccessDeniedHandler;
@@ -11,9 +12,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -35,7 +38,6 @@ public class SecurityConfiguration {
     private final Http401UnauthorizedEntryPoint unauthorizedEntryPoint;
     private final CustomAccessDeniedHandler accessDeniedHandler;
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -50,7 +52,8 @@ public class SecurityConfiguration {
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-              //   .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+
+                //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) scope
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

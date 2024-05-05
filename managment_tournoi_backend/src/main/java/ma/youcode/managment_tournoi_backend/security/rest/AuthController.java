@@ -39,4 +39,10 @@ public class AuthController {
         AppUser user = authService.me();
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(user));
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@RequestBody @Valid AccessTokenRequestDto accessTokenRequestDto){
+        refreshTokenService.revokeRefreshToken(accessTokenRequestDto);
+        return ResponseEntity.ok("logout with success");
+    }
 }

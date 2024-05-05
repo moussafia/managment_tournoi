@@ -108,7 +108,7 @@ public class MemberController {
     }
 
     @GetMapping
-   @PreAuthorize("hasAnyAuthority('BDE', 'MEMBER')")
+     @PreAuthorize("hasAnyAuthority('BDE', 'MEMBER')")
     public ResponseEntity<Page<MemberShowDto>> getMembers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,

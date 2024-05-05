@@ -51,7 +51,7 @@ rsa:
 
 token:
   access:
-    date-expiration-minute: 1
+    date-expiration-minute: 500000
   refresh:
     date-expiration-minute: 50000
 
