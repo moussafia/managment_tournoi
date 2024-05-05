@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

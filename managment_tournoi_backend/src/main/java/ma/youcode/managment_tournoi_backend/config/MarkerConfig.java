@@ -1,6 +1,5 @@
 package ma.youcode.managment_tournoi_backend.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -9,7 +8,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
 
 @Configuration
-public class AppConfig {
+public class MarkerConfig {
     @Bean
     public ResourceLoader resourceLoader(){
         return new DefaultResourceLoader();

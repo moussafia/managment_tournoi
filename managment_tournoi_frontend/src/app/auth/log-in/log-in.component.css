@@ -1,0 +1,26 @@
+.bg-signIn {
+    position: relative;
+    height: 100vh;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/image/s-l1600.jpg');
+    background-size: cover; 
+    background-position: center; 
+    z-index: -1; 
+}
+
+.background-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
