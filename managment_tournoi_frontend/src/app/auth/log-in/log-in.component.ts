@@ -10,6 +10,8 @@ import { MeState } from '../state/me.reducer';
 import { Router } from '@angular/router';
 import { getUserFailure, getUserSucces } from '../state';
 import { MePageAction } from '../state/action';
+import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
+import { RoleEnum } from 'src/app/dto/enum/roleEnum';
 
 @Component({
   selector: 'app-log-in',
@@ -23,6 +25,11 @@ export class LogINComponent {
   readonly dataState = DataState;
   userResponseDto?: DataResponse<AuthenticationResponseDto, any>;
   textError?: string;
+  memberShowDto?: MemberShowDto;
+
+  readonly roleEnum = RoleEnum;
+
+
   @ViewChild('formAuth') formAuth?: NgForm;
 
   constructor(private authService: AuthService, private store: Store<MeState>, private router:Router){}
@@ -50,7 +57,7 @@ export class LogINComponent {
 
               this.authService.jwt = this.userResponseDto.data.access_token;
               this.authService.refreshToken = this.userResponseDto.data.refresh_token;
-              
+              this.navigateToRoute();
           }
           
           this.formAuth?.resetForm();
@@ -66,6 +73,18 @@ export class LogINComponent {
     })
   }
 
+  navigateToRoute(){
+    this.store.select(getUserSucces).subscribe({
+      next: data => {
+        this.memberShowDto = data;
 
+        if(this.memberShowDto.role.name != this.roleEnum.MEMBER){
+           this.router.navigate(['/home']);
+        }else{
+          console.log("page member")
+        }
+      }
+    })
+  }
 
 }

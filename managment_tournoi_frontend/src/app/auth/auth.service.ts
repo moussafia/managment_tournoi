@@ -71,7 +71,13 @@ export class AuthService {
 
 
   lougout():Observable<LogoutResponseDto>{
+
     
-    return this.http.post<LogoutResponseDto>(`${this.http}/logout`,{refreshToken :  this.refreshToken});
+   const result =  this.http.post<LogoutResponseDto>(`${this.http}/logout`,{refreshToken :  this.refreshToken});
+   localStorage.clear();
+   return result;
   }
+
+
+
 }

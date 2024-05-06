@@ -14,11 +14,7 @@ export class MeEffects {
             ofType(MePageAction.me),
             concatMap((action) =>
                 this.authService.me().pipe(
-                    map((user) => {
-                     console.log("User successfully logged in:", user);
-                        
-                        return MeApiAction.meUserSuccess({user});
-                    }),
+                    map((user) => MeApiAction.meUserSuccess({user})),
                     catchError((error) => of(MeApiAction.meUserFailure({ error })))
                 )
             )

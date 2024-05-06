@@ -77,6 +77,7 @@ import { AddMatchComponent } from './match/add-match/add-match.component';
     MatPaginatorModule,
     SweetAlert2Module,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers:[
 ]

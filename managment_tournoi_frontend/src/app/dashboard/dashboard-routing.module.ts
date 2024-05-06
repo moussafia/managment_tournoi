@@ -21,6 +21,8 @@ import { UpdateTeamComponent } from './team/update-team/update-team.component';
 import { GroupComponent } from './group/group.component';
 import { MatchComponent } from './match/match.component';
 import { AddMatchComponent } from './match/add-match/add-match.component';
+import { AuthGuard } from '../auth/gard/auth.guard';
+import { MemberGuard } from '../auth/gard/member.guard';
 
 
 const routes: Routes = [
@@ -28,7 +30,7 @@ const routes: Routes = [
     path: '', 
   component: DashboardComponent,
   children:[
-    { path:'home', component: HomeComponent },   
+    { path:'home', component: HomeComponent , canActivate: [AuthGuard, MemberGuard]},   
     { path:'user', 
     component: UserComponent ,
     children:[
@@ -44,7 +46,8 @@ const routes: Routes = [
           ]
       },
       {path:'', redirectTo: 'users' , pathMatch: 'full'},
-    ]
+    ],
+    canActivate: [AuthGuard, MemberGuard]
     },   
     { path:'team', 
     component: TeamComponent ,
@@ -73,7 +76,8 @@ const routes: Routes = [
       {path:'add-rule', component: AddRuleComponent},
       {path:'get-rules', component: GetRulesComponent},
       {path:'', redirectTo: 'rules' , pathMatch: 'full'},
-    ]
+    ],
+    canActivate: [AuthGuard]
     },   
     { path: '', redirectTo: 'home', pathMatch: 'full'}
     ]

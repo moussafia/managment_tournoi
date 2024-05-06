@@ -22,7 +22,6 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
 
       this.jwtDecoded = this.authService.tokenDecoded(); 
 
-      console.log("jwt decoded " + this.jwtDecoded)
 
       if(this.jwtDecoded){
 
@@ -30,17 +29,17 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
         const tokenExpDate = new Date(tokenExp * 1000);
         const dateNow = new Date();
 
+
         if(tokenExpDate > dateNow){
 
           request = this.addTokenToRequest(request, this.authService.jwt);
+
           return next.handle(request);
 
-
-        }else{
+        }else{  
 
           return from(this.authService.getAccesToken().pipe(
             mergeMap((data)=>{
-              console.log("acces token from interceptor " + data.access_token);
                 this.authService.jwt = data.access_token;
                 const cloned = this.addTokenToRequest(request, this.authService.jwt);
                 return next.handle(cloned);

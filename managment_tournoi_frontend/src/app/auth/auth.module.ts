@@ -15,7 +15,9 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     FormsModule,
     RouterModule.forChild([
-      {path: '', component: LogINComponent}
+      {path: 'login', component: LogINComponent},
+      {path:'', redirectTo: 'login' , pathMatch: 'full'},
+
     ])
   ]
 })
