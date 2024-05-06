@@ -17,6 +17,8 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
+    
     const isLogIn = this.authService.isLogIn;
     if(isLogIn){
 
@@ -41,6 +43,7 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
           return from(this.authService.getAccesToken().pipe(
             mergeMap((data)=>{
                 this.authService.jwt = data.access_token;
+                console.log('refreshToken ' + data.access_token)
                 const cloned = this.addTokenToRequest(request, this.authService.jwt);
                 return next.handle(cloned);
               })

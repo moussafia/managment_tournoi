@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.loadMembers();
   }
-  loadMembers(): void {
+  loadMembers(): void { 
     this.userService.getAllMembers(this.pageIndex, this.pageSize)
       .subscribe({
         next: data => {
