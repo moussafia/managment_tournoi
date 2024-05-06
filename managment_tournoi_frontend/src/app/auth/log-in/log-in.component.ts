@@ -78,6 +78,7 @@ export class LogINComponent {
       next: data => {
         this.memberShowDto = data;
 
+        console.log("LOGiN DATA" + this.memberShowDto.role.name)
         if(this.memberShowDto.role.name != this.roleEnum.MEMBER){
            this.router.navigate(['/home']);
         }else{

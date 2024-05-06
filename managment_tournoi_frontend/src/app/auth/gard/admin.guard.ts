@@ -3,18 +3,26 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MeState } from '../state/me.reducer';
+import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
+import { RoleEnum } from 'src/app/dto/enum/roleEnum';
+import { getUserSucces } from '../state';
+import { MePageAction } from '../state/action';
+import { GuardHelper } from './gard.helper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
 
-  constructor(private store: Store<MeState>, private router: Router){}
+  readonly roleEnum = RoleEnum;
+  constructor(private guardHelper: GuardHelper){}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    const admin = this.roleEnum.ADMIN;
+    return this.guardHelper.checkAccesPagePermission(admin, admin, admin);
+
   }
+
+    
   
 }
