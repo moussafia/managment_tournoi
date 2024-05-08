@@ -1,5 +1,5 @@
 
 export interface AccesTokenResponse{
-    access_token: string;
+    access_Token: string;
 
 }

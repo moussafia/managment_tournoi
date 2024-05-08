@@ -66,9 +66,7 @@ export class AuthService {
 
   }
 
-  getAccesToken():Observable<AccesTokenResponse>{
-    console.log(this.refreshToken)
- 
+  getAccesToken():Observable<AccesTokenResponse>{ 
     return this.http.post<AccesTokenResponse>(`${this.url}/token`,{refreshToken: this.refreshToken});
   }
 
