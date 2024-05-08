@@ -50,6 +50,7 @@ export class LogINComponent {
       catchError(error => of({dataState: this.dataState.ERROR, error: error.error.message }))
     ).subscribe({
       next: data => {
+        console.log("auth logIn " + data.dataState)
         this.userResponseDto = data as DataResponse<AuthenticationResponseDto, any>
         if(data.dataState === this.dataState.LOADED){
 
@@ -78,7 +79,6 @@ export class LogINComponent {
       next: data => {
         this.memberShowDto = data;
 
-        console.log("LOGiN DATA" + this.memberShowDto.role.name)
         if(this.memberShowDto.role.name != this.roleEnum.MEMBER){
            this.router.navigate(['/home']);
         }else{

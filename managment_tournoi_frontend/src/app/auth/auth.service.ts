@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthenticationRequestDto } from './dto/AuthenticationRequestDto';
-import { Observable, map, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DataResponse } from '../dto/data.state.';
 import { AuthenticationResponseDto } from './dto/AuthenticationResponseDto';
 import { MemberShowDto } from '../dto/appUserFileDto/getDto/memberShowDto';
 import { TokenDecoced } from './dto/TokenDecoded';
 import { jwtDecode } from 'jwt-decode';
-import { AccessTokenRequestDto } from './dto/AccessTokenRequestDto';
 import { AccesTokenResponse } from './dto/AccesTokenResponse';
 import { LogoutResponseDto } from './dto/LogoutResponseDto';
+import { AccessTokenRequestDto } from './dto/AccessTokenRequestDto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,8 @@ export class AuthService {
 
   private static readonly _jwt_key="accessToken";
   private static readonly _jwtRefresh_key="refreshToken";
+
+  accessTokenRequest?: AccessTokenRequestDto;
 
   url: string = 'http://localhost:9000/api/v1/auth';
 
@@ -65,15 +67,17 @@ export class AuthService {
   }
 
   getAccesToken():Observable<AccesTokenResponse>{
-
-    return this.http.post<AccesTokenResponse>(`${this.http}/token`,{refreshToken: this.refreshToken});
+    console.log(this.refreshToken)
+ 
+    return this.http.post<AccesTokenResponse>(`${this.url}/token`,{refreshToken: this.refreshToken});
   }
 
 
   lougout():Observable<LogoutResponseDto>{
 
-    
-   const result =  this.http.post<LogoutResponseDto>(`${this.http}/logout`,{refreshToken :  this.refreshToken});
+    this.accessTokenRequest = {refreshToken :  this.refreshToken};
+
+   const result =  this.http.post<LogoutResponseDto>(`${this.http}/logout`,this.accessTokenRequest);
    localStorage.clear();
    return result;
   }
