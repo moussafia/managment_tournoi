@@ -131,6 +131,16 @@
 				{
 					"name": "getMembers",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiYWRhckBnbWFpbC5jb20iLCJpc3MiOiJZLnNvY2Nlci1zZXJ2aWNlIiwiZXhwIjoxNzQ0ODk4NTI3LCJpYXQiOjE3MTQ4OTg1MjcsImF1dGhvcml0aWVzIjoiQkRFIiwidHlwZV90b2tlbiI6IkFDQ0VTU19UT0tFTiJ9.BdOq4BNf554r93TbheWOaWZnfsMAFphLvYXwW7EawVyVS_2YZGupC14ppVLuy77HC9SsPSyf4hHpdhax-CgMpk3ni-jUGcqOEbhjXJ_524H5RjnjCab9GKaidM2B6e04xBN2ejsv0XCCMxq-gg0q4K3hEDHAaFkvjrPycajIW2aP9bcioiabwfB4QLEZ-2GJUgD8vnm4Trl6RkKoPetKcirhT9_qwKpMjFLUKd6yaxSHda4jYWEuPaQbnb-btfCwVuwZiEdclC8zDJ0DJN5-fWwBYtXXwjPAExW7pSzbfQ0nh-iTtCiHKtqre7-pDnHELtwILkLe-_ibyT02zsnW-g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -229,7 +239,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9000/api/v1/member/search?keyword=b",
+							"raw": "http://localhost:9000/api/v1/member/search?keyword=b&page=0&size=3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -245,6 +255,14 @@
 								{
 									"key": "keyword",
 									"value": "b"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "3"
 								}
 							]
 						}
@@ -812,6 +830,148 @@
 									"value": "13:30:00",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMatchToday",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"badar@gmail.com\",\n    \"password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/auth/logIn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refreshToken",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"OGM4OWQ5YzktMTgxOC00OGQ2LTk0MGEtNWUyNjA5YzBiOGQ2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/api/v1/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiYWRhckBnbWFpbC5jb20iLCJpc3MiOiJZLnNvY2Nlci1zZXJ2aWNlIiwiZXhwIjoxNzQ0ODk2ODA3LCJpYXQiOjE3MTQ4OTY4MDcsImF1dGhvcml0aWVzIjoiQkRFIiwidHlwZV90b2tlbiI6IkFDQ0VTU19UT0tFTiJ9.YL4purbqYHdK24BsGpxVjuLA2P_Y4Y_TrTHsZea37DpQ5IIxNQ3a56-m64xNyXufKccBW_Ayh94YDD9aY3bI9FzLil9PJ3XBLgOhzzF2nfxAqhl-PyWGR6dHBB9aFUAMsR7hfNfad9wHb0_mhwwRTQ9rTjaalTZmsH6Yx0uDdwdPxmF0EhbP6D7cAu8MzHvEjS-BKkd35R5gUBHIWFU0v3Iak2U6-cN-ZiGbhmdAn1Ui4raNusOpuAqEa83qMYxlv7QftBTwSDZ84Zx225IUWPG06L9frbrGs5q3pKgZ6UnzhDUi8x7XpwSwQ_WtG9v8L6GapQ8wZ0TbVZP1M2l4Sg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/api/v1/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
 							]
 						}
 					},

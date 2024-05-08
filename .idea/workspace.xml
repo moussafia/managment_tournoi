@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f5a3cbb6-1301-475f-a35d-e02f2fcdba05" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/rest/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/rest/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/authDto/AccessTokenRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/authDto/AccessTokenRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managment_tournoi_frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/postMan/managmentTournoiYC.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/postMan/managmentTournoiYC.postman_collection.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,15 +32,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mugiwara/Bureau/managment_tournoi_football_youcode",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,6 +66,7 @@
       <updated>1708091244448</updated>
       <workItem from="1708091248762" duration="75000" />
       <workItem from="1708104153767" duration="110000" />
+      <workItem from="1715192803874" duration="3312000" />
     </task>
     <servers />
   </component>

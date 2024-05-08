@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/managementFootYc?createDatabaseIfNotExist=true
+    url: jdbc:mysql://${DB_SERVER:localhost}:${DB_SERVER_PORT:3306}/${MYSQL_DATABASE:managementFootYc}?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password:
@@ -51,7 +51,7 @@ rsa:
 
 token:
   access:
-    date-expiration-minute: 500000
+    date-expiration-minute: 1
   refresh:
     date-expiration-minute: 50000
 

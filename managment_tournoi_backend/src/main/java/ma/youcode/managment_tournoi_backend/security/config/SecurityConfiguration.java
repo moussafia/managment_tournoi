@@ -49,11 +49,12 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(request ->
                         request
                                 .requestMatchers(new AntPathRequestMatcher("/api/v1/auth/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/actuator/**")).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) scope
+                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
