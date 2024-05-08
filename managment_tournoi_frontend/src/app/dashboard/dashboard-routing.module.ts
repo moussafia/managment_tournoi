@@ -23,7 +23,6 @@ import { MatchComponent } from './match/match.component';
 import { AddMatchComponent } from './match/add-match/add-match.component';
 import { AuthGuard } from '../auth/gard/auth.guard';
 import { BdeGuard } from '../auth/gard/bde.guard';
-import { AdminGuard } from '../auth/gard/admin.guard';
 
 
 const routes: Routes = [

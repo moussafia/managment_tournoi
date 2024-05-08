@@ -34,8 +34,6 @@ export class AccessTokenInterceptor implements HttpInterceptor {
 
     request = InterceptorHelper.addTokenToRequest(request, this.authService.jwt);
 
-    console.log('token from interc ' + this.authService.jwt)
-
     return next.handle(request);
   }
 }

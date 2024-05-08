@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { MeState } from '../state/me.reducer';
 import { Router } from '@angular/router';
-import { getUserFailure, getUserSucces } from '../state';
+import {  getUserSucces } from '../state';
 import { MePageAction } from '../state/action';
 import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
 import { RoleEnum } from 'src/app/dto/enum/roleEnum';

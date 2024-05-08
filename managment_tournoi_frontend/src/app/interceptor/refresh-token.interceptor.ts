@@ -48,8 +48,6 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
    
     this.tokenRefreshed$.next(false);
 
-    //authUtils.removeAccessToken();
-
     return this.authService.getAccesToken().pipe(
       concatMap((res: AccesTokenResponse) => {
 
