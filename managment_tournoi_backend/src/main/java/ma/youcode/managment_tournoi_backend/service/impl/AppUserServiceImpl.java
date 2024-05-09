@@ -41,7 +41,7 @@ public class AppUserServiceImpl implements AppUserService {
             member.setCreatedAt(LocalDateTime.now());
             member.setIsDeleted(Boolean.FALSE);
             member.setRole(roleMember);
-           // mailUtil.sendMail(member, password);
+            mailUtil.sendMail(member, password);
         }
         List<AppUser> appUserList = userRepository.saveAll(members);
         return appUserList.size() == members.size();

@@ -23,8 +23,8 @@
 
 
     </div>
-    <div>
-        <div class="text-red-600 h-100 text-center text-4xl mt-32" *ngIf="groupResponseCreateDto.data.length == 0">
+    <div *ngIf="!groupResponseCreateDto.data.length">
+        <div class="text-red-600 h-100 text-center text-4xl mt-32" >
             <p>No groups available for this moment </p>
         </div>
     </div>

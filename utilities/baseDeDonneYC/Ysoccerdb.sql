@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : mer. 17 avr. 2024 à 14:34
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.1.25
+-- Hôte : y-soccer-database
+-- Généré le : jeu. 09 mai 2024 à 18:31
+-- Version du serveur : 8.4.0
+-- Version de PHP : 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `managementFootYc`
+-- Base de données : `Ysoccerdb`
 --
 
 -- --------------------------------------------------------
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `app_role` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
   `name` enum('ADMIN','MEMBER','BDE','DELEGATE') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `app_role`
@@ -45,6 +45,17 @@ INSERT INTO `app_role` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `app_role_users`
+--
+
+CREATE TABLE `app_role_users` (
+  `app_role_id` bigint NOT NULL,
+  `users_id` binary(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `app_user`
 --
 
@@ -52,7 +63,7 @@ CREATE TABLE `app_user` (
   `is_deleted` bit(1) DEFAULT NULL,
   `created_at` datetime(6) DEFAULT NULL,
   `deleted_at` datetime(6) DEFAULT NULL,
-  `role_id` bigint(20) DEFAULT NULL,
+  `role_id` bigint DEFAULT NULL,
   `updated_at` datetime(6) DEFAULT NULL,
   `id` binary(16) NOT NULL,
   `class_name` varchar(255) DEFAULT NULL,
@@ -62,7 +73,7 @@ CREATE TABLE `app_user` (
   `password` varchar(255) DEFAULT NULL,
   `url_picture` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `app_user`
@@ -72,6 +83,8 @@ INSERT INTO `app_user` (`is_deleted`, `created_at`, `deleted_at`, `role_id`, `up
 (b'0', '2024-04-17 12:58:02.000000', NULL, 2, NULL, 0x0adcfd6c48a4494fa170873a924131f3, 'La casa de JS', 'ethan.lewis@example.com', 'Stanton', 'Rayleen', '$2a$10$jk8NMTqmriBmAzLAcZbvDemhoww7RhMHqH8V2TVly69uM97NwmT3G', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 's.rayleen9'),
 (b'0', '2024-04-17 12:58:02.000000', NULL, 2, NULL, 0x0ea21cbd14cc4568b25a0bd3e2bc0632, 'La casa de JS', 'benjamin.harris@example.com', 'Rojas', 'Aaron', '$2a$10$NqfLnLvx8yRXSsIHjIe5q.VqkujQPl4AoSrnU.02fu7UvTHGOP7jG', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'r.aaron72'),
 (b'0', '2024-04-17 12:58:04.000000', NULL, 2, NULL, 0x120bd2b44cc8451d9fd8f308a9d9a3f7, 'Vander linde', 'gabriel.bell@example.com', 'Singleton', 'Raven', '$2a$10$CyFe9NQPE.YGpLn72rsReedafXdNIy2qX.FlBggL3NxqScOr598/m', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 's.raven34'),
+(NULL, NULL, NULL, 1, NULL, 0x1a17ad53934c433d9378e8fbeb9908fe, 'VAN DER LINDE', 'ahmed@gmail.com', 'ahmed', 'moussafia', '$2a$10$C2IJoPaA/Pwadnk.LbuJZ.YNNYOSGc.xDVxCpHrT.Mez4nsuBdYqy', 'https://intranet.youcode.ma/storage/users/profile/341-1662714609.jpg', 'ah.moussafia'),
+(NULL, NULL, NULL, 3, NULL, 0x1d253a098c3e401fb7843ef67e9a5353, 'SHARP CODERS', 'badar@gmail.com', 'badar', 'moussafia', '$2a$10$SmETC7UMVSClgCtgMm2kn.uz5tIfMpoSE8zBnKaeS6DFTJ4dNImSG', 'https://intranet.youcode.ma/storage/users/profile/393-1662633624.JPG', 'bd.moussafia'),
 (b'0', '2024-04-17 12:58:01.000000', NULL, 2, NULL, 0x1ecc4c79f85340e18df467fbd7db8527, 'NAMEK', 'john.doe@example.com', 'Pierce', 'Heath', '$2a$10$uEWWU/tZI5KsBrYerj5BAO2MRp719frvMPnzBTememxY/lFFOFNJy', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'p.heath70'),
 (b'0', '2024-04-17 12:58:01.000000', NULL, 2, NULL, 0x2080f263ca5d4737ac4400f2ecc24e77, 'NAMEK', 'm.moussafia99@gmail.com', 'moussafia', 'mohammed', '$2a$10$qajwl/PEEURKkvI8b1WU7uzrAiPiaKEmmHWdGDEAAPA27q4GT6oOu', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'm.mohammed36'),
 (b'0', '2024-04-17 12:58:03.000000', NULL, 2, NULL, 0x2cb8d04165664a338b841ea1af912b43, 'La casa de JS', 'matthew.edwards@example.com', 'Calhoun', 'Ace', '$2a$10$nxxEF44D7VbdDjAg4ZywROx9QBminTduz35id0J6n6dw2tDyDWK9S', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'c.ace43'),
@@ -84,6 +97,7 @@ INSERT INTO `app_user` (`is_deleted`, `created_at`, `deleted_at`, `role_id`, `up
 (b'0', '2024-04-17 12:58:04.000000', NULL, 2, NULL, 0x7f510d52d1704a2982262477720a7631, 'Vander linde', 'evelyn.ward@example.com', 'Dorsey', 'Brighton', '$2a$10$5iPN.a46ClsPjfd.UX1AteDloR1twXFxd0b14C.TlxuimbchwWMra', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'd.brighton12'),
 (b'0', '2024-04-17 12:58:01.000000', NULL, 2, NULL, 0x81523e1a17d54b41a3b95f3cfb9479f5, 'NAMEK', 'moussafia.mohammed1999@gmail.com', 'ahmed', 'moussafia', '$2a$10$jUGFrsRVvCVmrt..iMB.ZOuQOMC9efz5nrB6adtG4YW3R0dyCplGu', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'a.moussafia46'),
 (b'0', '2024-04-17 12:58:02.000000', NULL, 2, NULL, 0x960bc95506c44c1b991d7ece47ba2e35, 'La casa de JS', 'mia.robinson@example.com', 'Navarro', 'Nicolas', '$2a$10$j1pal7epH83QE6AjY22TO.ogG8j1kJonuRuIpy.cVl495mIktxSZe', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'n.nicolas40'),
+(NULL, NULL, NULL, 2, NULL, 0x9780c53ec0474ce69aa12c4476733776, 'LA CASA DEL JS', 'mehdi@gmail.com', 'mehdi', 'moussafia', '$2a$10$jDwGMOT32ncTP0FEVvrRlOLzjmfcnXFl9LQ9xTZZZrfQ2/9M8RW8q', 'https://intranet.youcode.ma/storage/users/profile/399-1662643673.JPG', 'm.moussafia'),
 (b'0', '2024-04-17 12:58:01.000000', NULL, 2, NULL, 0x9946c22037fa428cb09b45a60fc00204, 'NAMEK', 'michael.wilson@example.com', 'Campbell', 'Taye', '$2a$10$QE.IUtCWBAUBHg9I7vE5rev7aKuB8Kxu6Mp8s/LIR7N/U.QSrV77u', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'c.taye55'),
 (b'0', '2024-04-17 12:58:03.000000', NULL, 2, NULL, 0x9b5974f448e84d02881b4fbd57ebad2e, 'Vander linde', 'aiden.cooper@example.com', 'Gallegos', 'Alice', '$2a$10$S4eeV6iRCdOzRv1YNgPmN.eXmbcprW5owW5g3bbStFOGo2donABni', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'g.alice56'),
 (b'0', '2024-04-17 12:58:03.000000', NULL, 2, NULL, 0x9cd29456ad95415d9c1c531e24452d36, 'La casa de JS', 'zoey.carter@example.com', 'Bell', 'Luke', '$2a$10$frpDicZxY4LDRBCKTQ9Swe06F2EZZ23GcoZSyqPFWDZ6CWc/Ecq/W', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'b.luke14'),
@@ -96,6 +110,7 @@ INSERT INTO `app_user` (`is_deleted`, `created_at`, `deleted_at`, `role_id`, `up
 (b'0', '2024-04-17 12:58:02.000000', NULL, 2, NULL, 0xbd60a7166a6043ffa68743d1d23acf11, 'NAMEK', 'sarah.miller@example.com', 'Joyce', 'Rebecca', '$2a$10$FAwuG4q.Kf7plxMr2ex6duHIV.bjvB1S8hVyViBNWCYL7usGXtaXi', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'j.rebecca96'),
 (b'0', '2024-04-17 12:58:04.000000', NULL, 2, NULL, 0xbf25576463324af88924718907847e2b, 'Vander linde', 'riley.murphy@example.com', 'Hart', 'Susannah', '$2a$10$Q/7NRDaE0/eodqNm21jPmOZI6hvphqDQysTQXp7r1xhZjgwe8Af96', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'h.susannah67'),
 (b'0', '2024-04-17 12:58:02.000000', NULL, 2, NULL, 0xc7fd616afe3544fd859e4450d79bd51f, 'NAMEK', 'laura.davis@example.com', 'Jordan', 'Bree', '$2a$10$sh4.zK5Dj7HSiHbWaskxhuPV6A76ZpgXhbszsSPPonhqEUq.v282S', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'j.bree51'),
+(NULL, NULL, NULL, 4, NULL, 0xc98e4fc46c244ab88bc24fa3e2217a37, 'NAMEK', 'bilal@gmail.com', 'bilal', 'moussafia', '$2a$10$8VlDJFQ/lc6xz9zXuElsSOUry8l2d8bMMO/pgBQaeG.EryLjbWTu6', 'https://intranet.youcode.ma/storage/users/profile/412-1662715631.JPG', 'b.moussafia'),
 (b'0', '2024-04-17 12:58:03.000000', NULL, 2, NULL, 0xc9b477ea0d4846e6805fbd6ed6155c7f, 'La casa de JS', 'lily.hall@example.com', 'Mccarty', 'Matteo', '$2a$10$ptuUm00RUrpVBaQ3bvUd7eMong2XBHSEi.k.e99H49XYVCn7DGeT2', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'm.matteo25'),
 (b'0', '2024-04-17 12:58:04.000000', NULL, 2, NULL, 0xccaa6a7acece44e2812e0ad0a30eface, 'Vander linde', 'jaxon.richards@example.com', 'Huang', 'Cameron', '$2a$10$dAMVGlcF6dDtE8qr6lEiFeqGqDae6/agUywB8/En5DFp5GcHZeKWK', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'h.cameron61'),
 (b'0', '2024-04-17 12:58:02.000000', NULL, 2, NULL, 0xd55b7f6dbee545618936d7630368eb7f, 'La casa de JS', 'alexander.hill@example.com', 'Weeks', 'Jordon', '$2a$10$iTKV3HKxjQCIxVbm15gVCexKmUdAvbsM0C57Go7BHRBSso4crC4RO', 'https://intranet.youcode.ma/storage/users/profile/395-1662642887.JPG', 'w.jordon29'),
@@ -117,9 +132,17 @@ INSERT INTO `app_user` (`is_deleted`, `created_at`, `deleted_at`, `role_id`, `up
 --
 
 CREATE TABLE `group` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint NOT NULL,
   `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `group`
+--
+
+INSERT INTO `group` (`id`, `name`) VALUES
+(1, 'A'),
+(2, 'B');
 
 -- --------------------------------------------------------
 
@@ -133,7 +156,7 @@ CREATE TABLE `match` (
   `start_date_match` time(6) DEFAULT NULL,
   `arbitrator_id` binary(16) DEFAULT NULL,
   `code_match` binary(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -145,11 +168,11 @@ CREATE TABLE `match_team` (
   `is_draw` bit(1) NOT NULL,
   `is_passed` bit(1) NOT NULL,
   `is_win` bit(1) NOT NULL,
-  `level` tinyint(4) DEFAULT NULL,
-  `result` int(11) NOT NULL,
+  `level` tinyint DEFAULT NULL,
+  `result` int NOT NULL,
   `match_id` binary(16) NOT NULL,
   `team_id` binary(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -161,7 +184,7 @@ CREATE TABLE `participant` (
   `date_of_creation` datetime(6) DEFAULT NULL,
   `team_id` binary(16) NOT NULL,
   `user_id` binary(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `participant`
@@ -212,13 +235,34 @@ INSERT INTO `participant` (`date_of_creation`, `team_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `refresh_token`
+--
+
+CREATE TABLE `refresh_token` (
+  `revoked` bit(1) NOT NULL,
+  `expiry_date` datetime(6) NOT NULL,
+  `id` bigint NOT NULL,
+  `user_id` binary(16) DEFAULT NULL,
+  `refresh_token` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `refresh_token`
+--
+
+INSERT INTO `refresh_token` (`revoked`, `expiry_date`, `id`, `user_id`, `refresh_token`) VALUES
+(b'0', '6191-01-09 18:30:00.191808', 1, 0x1d253a098c3e401fb7843ef67e9a5353, 'MmI2NzEwMmMtYTVhYi00NzkwLTgwZTUtMGQxNGZkMTBmZWY0');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `rules`
 --
 
 CREATE TABLE `rules` (
-  `id` bigint(20) NOT NULL,
-  `description` TEXT DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` bigint NOT NULL,
+  `description` varchar(10000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -234,7 +278,7 @@ CREATE TABLE `team` (
   `logo` varchar(255) DEFAULT NULL,
   `logo_public_id` varchar(255) DEFAULT NULL,
   `name_team` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `team`
@@ -257,16 +301,29 @@ INSERT INTO `team` (`created_at`, `deleted_at`, `updated_at`, `id`, `logo`, `log
 --
 
 CREATE TABLE `team_group` (
-  `draws` int(11) DEFAULT NULL,
+  `draws` int DEFAULT NULL,
   `is_passed` bit(1) DEFAULT NULL,
-  `losses` int(11) DEFAULT NULL,
-  `points` int(11) DEFAULT NULL,
-  `rank` int(11) DEFAULT NULL,
-  `wins` int(11) DEFAULT NULL,
-  `group_id` bigint(20) DEFAULT NULL,
-  `id` bigint(20) NOT NULL,
+  `losses` int DEFAULT NULL,
+  `points` int DEFAULT NULL,
+  `rank` int DEFAULT NULL,
+  `wins` int DEFAULT NULL,
+  `group_id` bigint DEFAULT NULL,
+  `id` bigint NOT NULL,
   `team_id` binary(16) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `team_group`
+--
+
+INSERT INTO `team_group` (`draws`, `is_passed`, `losses`, `points`, `rank`, `wins`, `group_id`, `id`, `team_id`) VALUES
+(0, b'0', 0, 0, 1000, 0, 1, 1, 0x056a6d75091243048ea54654a595a649),
+(0, b'0', 0, 0, 1000, 0, 1, 2, 0x0fda20450806474eb334dde847118403),
+(0, b'0', 0, 0, 1000, 0, 1, 3, 0x208106c342964f07920e1bdfaaf9cef5),
+(0, b'0', 0, 0, 1000, 0, 1, 4, 0x56fcdaa42c9942aa84cacc1b78950dfb),
+(0, b'0', 0, 0, 1000, 0, 2, 5, 0x7ad46bc254414f83bac02540c9f09a1f),
+(0, b'0', 0, 0, 1000, 0, 2, 6, 0x7e3164722f8043f3a3e7e52d38f0b17b),
+(0, b'0', 0, 0, 1000, 0, 2, 7, 0xbc24b4e4495e40709e7b96870925223b);
 
 --
 -- Index pour les tables déchargées
@@ -277,6 +334,13 @@ CREATE TABLE `team_group` (
 --
 ALTER TABLE `app_role`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `app_role_users`
+--
+ALTER TABLE `app_role_users`
+  ADD UNIQUE KEY `UK_ie3616poxd9w4cv6x9iih1ox1` (`users_id`),
+  ADD KEY `FKjdrvs49iug2a3ark1mnskiix` (`app_role_id`);
 
 --
 -- Index pour la table `app_user`
@@ -315,6 +379,14 @@ ALTER TABLE `participant`
   ADD KEY `FKg8x4qky5kbfthhoyurrm5wo1o` (`user_id`);
 
 --
+-- Index pour la table `refresh_token`
+--
+ALTER TABLE `refresh_token`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UK_mpvu2fmreqp9cqddttyfaym9v` (`refresh_token`),
+  ADD KEY `FKokmnwqgvy26lwiwi7cp8sprew` (`user_id`);
+
+--
 -- Index pour la table `rules`
 --
 ALTER TABLE `rules`
@@ -343,29 +415,42 @@ ALTER TABLE `team_group`
 -- AUTO_INCREMENT pour la table `app_role`
 --
 ALTER TABLE `app_role`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `group`
 --
 ALTER TABLE `group`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `refresh_token`
+--
+ALTER TABLE `refresh_token`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `rules`
 --
 ALTER TABLE `rules`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `team_group`
 --
 ALTER TABLE `team_group`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `app_role_users`
+--
+ALTER TABLE `app_role_users`
+  ADD CONSTRAINT `FKj5b94xojrvflslxlomocoqye8` FOREIGN KEY (`users_id`) REFERENCES `app_user` (`id`),
+  ADD CONSTRAINT `FKjdrvs49iug2a3ark1mnskiix` FOREIGN KEY (`app_role_id`) REFERENCES `app_role` (`id`);
 
 --
 -- Contraintes pour la table `app_user`
@@ -392,6 +477,12 @@ ALTER TABLE `match_team`
 ALTER TABLE `participant`
   ADD CONSTRAINT `FKbe8iv24dwl7nlyuhnwy9c44tt` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`),
   ADD CONSTRAINT `FKg8x4qky5kbfthhoyurrm5wo1o` FOREIGN KEY (`user_id`) REFERENCES `app_user` (`id`);
+
+--
+-- Contraintes pour la table `refresh_token`
+--
+ALTER TABLE `refresh_token`
+  ADD CONSTRAINT `FKokmnwqgvy26lwiwi7cp8sprew` FOREIGN KEY (`user_id`) REFERENCES `app_user` (`id`);
 
 --
 -- Contraintes pour la table `team_group`

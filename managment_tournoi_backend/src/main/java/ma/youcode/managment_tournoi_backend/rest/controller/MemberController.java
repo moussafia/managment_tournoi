@@ -41,6 +41,7 @@ public class MemberController {
     private final AppUserService userService;
 
     @PostMapping("/add/members")
+    @PreAuthorize("hasAnyAuthority('SCOPE_BDE', 'SCOPE_ADMIN')")
     public ResponseEntity<MemberSaveResponseDto> createListMembers(@RequestParam("memberFile") MultipartFile file){
         try {
             ExcelUploadUtil.isValidExcelFile(file);
@@ -75,6 +76,7 @@ public class MemberController {
     }
 
     @PostMapping("add/member")
+    @PreAuthorize("hasAnyAuthority('SCOPE_BDE', 'SCOPE_ADMIN')")
     public ResponseEntity<MemberSaveResponseDto> createMember(@Valid @RequestBody AppUserRequest appUserRequest){
         AppUser member = AppUserMapper.INSTANCE.AppUserFileDtoToAppUser(appUserRequest);
         userService.createMember(member);
@@ -86,6 +88,7 @@ public class MemberController {
     }
 
     @PutMapping("update/profile")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN')")
     public ResponseEntity<MemberSaveResponseDto> updateMemberProfile(@Valid @RequestBody UpdateMemberDto memberDto){
         AppUser member = AppUserMapper.INSTANCE.AppUserFileDtoToAppUser(memberDto);
         userService.updateMemberProfile(member);
@@ -98,6 +101,7 @@ public class MemberController {
 
 
     @PutMapping("update/password")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN')")
     public ResponseEntity<MemberSaveResponseDto> updateMemberPassword(@Valid @RequestBody PasswordRequestUpdateDto passwordDto){
         userService.updatePassword(passwordDto.getMemberId(), passwordDto.getOldPassword(), passwordDto.getNewPassword());
         return ResponseEntity.ok(
@@ -108,7 +112,7 @@ public class MemberController {
     }
 
     @GetMapping
-     @PreAuthorize("hasAnyAuthority('SCOPE_BDE', 'SCOPE_MEMBER')")
+    @PreAuthorize("hasAnyAuthority('SCOPE_BDE', 'SCOPE_ADMIN')")
     public ResponseEntity<Page<MemberShowDto>> getMembers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -128,12 +132,14 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('SCOPE_BDE', 'SCOPE_ADMIN')")
     public ResponseEntity<MemberShowDto> getMemberById(@PathVariable String id){
         UUID idMember = UUID.fromString(id);
         AppUser member = userService.findMemberById(idMember);
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
     }
     @PutMapping("/assign/role")
+    @PreAuthorize("hasAnyAuthority('SCOPE_ADMIN')")
     public ResponseEntity<MemberShowDto> assignRole(@Valid @RequestBody AssignRoleDto assignRoleDto){
         AppUser member = userService.assignRoleToMember(assignRoleDto.getMemberId(), assignRoleDto.getRoleName());
         return ResponseEntity.ok(AppUserMapper.INSTANCE.AppUserToAppUserDto(member));
