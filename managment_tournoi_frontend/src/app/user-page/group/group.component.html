@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h1 class="mb-8 text-2xl font-md ">Groups in the Tournament</h1>
+    <div class="grid grid-cols-2 m-auto gap-10">
+        <ng-container *ngIf="groupResponseCreateDto.data.length > 0">
+            <div class="bg-white h-100">
+                <div class="card-body" *ngFor="let group of groupResponseCreateDto.data">
+                    <h5 class="card-title py-3 text-center">
+                        <i class="fas fa-trophy"></i> Group {{group.name}}
+                    </h5>
+                    <ul class="list-group list-group-flush">
+    
+                        <li class="list-group-item" *ngFor="let team of group.teamGroups; let i = index">
+                            <span class="badge bg-primary px-1">{{i+1}}</span>
+                            {{team.name}}
+                        </li>
+                    </ul>
+    
+                </div>
+            </div>
+        
+        </ng-container>
+    
+
+
+    </div>
+    <div>
+        <div class="text-red-600 h-100 text-center text-4xl mt-32" *ngIf="groupResponseCreateDto.data.length == 0">
+            <p>No groups available for this moment </p>
+        </div>
+    </div>
+</div>

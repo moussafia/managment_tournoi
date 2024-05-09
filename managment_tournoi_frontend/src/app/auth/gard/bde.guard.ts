@@ -18,8 +18,8 @@ export class BdeGuard implements CanActivate {
   constructor(private guardHelper: GuardHelper){}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const bde = this.roleEnum.BDE;
-    return this.guardHelper.checkAccesPagePermission(bde, bde, bde);
+
+    return this.guardHelper.checkAccesPagePermission(this.roleEnum.BDE, this.roleEnum.ADMIN, this.roleEnum.BDE);
 
   }
 

@@ -13,4 +13,4 @@ FROM nginx:latest
 
 COPY --from=build /usr/local/app/dist/managment_tournoi_frontend /usr/share/nginx/html
 
-EXPOSE 42
+EXPOSE 80

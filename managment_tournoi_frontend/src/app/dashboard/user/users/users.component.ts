@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { TokenDecoced } from 'src/app/auth/dto/TokenDecoded';
 import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
+import { RoleEnum } from 'src/app/dto/enum/roleEnum';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -14,9 +17,12 @@ export class UsersComponent implements OnInit {
   pageSize: number = 5;
   pageIndex: number = 0;
   totalItems: number = 0;
+  jwtDecode:TokenDecoced | null = null;
+  readonly roleEnume = RoleEnum
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute){}
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private authService: AuthService){}
   ngOnInit(): void {
+    this.jwtDecode = this.authService.tokenDecoded()
    this.loadMembers()
   }
 

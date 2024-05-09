@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MeState } from '../state/me.reducer';
-import { MemberShowDto } from 'src/app/dto/appUserFileDto/getDto/memberShowDto';
 import { RoleEnum } from 'src/app/dto/enum/roleEnum';
-import { getUserSucces } from '../state';
-import { MePageAction } from '../state/action';
 import { GuardHelper } from './gard.helper';
 
 @Injectable({

@@ -23,6 +23,8 @@ import { MatchComponent } from './match/match.component';
 import { AddMatchComponent } from './match/add-match/add-match.component';
 import { AuthGuard } from '../auth/gard/auth.guard';
 import { BdeGuard } from '../auth/gard/bde.guard';
+import { DelegateGuard } from '../auth/gard/delegate.guard';
+import { AdminGuard } from '../auth/gard/admin.guard';
 
 
 const routes: Routes = [
@@ -30,20 +32,21 @@ const routes: Routes = [
     path: '', 
   component: DashboardComponent,
   children:[
-    { path:'home', component: HomeComponent , canActivate: [AuthGuard, BdeGuard]},   
+    { path:'home', component: HomeComponent , canActivate: [AuthGuard, DelegateGuard]},   
     { path:'user', 
     component: UserComponent ,
     children:[
-      {path:'users', component: UsersComponent},
-      {path:'add-users', component: AddUsersComponent},
-      {path:'add-user', component: AddUserComponent},
+      {path:'users', component: UsersComponent, canActivate:[DelegateGuard]},
+      {path:'add-users', component: AddUsersComponent, canActivate:[DelegateGuard]},
+      {path:'add-user', component: AddUserComponent, canActivate:[DelegateGuard]},
       {path:'update-member/:id', component: UpdateUserComponent, 
           children:[
             {path:'update-profile/:id', component: UpdateProfileComponent},
             {path:'update-password/:id', component: UpdatePasswordComponent},
             {path:'assign-role/:id', component: AssignRoleComponent},
             {path:'', redirectTo: 'update-profile/default-id', pathMatch: 'full'}
-          ]
+          ], 
+          canActivate:[AdminGuard]
       },
       {path:'', redirectTo: 'users' , pathMatch: 'full'},
     ],
@@ -57,17 +60,19 @@ const routes: Routes = [
       {path:'update-team/:id', component: UpdateTeamComponent},
       {path:'', redirectTo: 'teams' , pathMatch: 'full'},
 
-    ]
+    ],
+    canActivate: [DelegateGuard]
     },   
     { path:'group', 
-    component: GroupComponent,
+    component: GroupComponent,  canActivate: [DelegateGuard]
     },   
     { path:'match', 
     component: MatchComponent,
     children:[
       {path:'add-match', component: AddMatchComponent},
       {path:'', redirectTo: 'add-match' , pathMatch: 'full'},
-    ]
+    ],
+    canActivate: [DelegateGuard]
     },   
     { path:'rule', 
     component: RuleComponent ,
@@ -77,7 +82,7 @@ const routes: Routes = [
       {path:'get-rules', component: GetRulesComponent},
       {path:'', redirectTo: 'rules' , pathMatch: 'full'},
     ],
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, DelegateGuard]
     },   
     { path: '', redirectTo: 'home', pathMatch: 'full'}
     ]

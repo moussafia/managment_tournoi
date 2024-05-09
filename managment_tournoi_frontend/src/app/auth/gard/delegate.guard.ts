@@ -18,8 +18,8 @@ export class DelegateGuard implements CanActivate {
   constructor(private guardHelper: GuardHelper){}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const delegate = this.roleEnum.DELEGATE;
-    return this.guardHelper.checkAccesPagePermission(delegate, delegate, delegate);
+    
+    return this.guardHelper.checkAccesPagePermission(this.roleEnum.BDE, this.roleEnum.ADMIN, this.roleEnum.DELEGATE);
 
   }
 }

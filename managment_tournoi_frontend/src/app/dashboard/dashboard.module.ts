@@ -23,7 +23,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsersComponent } from './user/users/users.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { UpdateUserComponent } from './user/update-user/update-user.component';
 import { UpdateProfileComponent } from './user/update-user/update-profile/update-profile.component';
