@@ -1,20 +1,20 @@
 services:
-  Y-soccer-backend-service:
+  y-soccer-backend-service:
     build: ./managment_tournoi_backend
-    container_name: Y-soccer-backend-service
+    container_name: y-soccer-backend-service
     ports:
       - '9000:9000'
     expose:
       - 9000
     depends_on:
-      - y-soccer-database
-      - condition: service_healthy
+       y-soccer-database:
+          condition: service_healthy
     environment:
-      - DB_SERVER: y-soccer-database
-      - MYSQL_DATABASE: Ysoccerdb
-      - MYSQL_ROOT_PASSWORD: ''
-      - MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      - MYSQL_USER: root
+       DB_SERVER: y-soccer-database
+       MYSQL_DATABASE: Ysoccerdb
+       MYSQL_ROOT_PASSWORD: ''
+       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+       MYSQL_USER: root
     healthcheck:
       test: ["CMD" , "curl", "http://localhost:9000/actuator/health"]
       interval: 10s
@@ -55,6 +55,6 @@ networks:
   app-network:
     driver: bridge
 volumes:
-  mysql-data
+  mysql-data:
 
     

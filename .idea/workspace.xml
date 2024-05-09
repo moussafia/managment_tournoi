@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5a3cbb6-1301-475f-a35d-e02f2fcdba05" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/rest/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/rest/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/authDto/AccessTokenRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/authDto/AccessTokenRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/java/ma/youcode/managment_tournoi_backend/security/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managment_tournoi_frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/managment_tournoi_frontend/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities/postMan/managmentTournoiYC.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/postMan/managmentTournoiYC.postman_collection.json" afterDir="false" />
-    </list>
+    <list default="true" id="f5a3cbb6-1301-475f-a35d-e02f2fcdba05" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +56,7 @@
       <updated>1708091244448</updated>
       <workItem from="1708091248762" duration="75000" />
       <workItem from="1708104153767" duration="110000" />
-      <workItem from="1715192803874" duration="3312000" />
+      <workItem from="1715192803874" duration="3596000" />
     </task>
     <servers />
   </component>
