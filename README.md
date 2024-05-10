@@ -83,33 +83,92 @@ Ce guide vous explique comment configurer et exécuter des applications Spring B
    - Assurez-vous d'avoir un fichier `docker-compose.yml` à la racine de votre projet. Voici un exemple de configuration :
 
      ```yaml
-     version: '3.8'
-
      services:
-       backend:
-         image: votre-utilisateur/nom-image-spring-boot
-         ports:
-           - "8080:8080"
-         restart: always
+           y-soccer-backend-service:
+             build: ./managment_tournoi_backend
+             container_name: y-soccer-backend-service
+             ports:
+               - '9000:9000'
+             expose:
+               - 9000
+             depends_on:
+                y-soccer-database:
+                   condition: service_healthy
+             healthcheck:
+               test: ["CMD" , "curl", "http://localhost:9000/actuator/health"]
+               interval: 10s
+               timeout: 5s
+               retries: 4
+             restart: always
+             environment:
+               spring.datasource.url: jdbc:mysql://y-soccer-database:3306/Ysoccerdb?createDatabaseIfNotExist=true
+               spring.datasource.username: root
+               spring.datasource.password: 
+         
+           y-soccer-database:
+             container_name: y-soccer-database
+             image: mysql:latest
+             volumes:
+               - mysql-data:/var/mysql
+             ports:
+               - '3307:3306'
+             environment:
+               MYSQL_DATABASE: Ysoccerdb
+               MYSQL_ROOT_PASSWORD: ''
+               MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+             healthcheck:
+               test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+               interval: 10s
+               timeout: 5s
+               retries: 4
+         
+         
+           phpmyadmin:
+             image: phpmyadmin/phpmyadmin
+             container_name: phpmyadmin
+             ports:
+               - '8081:80'
+             environment:
+               PMA_ARBITRARY: 1
+               MYSQL_HOST: y-soccer-database
+               MYSQL_PORT: 3307
+               MYSQL_USER: root
+               MYSQL_PASSWORD: ''
+             depends_on:
+               y-soccer-database:
+                 condition: service_healthy
+         
+         
+         
+           y-soccer-frontend:
+             build: ./managment_tournoi_frontend
+             container_name: y-soccer-frontend
+             ports:
+               - '4200:80'
+             expose:
+               - '4200'
+             depends_on:
+               y-soccer-backend-service:
+                 condition: service_healthy
+             restart: always
 
-       frontend:
-         image: votre-utilisateur/nom-image-angular
-         ports:
-           - "4200:4200"
-         restart: always
+
+volumes:
+  mysql-data:
+
+    
      ```
 
-   - Remplacez `votre-utilisateur/nom-image-spring-boot` et `votre-utilisateur/nom-image-angular` par les noms appropriés de vos images Docker.
 
 3. **Exécution de Docker Compose :**
    - Exécutez Docker Compose avec la commande suivante :
      ```
-     docker-compose up
+        docker-compose up
      ```
 
 4. **Accès aux Applications :**
    - L'application Spring Boot sera accessible à l'adresse : `http://localhost:9000`
-   - L'application Angular sera accessible à l'adresse : `http://localhost:6000`
+   - L'application Angular sera accessible à l'adresse : `http://localhost:4200`
 
 C'est tout ! Vous avez maintenant vos applications Spring Boot et Angular en cours d'exécution dans des conteneurs Docker, prêtes à être utilisées.
 
