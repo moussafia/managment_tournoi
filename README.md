@@ -173,5 +173,8 @@ volumes:
 C'est tout ! Vous avez maintenant vos applications Spring Boot et Angular en cours d'exécution dans des conteneurs Docker, prêtes à être utilisées.
 
 ---
+5. **Comptes utilisés pour accéder à mon projet :**
+   - ahmed@gmail.com
 
+---
 
