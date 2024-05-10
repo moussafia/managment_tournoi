@@ -178,7 +178,8 @@ C'est tout ! Vous avez maintenant vos applications Spring Boot et Angular en cou
 
 ---
 5. **Comptes utilisés pour accéder à mon projet :**
-   - ahmed@gmail.com
+   - username : ahmed@gmail.com
+   - password: 1234
 
 ---
 
