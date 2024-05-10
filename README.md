@@ -152,11 +152,8 @@ Ce guide vous explique comment configurer et exécuter des applications Spring B
                  condition: service_healthy
              restart: always
 
-
-volumes:
-  mysql-data:
-
-    
+      volumes:
+        mysql-data:
      ```
 
 
