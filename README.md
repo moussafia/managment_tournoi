@@ -67,6 +67,13 @@ Angular est un framework JavaScript open-source développé par Google pour la c
 
 Angular est souvent utilisé pour créer des applications web interactives et dynamiques. Il fournit des fonctionnalités puissantes telles que la liaison de données bidirectionnelle, la manipulation du DOM, le routage, la gestion des formulaires et bien plus encore.
 
+## ngrx/store
+
+<img src="https://github.com/moussafia/managment_tournoi_football_youcode/blob/main/fakeData/logoTechnologie/angular.png" alt="Illustration pour Lombok" width="50" height="50">
+
+ngrx/store est une bibliothèque de gestion d'état pour les applications Angular, inspirée du modèle Redux. Elle offre un moyen efficace de gérer l'état de l'application de manière prévisible, en utilisant un flux de données unidirectionnel.
+
+
 # Configuration et Exécution des Applications dans Docker
 
 Ce guide vous explique comment configurer et exécuter des applications Spring Boot et Angular dans Docker à l'aide de Docker Compose.
